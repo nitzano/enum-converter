@@ -1,10 +1,10 @@
 # Enum Converter (enumc)
 
-Convert Enums from one language to another
+Converting Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Usage](#usage)
-  - [Language support](#language-support)
+  - [Supported language](#supported-language)
   - [Features](#features)
   - [Next version](#next-version)
   - [Tasks list](#tasks-list)
@@ -25,7 +25,7 @@ enumc enums.py --self --sort-enums=asc --key-style upper
 enumc enums.py --self --sort-enums=asc --sort-values=value_desc
 ```
 
-## Language support
+## Supported language
 
 * [x] Python
 * [x] Typescript
