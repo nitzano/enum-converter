@@ -3,23 +3,27 @@
 Converting Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
-  - [Usage](#usage)
+  - [Quick start](#quick-start)
   - [Supported language](#supported-language)
   - [Features](#features)
-  - [Next version](#next-version)
-  - [Tasks list](#tasks-list)
 
-## Usage
+## Quick start
+
+Install the package
 
 ```
 npm install -g enum-converter
+```
 
-// basic
+Simple conversion 
+```
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to typescript
+```
 
-// apply styling
+Styling
+```
 enumc enums.py --to typescript --sort
 enumc enums.py --self --sort-enums=asc --key-style upper
 enumc enums.py --self --sort-enums=asc --sort-values=value_desc
@@ -38,28 +42,11 @@ enumc enums.py --self --sort-enums=asc --sort-values=value_desc
 
 * Converting from one language to another
 * Styling options
-  * Sorting enums in files and values in enums
-  * Styling enum names, keys and values
-* converting from configuration file (future version)
-* convert directories (future version)
-* watch mode (future version)
+  * Sorting - enums in files, values in enums
+  * Styling - enum names, keys and values
+* Future versions
+  * converting from configuration file
+  * convert directories
+  * watch mode
 
-## Next version
 
-TBD
-
-## Tasks list
-
-* [ ] Make --out work
-* [ ] Fix emitHeader, emitStats params
-* [ ] Use a better logging library
-* [ ] Production
-  * [ ] allow to require library as typescript
-  * [ ] add travis CI
-  * [ ] Publish 0.0.1 to npm :)
-* [ ] Testing
-  * [ ] write tests for cli
-  * [ ] add coverage tests
-* [ ] Development environment
-  * [ ] use NODE_PATH for full volume sync
-  * [ ] fix the debugger

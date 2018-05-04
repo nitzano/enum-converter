@@ -1,9 +1,9 @@
 {
   "name": "enum-converter",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Convert Enums from one language to another",
   "keywords": ["enum", "enums", "converter", "ast", "transpiler"],
-  "author": "nitzano <this.vptr@gmail.com>",
+  "author": "Nitzan.o <this.vptr@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
