@@ -4,7 +4,7 @@ Converting Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Quick start](#quick-start)
-  - [Supported language](#supported-language)
+  - [Supported languages](#supported-languages)
   - [Features](#features)
 
 ## Quick start
@@ -29,7 +29,7 @@ enumc enums.py --self --sort-enums=asc --key-style upper
 enumc enums.py --self --sort-enums=asc --sort-values=value_desc
 ```
 
-## Supported language
+## Supported languages
 
 * [x] Python
 * [x] Typescript
@@ -41,12 +41,12 @@ enumc enums.py --self --sort-enums=asc --sort-values=value_desc
 ## Features
 
 * Converting from one language to another
-* Styling options
+* Styling
   * Sorting - enums in files, values in enums
-  * Styling - enum names, keys and values
+  * String styles - enum names, keys and values
 * Future versions
   * converting from configuration file
-  * convert directories
+  * directory conversion
   * watch mode
 
 
