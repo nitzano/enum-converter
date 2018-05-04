@@ -1,0 +1,13 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "prettier": true,
+    "member-access": [true, "no-public"],
+    "interface-name": false,
+    "no-var-requires": false,
+    "no-console": [true, "log", "warn"]
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"]
+}

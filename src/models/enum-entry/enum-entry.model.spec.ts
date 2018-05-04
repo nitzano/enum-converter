@@ -1,0 +1,42 @@
+import { EnumValue } from '../enum-value/enum-value.model';
+import { EnumEntry, EnumValuesOrder } from './enum-entry.model';
+
+describe('EnumEntry', () => {
+  describe('sorting', () => {
+    let enumEntry: EnumEntry;
+
+    const enumA: EnumValue = new EnumValue('a', 11);
+    const enumB: EnumValue = new EnumValue('b', 55);
+    const enumC: EnumValue = new EnumValue('c', 999);
+
+    const enumD: EnumValue = new EnumValue('hello', 44);
+
+    beforeEach(() => {
+      enumEntry = new EnumEntry('Test');
+    });
+
+    it('should sort by name entry ascending', () => {
+      enumEntry.values = [enumC, enumB, enumA];
+      enumEntry.sortEnumValues(EnumValuesOrder.NameAscending);
+      expect(enumEntry.values).toEqual([enumA, enumB, enumC]);
+    });
+
+    it('should sort by name entry decending', () => {
+      enumEntry.values = [enumC, enumB, enumA];
+      enumEntry.sortEnumValues(EnumValuesOrder.NameDescending);
+      expect(enumEntry.values).toEqual([enumC, enumB, enumA]);
+    });
+
+    it('should sort by values ascending', () => {
+      enumEntry.values = [enumD, enumC, enumB, enumA];
+      enumEntry.sortEnumValues(EnumValuesOrder.ValueAscending);
+      expect(enumEntry.values).toEqual([enumA, enumD, enumB, enumC]);
+    });
+
+    it('should sort by values descending', () => {
+      enumEntry.values = [enumD, enumC, enumB, enumA];
+      enumEntry.sortEnumValues(EnumValuesOrder.ValueDescending);
+      expect(enumEntry.values).toEqual([enumC, enumB, enumD, enumA]);
+    });
+  });
+});

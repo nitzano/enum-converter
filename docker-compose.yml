@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:    
+    build: .
+    image: enumc-image
+    ports:
+    - "9229:9229"
+    volumes:
+    - ./src:/work/src
+    - ./__tests__:/work/__tests__
+    - ./lib:/work/lib
+    - ./package.json:/work/package.json
+    - ./tslint.json:/work/tslint.json
+    - ./tsconfig.json:/work/tsconfig.json
+    - ./.prettierrc:/work/.prettierrc
+    container_name: enumc
+    command: ["/bin/bash"]
+    environment: 
+      - NPM_CONFIG_REGISTRY=http://dev_registry:4873
+    tty: true
+  dev_registry:
+    image: verdaccio/verdaccio
+    ports:
+    - "4873:4873"
+  client1:
+    image: node:carbon
+    tty: true
+    environment: 
+      - NPM_CONFIG_REGISTRY=http://dev_registry:4873  
