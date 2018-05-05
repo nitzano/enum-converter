@@ -33,7 +33,7 @@ export const CLI_ARGS = yargs
             describe: 'destination language'
           },
           output: {
-            alias: ['o'],
+            alias: ['o', 'out'],
             describe: 'dump to output file',
             normalize: true,
             type: 'string'
