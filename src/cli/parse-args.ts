@@ -1,4 +1,4 @@
-import { existsSync } from 'fs';
+import { existsSync, writeFileSync } from 'fs';
 import { Arguments } from 'yargs';
 import { DEFAULT_ENUM_CONFIG, DumpConfig } from '../dumpers/dump-config.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
@@ -34,11 +34,10 @@ export function parseArgs(args: CliArgs) {
   let fileParser: FileParser | undefined;
   let fileDumper: FileDumper | undefined;
 
-  // translate file to full path
-  const fullPath: string = args.file;
+  const filePath: string = args.file;
 
-  if (!existsSync(fullPath)) {
-    throw new Error(`could not find file: ${fullPath}`);
+  if (!existsSync(filePath)) {
+    throw new Error(`could not find file: ${filePath}`);
   }
 
   // find parser
@@ -49,7 +48,7 @@ export function parseArgs(args: CliArgs) {
   }
 
   // parse the file
-  fileParser.parse(fullPath);
+  fileParser.parse(filePath);
 
   if (args.self) {
     fileDumper = createDumperFromLanguage(
@@ -61,7 +60,6 @@ export function parseArgs(args: CliArgs) {
   }
 
   // find dumper
-
   if (!fileDumper) {
     throw new Error('could not find dumper');
   }
@@ -69,8 +67,16 @@ export function parseArgs(args: CliArgs) {
   // apply styling
   const dumpConfig: DumpConfig | undefined = argsToConfig(args);
 
-  // dump
-  console.debug(fileDumper.dump(dumpConfig));
+  // dump to file or screen
+  const outputString: string = fileDumper.dump(dumpConfig);
+
+  if (args.self) {
+    writeFileSync(filePath, outputString);
+  } else if (args.output) {
+    writeFileSync(args.output, outputString);
+  } else {
+    console.log(outputString);
+  }
 }
 
 function findParser(args: CliArgs): FileParser | undefined {

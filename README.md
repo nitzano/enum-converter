@@ -1,6 +1,6 @@
 # Enum Converter (enumc)
 
-Converting Enums from one language to another
+Convert Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Quick start](#quick-start)
@@ -15,7 +15,8 @@ Install the package
 npm install -g enum-converter
 ```
 
-Simple conversion 
+Simple conversion
+
 ```
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
@@ -23,6 +24,7 @@ enumc enums.x --from python --to typescript
 ```
 
 Styling
+
 ```
 enumc enums.py --to typescript --sort
 enumc enums.py --self --sort-enums=asc --key-style upper
@@ -48,5 +50,3 @@ enumc enums.py --self --sort-enums=asc --sort-values=value_desc
   * converting from configuration file
   * directory conversion
   * watch mode
-
-

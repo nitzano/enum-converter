@@ -7,7 +7,7 @@
     "member-access": [true, "no-public"],
     "interface-name": false,
     "no-var-requires": false,
-    "no-console": [true, "log", "warn"]
+    "no-console": [true, "log", "debug"]
   },
   "rulesDirectory": ["tslint-plugin-prettier"]
 }
