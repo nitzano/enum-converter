@@ -1,4 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/nitzano/enum-converter.svg)](https://github.com/nitzano/enum-converter/releases/latest)
+![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)
 
 # Enum Converter (enumc)
 
