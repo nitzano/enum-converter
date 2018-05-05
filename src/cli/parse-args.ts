@@ -50,13 +50,17 @@ export function parseArgs(args: CliArgs) {
   // parse the file
   fileParser.parse(filePath);
 
+  // find dumper
   if (args.self) {
     fileDumper = createDumperFromLanguage(
       (fileParser.constructor as typeof FileParser).language,
       fileParser.enumFile
     );
-  } else {
+  } else if (args.to) {
     fileDumper = createDumperFromLanguage(args.to, fileParser.enumFile);
+  } else {
+    console.error('No dumper supplied, use either `self` or `to` arguments');
+    return;
   }
 
   // find dumper
