@@ -15,8 +15,6 @@ services:
     - ./.prettierrc:/work/.prettierrc
     container_name: enumc
     command: ["/bin/bash"]
-    environment: 
-      - NPM_CONFIG_REGISTRY=http://dev_registry:4873
     tty: true
   dev_registry:
     image: verdaccio/verdaccio
@@ -25,5 +23,3 @@ services:
   client1:
     image: node:carbon
     tty: true
-    environment: 
-      - NPM_CONFIG_REGISTRY=http://dev_registry:4873  
