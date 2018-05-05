@@ -26,7 +26,6 @@
     "clean:soft": "rm -rf lib/*",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "npm run lint -- --fix",
-    "run": "node dist/main.js",
     "test": "jest --verbose",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/jest -i",
     "test:watch": "jest --watch",
