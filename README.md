@@ -1,3 +1,5 @@
+[![GitHub release](https://img.shields.io/github/release/nitzano/enum-converter.svg)](https://github.com/nitzano/enum-converter/releases/latest)
+
 # Enum Converter (enumc)
 
 Convert Enums from one language to another
