@@ -76,8 +76,10 @@ export function parseArgs(args: CliArgs) {
 
   if (args.self) {
     writeFileSync(filePath, outputString);
+    console.log(`dumped to ${filePath}`);
   } else if (args.output) {
     writeFileSync(args.output, outputString);
+    console.log(`dumped to ${args.output}`);
   } else {
     console.log(outputString);
   }
