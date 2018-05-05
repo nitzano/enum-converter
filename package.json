@@ -20,7 +20,7 @@
     "build": "tsc",
     "build:watch": "npm run build -- -w",
     "build:prod": "npm run build -- -p tsconfig.prod.json",
-    "postbuild": "cp package.json ./lib",
+    "postbuild": "cp package.json README.md ./lib",
     "cli": "ts-node ./src/cli/cli.ts",
     "clean": "rimraf lib",
     "clean:soft": "rm -rf lib/*",
