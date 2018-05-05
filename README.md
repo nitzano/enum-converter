@@ -26,7 +26,7 @@ enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to typescript
 ```
 
-With Styling
+Apply Styling
 
 ```
 enumc enums.py --to typescript --sort-enums asc
