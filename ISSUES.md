@@ -4,8 +4,7 @@
 * [ ] Use a better logging library
 * [ ] Production
   * [ ] allow to require library as typescript
-  * [ ] add travis CI
-  * [ ] Publish 0.0.1 to npm :)
+  * [ ] Publish 0.1.0 to npm :)
 * [ ] Testing
   * [ ] write tests for cli
   * [ ] add coverage tests
