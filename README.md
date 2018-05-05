@@ -23,12 +23,12 @@ enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to typescript
 ```
 
-Styling
+With Styling
 
 ```
-enumc enums.py --to typescript --sort
-enumc enums.py --self --sort-enums=asc --key-style upper
-enumc enums.py --self --sort-enums=asc --sort-values=value_desc
+enumc enums.py --to typescript --sort-enums asc
+enumc enums.py --self --key-style upper --name-style kebab
+enumc enums.py --self --sort-enums=desc --sort-values=value_desc
 ```
 
 ## Supported languages
@@ -39,14 +39,16 @@ enumc enums.py --self --sort-enums=asc --sort-values=value_desc
 * [ ] Java
 * [ ] C#
 * [ ] C/C++
+* [ ] Go
 
 ## Features
 
-* Converting from one language to another
-* Styling
-  * Sorting - enums in files, values in enums
-  * String styles - enum names, keys and values
+* Convert from one file to another
+* Modify existing files
+* Sort enums in files, values in enums
+* Style enum names, keys and values
 * Future versions
+  * More languages parsers/dumpers
   * converting from configuration file
   * directory conversion
   * watch mode
