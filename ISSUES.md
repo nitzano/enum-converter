@@ -1,6 +1,5 @@
 ## Open Issues
 
-* [ ] Make --out work
 * [ ] Fix emitHeader, emitStats params
 * [ ] Use a better logging library
 * [ ] Production
