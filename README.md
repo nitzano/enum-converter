@@ -28,7 +28,7 @@ npm install -g enum-converter
 ```
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
-enumc enums.x --from python --to typescript
+enumc enums.x --from python --to json
 ```
 
 ### Styling
