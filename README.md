@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/v/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
-![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)
+[![npm](https://img.shields.io/npm/dw/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
 ![Travis](https://img.shields.io/travis/nitzano/enum-converter.svg)
+![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)
 
 # Enum Converter (enumc)
 
