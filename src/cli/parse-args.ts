@@ -101,12 +101,8 @@ function findParser(args: CliArgs): FileParser | undefined {
 function argsToConfig(args: CliArgs): DumpConfig | undefined {
   if (args) {
     return {
-      emitHeader: args.emitHeader
-        ? args.emitHeader
-        : DEFAULT_ENUM_CONFIG.emitHeader,
-      emitStats: args.emitStats
-        ? args.emitStats
-        : DEFAULT_ENUM_CONFIG.emitHeader,
+      emitHeader: args.emitHeader,
+      emitStats: args.emitStats,
       keyStyle: args.keyStyle ? args.keyStyle : DEFAULT_ENUM_CONFIG.keyStyle,
       nameStyle: args.nameStyle
         ? args.nameStyle

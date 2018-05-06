@@ -38,12 +38,22 @@ describe('CLI', () => {
     expect(jsonSample).toEqual(jsonEnumString);
   });
 
-  it('should not emit header when emitHeader flag is off', () => {
+  it('should not emit header when emitHeader flag is false', () => {
+    let x = 1;
     const cliOutput: string = runCli(
       `${pythonSampleFile} --to python --emitHeader false`
     );
     expect(cliOutput).not.toContain(
       '# From python.cli.sample.py (2 Enums 6 Values)'
     );
+  });
+
+  it('should not emit stats when emitStats flag is false', () => {
+    const cliOutput: string = runCli(
+      `${pythonSampleFile} --to python --emitStats false`
+    );
+
+    expect(cliOutput).toContain('# From python.cli.sample.py');
+    expect(cliOutput).not.toContain('(2 Enums 6 Values)');
   });
 });

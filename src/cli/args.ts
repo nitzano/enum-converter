@@ -96,5 +96,3 @@ export const CLI_ARGS = yargs
     }
   )
   .wrap(120);
-
-export const CLI_ARGV = CLI_ARGS.argv;
