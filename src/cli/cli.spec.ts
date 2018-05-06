@@ -6,6 +6,7 @@ const packageJson = require('../../package.json');
 describe('CLI', () => {
   let cliPath: string;
   const samplesPath = resolve(`${__dirname}/../../__tests__/samples`);
+  const pythonSampleFile = `${samplesPath}/cli/python.cli.sample.py`;
 
   beforeAll(() => {
     const binPath = execSync('npm bin')
@@ -27,8 +28,7 @@ describe('CLI', () => {
   });
 
   it('should convert python to a valid json', () => {
-    const cliPythonSamplePath: string = `${samplesPath}/cli/python.cli.sample.py`;
-    const jsonEnum: string = runCli(`${cliPythonSamplePath} --to json`);
+    const jsonEnum: string = runCli(`${pythonSampleFile} --to json`);
     const jsonEnumString = JSON.parse(jsonEnum);
 
     const jsonSample = JSON.parse(
@@ -38,5 +38,12 @@ describe('CLI', () => {
     expect(jsonSample).toEqual(jsonEnumString);
   });
 
-  it('should not emit header when emitHeader flag is off', () => {});
+  it('should not emit header when emitHeader flag is off', () => {
+    const cliOutput: string = runCli(
+      `${pythonSampleFile} --to python --emitHeader false`
+    );
+    expect(cliOutput).not.toContain(
+      '# From python.cli.sample.py (2 Enums 6 Values)'
+    );
+  });
 });
