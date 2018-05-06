@@ -19,17 +19,17 @@
   "bugs": {
     "url": "https://github.com/nitzano/enum-converter/issues"
   },
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "bin": {
-    "enumc": "./src/cli/cli.js"
+    "enumc": "./lib/src/cli/cli.js"
   },
+  "files": ["CHANGELOG", "README.md", "LICENSE", "lib/"],
   "scripts": {
     "prebuild": "npm run clean:soft",
     "build": "tsc",
     "build:watch": "npm run build -- -w",
     "build:prod": "npm run build -- -p tsconfig.prod.json",
-    "postbuild": "cp package.json README.md LICENSE ./lib",
     "cli": "ts-node ./src/cli/cli.ts",
     "clean": "rimraf lib",
     "clean:soft": "rm -rf lib/*",
