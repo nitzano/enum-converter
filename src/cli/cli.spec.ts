@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import { resolve } from 'path';
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 const packageJson = require('../../package.json');
 
 describe('CLI', () => {

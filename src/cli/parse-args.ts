@@ -1,3 +1,4 @@
+/* tslint:disable:no-console **/
 import { existsSync, writeFileSync } from 'fs';
 import { Arguments } from 'yargs';
 import { DEFAULT_ENUM_CONFIG, DumpConfig } from '../dumpers/dump-config.type';
