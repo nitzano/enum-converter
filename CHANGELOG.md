@@ -1,8 +1,11 @@
 ## Unreleased
 
+## 0.1.1
+
 ### Fixes
 
 * Fixed json dumper + added tests
+* Fixed emit-header and emit-stats Flags
 
 ### Other changes
 
