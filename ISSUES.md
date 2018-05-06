@@ -1,6 +1,6 @@
 ## Open Issues
 
-* change emit-header and emit-stats to --no-header and --no-stats
+* [ ] change emit-header and emit-stats to --no-header and --no-stats
 * [ ] Use a better logging library
 * [ ] Production
   * [ ] allow to require library as typescript
