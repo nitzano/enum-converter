@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/nitzano/enum-converter.svg)](https://github.com/nitzano/enum-converter/releases/latest)
+[![npm](https://img.shields.io/npm/v/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
 ![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)
 ![Travis](https://img.shields.io/travis/nitzano/enum-converter.svg)
 
