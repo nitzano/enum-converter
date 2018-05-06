@@ -1,13 +1,11 @@
 ## Open Issues
 
-* [ ] Fix emitHeader, emitStats params
+* change emit-header and emit-stats to --no-header and --no-stats
 * [ ] Use a better logging library
 * [ ] Production
   * [ ] allow to require library as typescript
-  * [ ] Publish 0.1.0 to npm :)
+  * [ ] Publish 0.1.2 to npm
 * [ ] Testing
-  * [ ] write tests for cli
   * [ ] add coverage tests
 * [ ] Development environment
   * [ ] use NODE_PATH for full volume sync
-  * [ ] fix the debugger
