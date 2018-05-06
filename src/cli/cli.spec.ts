@@ -16,19 +16,19 @@ describe('CLI', () => {
     cliPath = `${tsNodePath} ${cliFile}`;
   });
 
+  function runCli(cliArgs: string): string {
+    return execSync(`${cliPath} ${cliArgs}`).toString();
+  }
+
   it('should make sure both cli and package version report the same', () => {
-    const cliVersion: string = execSync(`${cliPath} --version`)
-      .toString()
-      .trim();
+    const cliVersion: string = runCli('--version').trim();
     const packageVersion = packageJson.version;
     expect(cliVersion).toBe(packageVersion);
   });
 
   it('should convert python to a valid json', () => {
     const cliPythonSamplePath: string = `${samplesPath}/cli/python.cli.sample.py`;
-    const jsonEnum: string = execSync(
-      `${cliPath} ${cliPythonSamplePath} --to json`
-    ).toString();
+    const jsonEnum: string = runCli(`${cliPythonSamplePath} --to json`);
     const jsonEnumString = JSON.parse(jsonEnum);
 
     const jsonSample = JSON.parse(
@@ -37,4 +37,6 @@ describe('CLI', () => {
 
     expect(jsonSample).toEqual(jsonEnumString);
   });
+
+  it('should not emit header when emitHeader flag is off', () => {});
 });
