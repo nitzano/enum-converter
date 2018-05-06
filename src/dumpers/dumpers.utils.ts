@@ -17,6 +17,8 @@ export function createDumperFromLanguage(
       return new PythonDumper(enumFile);
     case Language.Typescript:
       return new TypescriptDumper(enumFile);
+    case Language.Json:
+      return new JsonDumper(enumFile);
     default:
       break;
   }
