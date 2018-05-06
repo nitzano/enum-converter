@@ -1,6 +1,6 @@
 {
   "name": "enum-converter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert Enums from one language to another",
   "keywords": [
     "enum-converter",
@@ -21,7 +21,9 @@
   },
   "main": "index.js",
   "typings": "index.d.ts",
-  "bin": { "enumc": "./src/cli/cli.js" },
+  "bin": {
+    "enumc": "./src/cli/cli.js"
+  },
   "scripts": {
     "prebuild": "npm run clean:soft",
     "build": "tsc",
