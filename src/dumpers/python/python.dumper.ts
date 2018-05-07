@@ -32,24 +32,24 @@ export class PythonDumper extends FileDumper {
     return entries.join('\n');
   }
 
-  getEnumValue(enumValue: EnumValue): string {
-    if (enumValue && enumValue.value !== undefined) {
+  private getEnumValue(enumValue: EnumValue): string {
+    if (enumValue) {
+      if (enumValue.isAutomatic) {
+        return 'auto()';
+      }
+
       switch (typeof enumValue.value) {
         case 'string':
           return `'${enumValue.value}'`;
         case 'number':
         case 'boolean':
           return `${enumValue.value}`;
-        case 'object':
-          if (enumValue.isAutomatic) {
-            return 'auto()';
-          }
         default:
           break;
       }
     }
 
-    return '';
+    throw new Error('could not get enum value');
   }
 
   get prefixData(): string | null {

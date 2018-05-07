@@ -36,8 +36,6 @@ export abstract class FileDumper {
     return fileData.join('\n');
   }
 
-  protected abstract getEnumValue(enumValue: EnumValue): string;
-
   protected get prefixData(): string | null {
     return null;
   }

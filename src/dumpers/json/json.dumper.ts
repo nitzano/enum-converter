@@ -31,8 +31,4 @@ export class JsonDumper extends FileDumper {
 
     return JSON.stringify(jsonEnum, null, 4);
   }
-
-  getEnumValue(enumValue: EnumValue): string {
-    throw new Error('unused for json dumper');
-  }
 }
