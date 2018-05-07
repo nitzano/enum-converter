@@ -1,11 +1,12 @@
 import { endsWith } from 'lodash';
-import { PythonParser } from '..';
+import { PythonParser, JsonParser } from '..';
 import { EnumFile } from '../models/enum-file/enum-file.model';
 import { FileParser } from '../parsers/file.parser';
 import { TypescriptParser } from '../parsers/typescript/typescript.parser';
 import { Language } from '../utils/language.enums';
+import { extname } from 'path';
 
-export const ALL_PARSERS = [PythonParser, TypescriptParser];
+export const ALL_PARSERS = [PythonParser, TypescriptParser, JsonParser];
 export const ALL_PARSER_NAMES = ALL_PARSERS.map(p => p.language);
 
 export function findlanguageFromArgument(parserName: string): Language | null {
@@ -24,6 +25,8 @@ export function createParserFromLanguage(
       return new PythonParser();
     case Language.Typescript:
       return new TypescriptParser();
+    case Language.Json:
+      return new JsonParser();
     default:
       break;
   }
@@ -32,10 +35,15 @@ export function createParserFromLanguage(
 }
 
 export function createParserFromPath(filePath: string): FileParser | null {
-  if (endsWith(filePath, '.py')) {
-    return createParserFromLanguage(Language.Python);
-  } else if (endsWith(filePath, '.ts')) {
-    return createParserFromLanguage(Language.Typescript);
+  const extension: string = extname(filePath).toLowerCase();
+
+  switch (extension) {
+    case '.py':
+      return createParserFromLanguage(Language.Python);
+    case '.ts':
+      return createParserFromLanguage(Language.Typescript);
+    case '.json':
+      return createParserFromLanguage(Language.Json);
   }
 
   return null;
