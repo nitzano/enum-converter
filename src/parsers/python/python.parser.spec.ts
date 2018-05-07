@@ -7,7 +7,7 @@ describe('Python Parser', () => {
   it('should parse the sample file', () => {
     const fullPath = path.resolve(
       __dirname,
-      '../../../__tests__/samples/python.simple.sample.py'
+      '../../../__tests__/samples/basic/python.basic.sample.py'
     );
     const parser = new PythonParser();
     parser.parse(fullPath);

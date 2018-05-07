@@ -7,7 +7,7 @@ describe('Typescript Parser', () => {
   it('should parse the sample file', () => {
     const fullPath = path.resolve(
       __dirname,
-      '../../../__tests__/samples/typescript.simple.sample.ts'
+      '../../../__tests__/samples/basic/typescript.basic.sample.ts'
     );
     const parser = new TypescriptParser();
     parser.parse(fullPath);
