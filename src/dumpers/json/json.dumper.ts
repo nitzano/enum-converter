@@ -1,5 +1,8 @@
 import { EnumFile } from '../../models/enum-file/enum-file.model';
-import { EnumValueType } from '../../models/enum-value/enum-value.model';
+import {
+  EnumValue,
+  EnumValueType
+} from '../../models/enum-value/enum-value.model';
 import { Language } from '../../utils/language.enums';
 import { FileDumper } from '../file.dumper';
 
@@ -21,11 +24,19 @@ export class JsonDumper extends FileDumper {
     this.enumFile.entries.forEach(entry => {
       jsonEnum[entry.name] = {};
 
-      entry.values.forEach(enumValue => {
-        jsonEnum[entry.name][enumValue.name] = enumValue.value;
+      entry.values.map(enumValue => {
+        jsonEnum[entry.name][enumValue.name] = this.getEnumValue(enumValue);
       });
     });
 
     return JSON.stringify(jsonEnum, null, 4);
+  }
+
+  getEnumValue(enumValue: EnumValue): string {
+    if (enumValue) {
+      return `${enumValue.isAutomatic ? 'null' : enumValue.value}`;
+    } else {
+      throw new Error(`could not parse ${enumValue}`);
+    }
   }
 }

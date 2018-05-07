@@ -1,4 +1,5 @@
 import { basename } from 'path';
+import { EnumValue } from '..';
 import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
 import { EnumFile } from '../models/enum-file/enum-file.model';
 import { Language } from '../utils/language.enums';
@@ -34,6 +35,8 @@ export abstract class FileDumper {
 
     return fileData.join('\n');
   }
+
+  protected abstract getEnumValue(enumValue: EnumValue): string;
 
   protected get prefixData(): string | null {
     return null;

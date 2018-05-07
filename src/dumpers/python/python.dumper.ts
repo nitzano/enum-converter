@@ -21,7 +21,9 @@ export class PythonDumper extends FileDumper {
       entryString += `class ${entry.name}(Enum):\n`;
 
       entry.values.forEach(enumValue => {
-        entryString += `    ${enumValue.name} = ${enumValue.value}\n`;
+        entryString += `    ${enumValue.name} = ${this.getEnumValue(
+          enumValue
+        )}\n`;
       });
 
       entries.push(entryString);
@@ -30,15 +32,16 @@ export class PythonDumper extends FileDumper {
     return entries.join('\n');
   }
 
-  private getEnumValue(enumValue: EnumValue): string {
+  getEnumValue(enumValue: EnumValue): string {
     if (enumValue && enumValue.value !== undefined) {
       switch (typeof enumValue.value) {
         case 'string':
           return `'${enumValue.value}'`;
         case 'number':
+        case 'boolean':
           return `${enumValue.value}`;
         case 'object':
-          if (enumValue.value === null) {
+          if (enumValue.isAutomatic) {
             return 'auto()';
           }
         default:
