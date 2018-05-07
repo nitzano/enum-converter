@@ -4,8 +4,8 @@ from enum import Enum, auto, IntEnum
 
 class Colors(Enum):
     Green = 1
-    Yellow = 2
-    Blue = 5
+    Yellow = auto()
+    Blue = 'Blue'
 
 
 class Pets(Enum):
