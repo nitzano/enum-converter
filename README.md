@@ -56,6 +56,7 @@ enumc enums.py --self --sort-enums=desc --sort-values=value_desc
 * Sort enums in files, values in enums
 * Style enum names, keys and values
 * Future versions
+  * converting programmatically
   * More languages parsers/dumpers
   * converting from configuration file
   * directory conversion
