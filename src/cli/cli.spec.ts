@@ -39,7 +39,6 @@ describe('CLI', () => {
   });
 
   it('should not emit header when emitHeader flag is false', () => {
-    let x = 1;
     const cliOutput: string = runCli(
       `${pythonSampleFile} --to python --emitHeader false`
     );
