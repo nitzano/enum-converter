@@ -1,7 +1,7 @@
 import { EnumFile } from '../../models/enum-file/enum-file.model';
+import { EnumValue } from '../../models/enum-value/enum-value.model';
 import { Language } from '../../utils/language.enums';
 import { FileDumper } from '../file.dumper';
-import { EnumValue } from '../../models/enum-value/enum-value.model';
 
 export class TypescriptDumper extends FileDumper {
   static language: Language = Language.Typescript;
@@ -20,11 +20,15 @@ export class TypescriptDumper extends FileDumper {
       // create entry class
       entryString += `enum ${entry.name} {\n`;
 
-      entry.values.forEach(enumValue => {
-        entryString += enumValue.isAutomatic
-          ? `${enumValue.name},\n`
-          : `${enumValue.name} = ${this.getEnumValue(enumValue)},\n`;
-      });
+      const entryValues: string[] = entry.values.map(
+        enumValue =>
+          enumValue.isAutomatic
+            ? `${enumValue.name}`
+            : `${enumValue.name} = ${this.getEnumValue(enumValue)}`
+      );
+
+      entryString += entryValues.map(valueStr => `   ${valueStr}`).join(',\n');
+      entryString += '\n}\n';
 
       entries.push(entryString);
     });
