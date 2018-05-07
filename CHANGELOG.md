@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Added json parser
+
 ## 0.1.1
 
 ### Fixes
