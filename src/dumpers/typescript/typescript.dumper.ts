@@ -36,7 +36,7 @@ export class TypescriptDumper extends FileDumper {
     return entries.join('\n');
   }
 
-  getEnumValue(enumValue: EnumValue): string {
+  private getEnumValue(enumValue: EnumValue): string {
     if (enumValue && enumValue.value !== undefined) {
       switch (typeof enumValue.value) {
         case 'string':
