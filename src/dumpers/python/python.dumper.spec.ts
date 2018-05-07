@@ -25,7 +25,6 @@ describe('Python Dumper', () => {
 
     const dumper = new PythonDumper(enumFile);
     const dumperString: string = dumper.dump();
-    console.log('dumper string', dumperString);
 
     expect(dumperString).toContain('Green = 1');
     expect(dumperString).toContain('Yellow = auto()');
