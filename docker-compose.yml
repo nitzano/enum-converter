@@ -13,6 +13,9 @@ services:
     - ./tslint.json:/work/tslint.json
     - ./tsconfig.json:/work/tsconfig.json
     - ./.prettierrc:/work/.prettierrc
+    - ./README.md:/work/README.md
+    - ./LICENSE:/work/LICENSE
+    - ./CHANGELOG.md:/work/CHANGELOG.md
     container_name: enumc
     command: ["/bin/bash"]
     tty: true

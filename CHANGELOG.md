@@ -1,5 +1,6 @@
 ## Unreleased
 
+* First stable version (I hope)
 * Added json parser
 * Fixed automatic variable translation bugs
 * Fixed typescript dumper strings
