@@ -1,14 +1,34 @@
+import { resolve } from 'path';
 import { SAMPLE_ENUM_FILE } from '../../../__tests__/utils/utils';
-import { EnumEntry } from '../../models/enum-entry/enum-entry.model';
-import { EnumFile } from '../../models/enum-file/enum-file.model';
-import { EnumValue } from '../../models/enum-value/enum-value.model';
-import { StringStyle } from '../../utils/string-styler/string-styler.enums';
+import { PythonParser } from '../../parsers/python/python.parser';
 import { PythonDumper } from './python.dumper';
+import { EnumFile } from '../..';
 
 describe('Python Dumper', () => {
-  it('should dump sample pyfile', () => {
+  it('should dump sample enumFile', () => {
     const enumFile = SAMPLE_ENUM_FILE;
     const dumper = new PythonDumper(enumFile);
-    // console.log(pythonDumper.dump());
+    const dumperString: string = dumper.dump();
+
+    expect(dumperString.length).toBeGreaterThan(0);
+  });
+
+  it('should dump the basic sample file', () => {
+    const fullPath = resolve(
+      __dirname,
+      '../../../__tests__/samples/basic/python.basic.sample.py'
+    );
+    const parser = new PythonParser();
+    parser.parse(fullPath);
+
+    const enumFile: EnumFile = parser.enumFile;
+
+    const dumper = new PythonDumper(enumFile);
+    const dumperString: string = dumper.dump();
+    console.log('dumper string', dumperString);
+
+    expect(dumperString).toContain('Green = 1');
+    expect(dumperString).toContain('Yellow = auto()');
+    expect(dumperString).toContain(`Blue = "Blue"`);
   });
 });
