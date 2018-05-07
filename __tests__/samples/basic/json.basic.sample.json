@@ -1,11 +1,11 @@
 {
   "Colors": {
     "Green": 1,
-    "Yellow": 2,
+    "Yellow": null,
     "Blue": 5
   },
   "Pets": {
-    "Dog": 1,
+    "Dog": "Dog",
     "Cat": 2,
     "Mouse": 4
   }
