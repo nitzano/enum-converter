@@ -29,6 +29,6 @@ describe('Python Dumper', () => {
 
     expect(dumperString).toContain('Green = 1');
     expect(dumperString).toContain('Yellow = auto()');
-    expect(dumperString).toContain(`Blue = "Blue"`);
+    expect(dumperString).toContain(`Blue = 'Blue'`);
   });
 });
