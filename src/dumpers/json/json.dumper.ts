@@ -24,8 +24,8 @@ export class JsonDumper extends FileDumper {
     this.enumFile.entries.forEach(entry => {
       jsonEnum[entry.name] = {};
 
-      entry.values.map(enumValue => {
-        jsonEnum[entry.name][enumValue.name] = this.getEnumValue(enumValue);
+      entry.values.forEach(enumValue => {
+        jsonEnum[entry.name][enumValue.name] = enumValue.value;
       });
     });
 
@@ -33,10 +33,6 @@ export class JsonDumper extends FileDumper {
   }
 
   getEnumValue(enumValue: EnumValue): string {
-    if (enumValue) {
-      return `${enumValue.isAutomatic ? 'null' : enumValue.value}`;
-    } else {
-      throw new Error(`could not parse ${enumValue}`);
-    }
+    throw new Error('unused for json dumper');
   }
 }
