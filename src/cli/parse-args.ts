@@ -35,7 +35,7 @@ export function parseArgs(args: CliArgs) {
   fileParser.parse(filePath);
 
   // find dumper
-  if (args.self) {
+  if (args.modify) {
     fileDumper = createDumperFromLanguage(
       (fileParser.constructor as typeof FileParser).language,
       fileParser.enumFile
@@ -58,7 +58,7 @@ export function parseArgs(args: CliArgs) {
   // dump to file or screen
   const outputString: string = fileDumper.dump(dumpConfig);
 
-  if (args.self) {
+  if (args.modify) {
     writeFileSync(filePath, outputString);
     console.log(`dumped to ${filePath}`);
   } else if (args.output) {

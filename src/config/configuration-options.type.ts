@@ -7,7 +7,7 @@ export interface ConversionOptions {
   from?: Language; // parser
   to?: Language; // dumper
   output?: string;
-  self?: boolean;
+  modify?: boolean;
 }
 
 export interface StylingOptions {

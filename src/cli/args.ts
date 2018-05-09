@@ -38,8 +38,8 @@ export const CLI_ARGS = yargs
             normalize: true,
             type: 'string'
           },
-          self: {
-            describe: 'dump to the same file',
+          modify: {
+            describe: 'modify existing file',
             type: 'boolean'
           }
         })
