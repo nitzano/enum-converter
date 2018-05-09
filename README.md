@@ -10,8 +10,8 @@ Convert Enums from one language to another
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Simple conversion](#simple-conversion)
-    - [Styling](#styling)
+    - [CLI](#cli)
+    - [API](#api)
   - [Supported languages](#supported-languages)
   - [Features](#features)
 
@@ -23,20 +23,36 @@ npm install -g enum-converter
 
 ## Usage
 
-### Simple conversion
+### CLI
 
 ```
+// simple conversion
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to json
-```
 
-### Styling
-
-```
+// apply styling
 enumc enums.py --to typescript --sort-enums asc
 enumc enums.py --self --key-style upper --name-style kebab
 enumc enums.py --self --sort-enums=desc --sort-values=value_desc
+```
+
+### API
+
+```typescript
+import { convert, convertConfig, Language, StringStyle } from 'enum-converter';
+
+convert('enums.py', Language.Typescript, {
+  out: 'my-enums.ts',
+  sortEnums: 'asc'
+});
+
+const convertedEnum = convert('enums.ts', {
+  to: Language.Python,
+  keyStyle: StringStyle.Upper
+});
+
+console.log(convertedEnum);
 ```
 
 ## Supported languages
