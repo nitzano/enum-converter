@@ -53,7 +53,7 @@ import {
 convert('enums.py', Language.Typescript);
 
 convert('enums.ts', Language.Python, {
-  out: 'my-enums.py'
+  output: 'my-enums.py'
 });
 
 convert('enums.x', Language.Json, {
