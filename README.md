@@ -31,28 +31,50 @@ enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to json
 
-// apply styling
+// convert with styling
 enumc enums.py --to typescript --sort-enums asc
-enumc enums.py --self --key-style upper --name-style kebab
-enumc enums.py --self --sort-enums=desc --sort-values=value_desc
+
+// modify existing files
+enumc enums.py --modify --key-style upper --name-style kebab
+enumc enums.py --modify --sort-enums=desc --sort-values=value_desc
 ```
 
 ### API
 
 ```typescript
-import { convert, convertConfig, Language, StringStyle } from 'enum-converter';
+import {
+  convert,
+  convertFile,
+  Language,
+  StringStyle,
+  EnumsOrder
+} from 'enum-converter';
 
+// simple conversion
+convert('enums.py', Language.Typescript);
+
+convert('enums.ts', Language.Python, {
+  out: 'my-enums.py'
+});
+
+convert('enums.x', Language.Json, {
+  from: Language.Python
+});
+
+// convert with styling
 convert('enums.py', Language.Typescript, {
-  out: 'my-enums.ts',
-  sortEnums: 'asc'
+  sortEnums: EnumsOrder.Asc
 });
 
-const convertedEnum = convert('enums.ts', {
-  to: Language.Python,
-  keyStyle: StringStyle.Upper
-});
+// modify existing files
+modify('enums.py' {
+  sortEnums: EnumsOrder.Desc,
+})
 
-console.log(convertedEnum);
+modify('enums.py' {
+  sortEnums: StringStyle.Upper,
+  sortValues: ValuesOrder.ValueDesc,
+})
 ```
 
 ## Supported languages
