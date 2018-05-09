@@ -26,15 +26,13 @@ npm install -g enum-converter
 ### CLI
 
 ```
-// simple conversion
+// convert files
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to json
-
-// convert with styling
 enumc enums.py --to typescript --sort-enums asc
 
-// modify existing files
+// modify exiting files
 enumc enums.py --modify --key-style upper --name-style kebab
 enumc enums.py --modify --sort-enums=desc --sort-values=value_desc
 ```
@@ -44,13 +42,14 @@ enumc enums.py --modify --sort-enums=desc --sort-values=value_desc
 ```typescript
 import {
   convert,
-  convertFile,
+  EnumsOrder,
   Language,
+  modify,
   StringStyle,
-  EnumsOrder
+  ValuesOrder,
 } from 'enum-converter';
 
-// simple conversion
+// convert files
 convert('enums.py', Language.Typescript);
 
 convert('enums.ts', Language.Python, {
@@ -61,12 +60,11 @@ convert('enums.x', Language.Json, {
   from: Language.Python
 });
 
-// convert with styling
 convert('enums.py', Language.Typescript, {
   sortEnums: EnumsOrder.Asc
 });
 
-// modify existing files
+// modify exiting files
 modify('enums.py' {
   sortEnums: EnumsOrder.Desc,
 })
