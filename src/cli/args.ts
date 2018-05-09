@@ -66,8 +66,8 @@ export const CLI_ARGS = yargs
             describe: 'emit stats in enum file',
             type: 'boolean'
           },
-          sort: {
-            alias: 'sort-enums',
+          'sort-enums': {
+            alias: 'sort',
             choices: Object.values(EntriesOrder) as string[],
             describe: 'sort enums in file',
             type: 'string'

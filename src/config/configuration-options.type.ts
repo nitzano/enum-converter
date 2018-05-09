@@ -1,8 +1,16 @@
 import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
 import { EntriesOrder } from '../models/enum-file/enum-file.model';
+import { Language } from '../utils/language.enums';
 import { StringStyle } from '../utils/string-styler/string-styler.enums';
 
-export interface DumpConfig {
+export interface ConversionOptions {
+  from?: Language; // parser
+  to?: Language; // dumper
+  output?: string;
+  self?: boolean;
+}
+
+export interface StylingOptions {
   emitHeader?: boolean;
   emitStats?: boolean;
   keyStyle?: StringStyle;
@@ -12,7 +20,4 @@ export interface DumpConfig {
   valueStyle?: StringStyle;
 }
 
-export const DEFAULT_ENUM_CONFIG: DumpConfig = {
-  emitHeader: true,
-  emitStats: true
-};
+export type ConfigurationOptions = ConversionOptions & StylingOptions;
