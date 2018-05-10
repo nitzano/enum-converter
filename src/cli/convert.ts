@@ -67,10 +67,10 @@ export function convertConfig(
     if (!silent) {
       console.log(`dumped to ${filePath}`);
     }
-  } else if (config.output) {
-    writeFileSync(config.output, outputString);
+  } else if (config.out) {
+    writeFileSync(config.out, outputString);
     if (!silent) {
-      console.log(`dumped to ${config.output}`);
+      console.log(`dumped to ${config.out}`);
     }
   } else {
     if (!silent) {

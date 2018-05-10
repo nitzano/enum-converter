@@ -7,7 +7,7 @@ export interface ConversionOptions {
   file?: string;
   from?: Language; // parser
   modify?: boolean;
-  output?: string;
+  out?: string;
   to?: Language; // dumper
 }
 

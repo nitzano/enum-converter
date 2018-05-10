@@ -32,8 +32,8 @@ export const CLI_ARGS = yargs
             choices: ALL_DUMPERS_NAMES,
             describe: 'destination language'
           },
-          output: {
-            alias: ['o', 'out'],
+          out: {
+            alias: ['o', 'output'],
             describe: 'dump to output file',
             normalize: true,
             type: 'string'
