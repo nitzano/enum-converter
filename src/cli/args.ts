@@ -2,8 +2,8 @@ import * as yargs from 'yargs';
 
 import { Argv } from 'yargs';
 import { ALL_DUMPERS_NAMES } from '../dumpers/dumpers.utils';
-import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
-import { EntriesOrder } from '../models/enum-file/enum-file.model';
+import { ValuesOrder } from '../models/enum-entry/enum-entry.model';
+import { EnumsOrder } from '../models/enum-file/enum-file.model';
 import { ALL_PARSER_NAMES } from '../parsers/parsers.utils';
 import { StringStyleTypes } from '../utils/string-styler/string-styler.enums';
 
@@ -32,14 +32,14 @@ export const CLI_ARGS = yargs
             choices: ALL_DUMPERS_NAMES,
             describe: 'destination language'
           },
-          output: {
-            alias: ['o', 'out'],
+          out: {
+            alias: ['o', 'output'],
             describe: 'dump to output file',
             normalize: true,
             type: 'string'
           },
-          self: {
-            describe: 'dump to the same file',
+          modify: {
+            describe: 'modify existing file',
             type: 'boolean'
           }
         })
@@ -66,9 +66,9 @@ export const CLI_ARGS = yargs
             describe: 'emit stats in enum file',
             type: 'boolean'
           },
-          sort: {
-            alias: 'sort-enums',
-            choices: Object.values(EntriesOrder) as string[],
+          'sort-enums': {
+            alias: 'sort',
+            choices: Object.values(EnumsOrder) as string[],
             describe: 'sort enums in file',
             type: 'string'
           },
@@ -88,7 +88,7 @@ export const CLI_ARGS = yargs
             type: 'string'
           },
           'sort-values': {
-            choices: Object.values(EnumValuesOrder) as string[],
+            choices: Object.values(ValuesOrder) as string[],
             describe: 'sort enum values',
             type: 'string'
           }

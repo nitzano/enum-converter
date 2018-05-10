@@ -23,6 +23,3 @@ services:
     image: verdaccio/verdaccio
     ports:
     - "4873:4873"
-  client1:
-    image: node:carbon
-    tty: true

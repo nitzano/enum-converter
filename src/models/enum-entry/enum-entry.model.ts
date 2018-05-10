@@ -4,11 +4,11 @@ import { StringStyle } from '../../utils/string-styler/string-styler.enums';
 import { styleString } from '../../utils/string-styler/string-styler';
 import { EnumValue } from '../enum-value/enum-value.model';
 
-export enum EnumValuesOrder {
-  NameAscending = 'name_asc',
-  NameDescending = 'name_desc',
-  ValueAscending = 'value_asc',
-  ValueDescending = 'value_desc'
+export enum ValuesOrder {
+  NameAsc = 'name_asc',
+  NameDesc = 'name_desc',
+  ValueAsc = 'value_asc',
+  ValueDesc = 'value_desc'
 }
 
 export class EnumEntry {
@@ -22,23 +22,23 @@ export class EnumEntry {
     this.values.forEach(value => (value.name = styleString(value.name, style)));
   }
 
-  sortEnumValues(enumValueOrder: EnumValuesOrder): void {
+  sortEnumValues(enumValueOrder: ValuesOrder): void {
     switch (enumValueOrder) {
-      case EnumValuesOrder.NameAscending: {
+      case ValuesOrder.NameAsc: {
         this.values = orderBy(this.values, 'name', 'asc');
         break;
       }
-      case EnumValuesOrder.NameDescending: {
+      case ValuesOrder.NameDesc: {
         this.values = orderBy(this.values, 'name', 'desc');
         break;
       }
 
-      case EnumValuesOrder.ValueAscending: {
+      case ValuesOrder.ValueAsc: {
         this.values = orderBy(this.values, 'value', 'asc');
         break;
       }
 
-      case EnumValuesOrder.ValueDescending: {
+      case ValuesOrder.ValueDesc: {
         this.values = orderBy(this.values, 'value', 'desc');
         break;
       }

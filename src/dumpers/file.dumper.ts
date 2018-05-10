@@ -1,10 +1,9 @@
 import { basename } from 'path';
-import { EnumValue } from '..';
-import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
+import { ConfigurationOptions } from '../config/configuration-options.type';
+import { ValuesOrder } from '../models/enum-entry/enum-entry.model';
 import { EnumFile } from '../models/enum-file/enum-file.model';
 import { Language } from '../utils/language.enums';
 import { StringStyle } from '../utils/string-styler/string-styler.enums';
-import { DEFAULT_ENUM_CONFIG, DumpConfig } from './dump-config.type';
 
 export abstract class FileDumper {
   static language: Language;
@@ -13,7 +12,7 @@ export abstract class FileDumper {
 
   constructor(public enumFile: EnumFile) {}
 
-  dump(config: DumpConfig = DEFAULT_ENUM_CONFIG): string {
+  dump(config: ConfigurationOptions = {}): string {
     const fileData: string[] = [];
 
     // header
@@ -40,7 +39,7 @@ export abstract class FileDumper {
     return null;
   }
 
-  private getHeader(config: DumpConfig): string {
+  private getHeader(config: ConfigurationOptions): string {
     let header: string = `${this.commentChar}`;
 
     if (this.enumFile.filePath) {
@@ -64,10 +63,10 @@ export abstract class FileDumper {
     return ` (${numEntries} Enums ${numValues} Values)`;
   }
 
-  private applyConfigs(config: DumpConfig): void {
+  private applyConfigs(config: ConfigurationOptions): void {
     // sort entries
-    if (config.sortEntries !== undefined) {
-      this.enumFile.sortEntries(config.sortEntries);
+    if (config.sortEnums !== undefined) {
+      this.enumFile.sortEntries(config.sortEnums);
     }
 
     // style names
@@ -91,7 +90,7 @@ export abstract class FileDumper {
 
     // sort enum values
     if (config.sortValues !== undefined) {
-      const enumValuesOrder: EnumValuesOrder = config.sortValues;
+      const enumValuesOrder: ValuesOrder = config.sortValues;
 
       this.enumFile.entries.forEach(entry => {
         entry.sortEnumValues(enumValuesOrder);

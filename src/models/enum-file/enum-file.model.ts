@@ -2,9 +2,9 @@ import { orderBy } from 'lodash';
 import { StringStyle } from '../../utils/string-styler/string-styler.enums';
 import { EnumEntry } from '../enum-entry/enum-entry.model';
 
-export enum EntriesOrder {
-  Ascending = 'asc',
-  Descending = 'desc'
+export enum EnumsOrder {
+  Asc = 'asc',
+  Desc = 'desc'
 }
 
 export class EnumFile {
@@ -13,13 +13,13 @@ export class EnumFile {
     public entries: EnumEntry[] = []
   ) {}
 
-  sortEntries(sort: EntriesOrder) {
+  sortEntries(sort: EnumsOrder) {
     switch (sort) {
-      case EntriesOrder.Ascending: {
+      case EnumsOrder.Asc: {
         this.entries = orderBy(this.entries, 'name', 'asc');
         break;
       }
-      case EntriesOrder.Descending: {
+      case EnumsOrder.Desc: {
         this.entries = orderBy(this.entries, 'name', 'desc');
         break;
       }

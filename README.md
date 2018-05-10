@@ -5,15 +5,18 @@
 
 # Enum Converter (enumc)
 
-Convert Enums from one language to another
+>Convert Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Simple conversion](#simple-conversion)
-    - [Styling](#styling)
+    - [CLI](#cli)
+    - [API](#api)
   - [Supported languages](#supported-languages)
   - [Features](#features)
+  - [Options](#options)
+    - [Conversion options](#conversion-options)
+    - [Styling options](#styling-options)
 
 ## Installation
 
@@ -23,20 +26,58 @@ npm install -g enum-converter
 
 ## Usage
 
-### Simple conversion
+### CLI
+
+> ``` enumc <file> [options] ```
 
 ```
+// convert files
 enumc enums.py --to typescript
 enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to json
-```
-
-### Styling
-
-```
 enumc enums.py --to typescript --sort-enums asc
-enumc enums.py --self --key-style upper --name-style kebab
-enumc enums.py --self --sort-enums=desc --sort-values=value_desc
+
+// modify exiting files
+enumc enums.py --modify --key-style upper --name-style kebab
+enumc enums.py --modify --sort-enums=desc --sort-values=value_desc
+```
+
+### API
+
+```typescript
+import {
+  convert,
+  EnumsOrder,
+  Language,
+  modify,
+  StringStyle,
+  ValuesOrder,
+} from 'enum-converter';
+
+// convert files
+convert('enums.py', Language.Typescript);
+
+convert('enums.ts', Language.Python, {
+  out: 'my-enums.py'
+});
+
+convert('enums.x', Language.Json, {
+  from: Language.Python
+});
+
+convert('enums.py', Language.Typescript, {
+  sortEnums: EnumsOrder.Asc
+});
+
+// modify exiting files
+modify('enums.py' {
+  sortEnums: EnumsOrder.Desc,
+})
+
+modify('enums.py' {
+  sortEnums: StringStyle.UpperCase,
+  sortValues: ValuesOrder.ValueDesc,
+})
 ```
 
 ## Supported languages
@@ -57,9 +98,36 @@ enumc enums.py --self --sort-enums=desc --sort-values=value_desc
   * enums in a file
   * keys and values in every enum
 * Style enum names, keys and values
-* Future versions
-  * converting programmatically
+* Convert by Api or Cli
+* Future versions  
   * More languages parsers/dumpers
   * converting from configuration file
   * directory conversion
   * watch mode
+
+## Options
+
+### Conversion options
+
+| Name          | Meaning                                | type        | default                   |
+| ------------- | -------------------------------------- | ----------- | ------------------------- |
+| --from        | source language (explicit)             | Language    |                           |
+| --to          | destination language                   | Language    |                           |
+| --output      | destination file                       | string      |                           |
+| --modify      | modify existing file                   | boolean     | false                     |
+
+
+### Styling options
+
+| Name          | Meaning                                | type        | default |
+| ------------- | -------------------------------------- | ----------- | ------- |
+| --emit-header | emit header to destination file        | boolean     | true    |
+| --emit-stats  | emit stats to destination file         | boolean     | true    |
+| --sort-enums  | sort enums in files                    | EnumsOrder  |         |
+| --sort-values | sort values in enums                   | ValuesOrder |         |
+| --key-style   | enum key string style                  | StringStyle |         |
+| --name-style  | enum name string style                 | StringStyle |         |
+| --value-style | enum value string style (strings only) | StringStyle |         |
+
+
+

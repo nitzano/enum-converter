@@ -1,6 +1,10 @@
 #!/usr/bin/env node
-
+import { writeFileSync } from 'fs';
+import { Arguments } from 'yargs';
+import { ConfigurationOptions } from '../config/configuration-options.type';
 import { CLI_ARGS } from './args';
-import { CliArgs, parseArgs } from './parse-args';
+import { convertConfig } from './convert';
+import { modify } from './modify';
 
-parseArgs(CLI_ARGS.argv as CliArgs);
+type CliArgs = Arguments & ConfigurationOptions;
+convertConfig(CLI_ARGS.argv as CliArgs, false);

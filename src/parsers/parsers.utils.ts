@@ -1,10 +1,9 @@
-import { endsWith } from 'lodash';
-import { PythonParser, JsonParser } from '..';
-import { EnumFile } from '../models/enum-file/enum-file.model';
+import { extname } from 'path';
 import { FileParser } from '../parsers/file.parser';
 import { TypescriptParser } from '../parsers/typescript/typescript.parser';
 import { Language } from '../utils/language.enums';
-import { extname } from 'path';
+import { JsonParser } from './json/json.parser';
+import { PythonParser } from './python/python.parser';
 
 export const ALL_PARSERS = [PythonParser, TypescriptParser, JsonParser];
 export const ALL_PARSER_NAMES = ALL_PARSERS.map(p => p.language);
