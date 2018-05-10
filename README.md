@@ -37,7 +37,7 @@ enumc enums.ts --to python --out my-enums.py
 enumc enums.x --from python --to json
 enumc enums.py --to typescript --sort-enums asc
 
-// modify exiting files
+// modify existing files
 enumc enums.py --modify --name-style kebab --key-style upper 
 enumc enums.py --modify --sort-enums=asc --sort-values=value_desc
 ```
