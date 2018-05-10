@@ -38,8 +38,8 @@ enumc enums.x --from python --to json
 enumc enums.py --to typescript --sort-enums asc
 
 // modify exiting files
-enumc enums.py --modify --key-style upper --name-style kebab
-enumc enums.py --modify --sort-enums=desc --sort-values=value_desc
+enumc enums.py --modify --name-style kebab --key-style upper 
+enumc enums.py --modify --sort-enums=asc --sort-values=value_desc
 ```
 
 ### API
@@ -71,11 +71,12 @@ convert('enums.py', Language.Typescript, {
 
 // modify exiting files
 modify('enums.py' {
-  sortEnums: EnumsOrder.Desc,
+  nameStyle: StringStyle.KebabCase,
+  keyStyle: StringStyle.UpperCase,
 })
 
 modify('enums.py' {
-  sortEnums: StringStyle.UpperCase,
+  sortEnums: EnumsOrder.Asc,
   sortValues: ValuesOrder.ValueDesc,
 })
 ```
