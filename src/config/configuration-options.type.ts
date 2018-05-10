@@ -1,5 +1,5 @@
-import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
-import { EntriesOrder } from '../models/enum-file/enum-file.model';
+import { ValuesOrder } from '../models/enum-entry/enum-entry.model';
+import { EnumsOrder } from '../models/enum-file/enum-file.model';
 import { Language } from '../utils/language.enums';
 import { StringStyle } from '../utils/string-styler/string-styler.enums';
 
@@ -15,8 +15,8 @@ export interface StylingOptions {
   emitStats?: boolean;
   keyStyle?: StringStyle;
   nameStyle?: StringStyle;
-  sortEntries?: EntriesOrder;
-  sortValues?: EnumValuesOrder;
+  sortEnums?: EnumsOrder;
+  sortValues?: ValuesOrder;
   valueStyle?: StringStyle;
 }
 

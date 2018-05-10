@@ -1,5 +1,5 @@
 import { EnumValue } from '../enum-value/enum-value.model';
-import { EnumEntry, EnumValuesOrder } from './enum-entry.model';
+import { EnumEntry, ValuesOrder } from './enum-entry.model';
 
 describe('EnumEntry', () => {
   describe('sorting', () => {
@@ -17,25 +17,25 @@ describe('EnumEntry', () => {
 
     it('should sort by name entry ascending', () => {
       enumEntry.values = [enumC, enumB, enumA];
-      enumEntry.sortEnumValues(EnumValuesOrder.NameAscending);
+      enumEntry.sortEnumValues(ValuesOrder.NameAscending);
       expect(enumEntry.values).toEqual([enumA, enumB, enumC]);
     });
 
     it('should sort by name entry decending', () => {
       enumEntry.values = [enumC, enumB, enumA];
-      enumEntry.sortEnumValues(EnumValuesOrder.NameDescending);
+      enumEntry.sortEnumValues(ValuesOrder.NameDescending);
       expect(enumEntry.values).toEqual([enumC, enumB, enumA]);
     });
 
     it('should sort by values ascending', () => {
       enumEntry.values = [enumD, enumC, enumB, enumA];
-      enumEntry.sortEnumValues(EnumValuesOrder.ValueAscending);
+      enumEntry.sortEnumValues(ValuesOrder.ValueAscending);
       expect(enumEntry.values).toEqual([enumA, enumD, enumB, enumC]);
     });
 
     it('should sort by values descending', () => {
       enumEntry.values = [enumD, enumC, enumB, enumA];
-      enumEntry.sortEnumValues(EnumValuesOrder.ValueDescending);
+      enumEntry.sortEnumValues(ValuesOrder.ValueDescending);
       expect(enumEntry.values).toEqual([enumC, enumB, enumD, enumA]);
     });
   });

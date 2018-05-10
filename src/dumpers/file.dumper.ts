@@ -1,6 +1,6 @@
 import { basename } from 'path';
 import { ConfigurationOptions } from '../config/configuration-options.type';
-import { EnumValuesOrder } from '../models/enum-entry/enum-entry.model';
+import { ValuesOrder } from '../models/enum-entry/enum-entry.model';
 import { EnumFile } from '../models/enum-file/enum-file.model';
 import { Language } from '../utils/language.enums';
 import { StringStyle } from '../utils/string-styler/string-styler.enums';
@@ -65,8 +65,8 @@ export abstract class FileDumper {
 
   private applyConfigs(config: ConfigurationOptions): void {
     // sort entries
-    if (config.sortEntries !== undefined) {
-      this.enumFile.sortEntries(config.sortEntries);
+    if (config.sortEnums !== undefined) {
+      this.enumFile.sortEntries(config.sortEnums);
     }
 
     // style names
@@ -90,7 +90,7 @@ export abstract class FileDumper {
 
     // sort enum values
     if (config.sortValues !== undefined) {
-      const enumValuesOrder: EnumValuesOrder = config.sortValues;
+      const enumValuesOrder: ValuesOrder = config.sortValues;
 
       this.enumFile.entries.forEach(entry => {
         entry.sortEnumValues(enumValuesOrder);
