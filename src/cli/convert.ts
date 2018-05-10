@@ -10,21 +10,20 @@ import {
 import { Language } from '../utils/language.enums';
 
 export function convert(
-  filePath: string,
+  file: string,
   language: Language,
   config: ConfigurationOptions
 ) {
-  return convertConfig(filePath, { ...config, to: language });
+  return convertConfig({ ...config, file, to: language });
 }
 
-export function convertConfig(
-  filePath: string,
-  config: ConfigurationOptions
-): string {
+export function convertConfig(config: ConfigurationOptions): string {
   let fileParser: FileParser | undefined;
   let fileDumper: FileDumper | undefined;
 
-  if (!existsSync(filePath)) {
+  const filePath: string | undefined = config.file;
+
+  if (!filePath || !existsSync(filePath)) {
     throw new Error(`could not find file: ${filePath}`);
   }
 
