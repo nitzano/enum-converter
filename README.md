@@ -5,7 +5,7 @@
 
 # Enum Converter (enumc)
 
-Convert Enums from one language to another
+>Convert Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Installation](#installation)
@@ -14,6 +14,7 @@ Convert Enums from one language to another
     - [API](#api)
   - [Supported languages](#supported-languages)
   - [Features](#features)
+  - [Styling options](#styling-options)
 
 ## Installation
 
@@ -99,3 +100,11 @@ modify('enums.py' {
   * converting from configuration file
   * directory conversion
   * watch mode
+
+## Styling options
+
+| Tables        | Are             | Cool   |
+| ------------- | :-------------: | -----: |
+| col 3 is      | right-aligned   | $1600  |
+| col 2 is      | centered        | $12    |
+| zebra stripes | are neat        | $1     |
