@@ -21,7 +21,7 @@ describe('EnumEntry', () => {
       expect(enumEntry.values).toEqual([enumA, enumB, enumC]);
     });
 
-    it('should sort by name entry decending', () => {
+    it('should sort by name entry descending', () => {
       enumEntry.values = [enumC, enumB, enumA];
       enumEntry.sortEnumValues(ValuesOrder.NameDescending);
       expect(enumEntry.values).toEqual([enumC, enumB, enumA]);
