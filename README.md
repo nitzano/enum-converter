@@ -5,7 +5,7 @@
 
 # Enum Converter (enumc)
 
->Convert Enums from one language to another
+Convert Enums from one language to another
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Installation](#installation)
