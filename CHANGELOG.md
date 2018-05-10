@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 1.1.0
+
+* Added Typescript/Javascript lib support
+  * convert() - convert enums
+  * modify() - modify existing files
+
 ## 1.0.0
 
 * First stable version
