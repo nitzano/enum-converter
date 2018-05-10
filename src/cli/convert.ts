@@ -1,4 +1,4 @@
-import { existsSync } from 'fs';
+import { existsSync, writeFileSync } from 'fs';
 import { ConfigurationOptions } from '../config/configuration-options.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
@@ -17,7 +17,11 @@ export function convert(
   return convertConfig({ ...config, file, to: language });
 }
 
-export function convertConfig(config: ConfigurationOptions): string {
+/* tslint:disable:no-console **/
+export function convertConfig(
+  config: ConfigurationOptions,
+  silent: boolean = true
+): string {
   let fileParser: FileParser | undefined;
   let fileDumper: FileDumper | undefined;
 
@@ -56,8 +60,26 @@ export function convertConfig(config: ConfigurationOptions): string {
     throw new Error('could not find dumper');
   }
 
+  const outputString: string = fileDumper.dump(config);
+
+  if (config.modify) {
+    writeFileSync(filePath, outputString);
+    if (!silent) {
+      console.log(`dumped to ${filePath}`);
+    }
+  } else if (config.output) {
+    writeFileSync(config.output, outputString);
+    if (!silent) {
+      console.log(`dumped to ${config.output}`);
+    }
+  } else {
+    if (!silent) {
+      console.log(outputString);
+    }
+  }
+
   // dump to file or screen
-  return fileDumper.dump(config);
+  return outputString;
 }
 
 function findParser(
