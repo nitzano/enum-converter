@@ -3,8 +3,8 @@ import { StringStyle } from '../../utils/string-styler/string-styler.enums';
 import { EnumEntry } from '../enum-entry/enum-entry.model';
 
 export enum EnumsOrder {
-  Ascending = 'asc',
-  Descending = 'desc'
+  Asc = 'asc',
+  Desc = 'desc'
 }
 
 export class EnumFile {
@@ -15,11 +15,11 @@ export class EnumFile {
 
   sortEntries(sort: EnumsOrder) {
     switch (sort) {
-      case EnumsOrder.Ascending: {
+      case EnumsOrder.Asc: {
         this.entries = orderBy(this.entries, 'name', 'asc');
         break;
       }
-      case EnumsOrder.Descending: {
+      case EnumsOrder.Desc: {
         this.entries = orderBy(this.entries, 'name', 'desc');
         break;
       }
