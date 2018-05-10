@@ -14,7 +14,9 @@
     - [API](#api)
   - [Supported languages](#supported-languages)
   - [Features](#features)
-  - [Styling options](#styling-options)
+  - [Options](#options)
+    - [Conversion options](#conversion-options)
+    - [Styling options](#styling-options)
 
 ## Installation
 
@@ -25,6 +27,8 @@ npm install -g enum-converter
 ## Usage
 
 ### CLI
+
+> ``` enumc <file> [options] ```
 
 ```
 // convert files
@@ -101,7 +105,19 @@ modify('enums.py' {
   * directory conversion
   * watch mode
 
-## Styling options
+## Options
+
+### Conversion options
+
+| Name          | Meaning                                | type        | default                   |
+| ------------- | -------------------------------------- | ----------- | ------------------------- |
+| --from        | source language (explicit)             | Language    |                           |
+| --to          | destination language                   | Language    |                           |
+| --output      | destination file                       | string      |                           |
+| --modify      | modify existing file                   | boolean     | false                     |
+
+
+### Styling options
 
 | Name          | Meaning                                | type        | default |
 | ------------- | -------------------------------------- | ----------- | ------- |
