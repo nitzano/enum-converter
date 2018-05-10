@@ -6,26 +6,29 @@ import { CLI_ARGS } from './args';
 import { convertConfig } from './convert';
 import { modify } from './modify';
 
+type CliArgs = Arguments & ConfigurationOptions;
+
+convertFile(CLI_ARGS.argv as CliArgs);
+
 /* tslint:disable:no-console **/
-interface CliArgs extends Arguments, ConfigurationOptions {
-  file: string;
-}
-parseArgs(CLI_ARGS.argv as CliArgs);
+function convertFile(args: CliArgs) {
+  if (args.file) {
+    const filePath: string = args.file;
 
-function parseArgs(args: CliArgs) {
-  const filePath: string = args.file;
-
-  if (args.modify) {
-    const outputString = modify(filePath, args);
-    writeFileSync(filePath, outputString);
-    console.log(`dumped to ${filePath}`);
-  } else {
-    const outputString = convertConfig(filePath, args);
-    if (args.output) {
-      writeFileSync(args.output, outputString);
-      console.log(`dumped to ${args.output}`);
+    if (args.modify) {
+      const outputString = modify(filePath, args);
+      writeFileSync(filePath, outputString);
+      console.log(`dumped to ${filePath}`);
     } else {
-      console.log(outputString);
+      const outputString = convertConfig(filePath, args);
+      if (args.output) {
+        writeFileSync(args.output, outputString);
+        console.log(`dumped to ${args.output}`);
+      } else {
+        console.log(outputString);
+      }
     }
   }
+
+  throw new Error('could not find file in args');
 }
