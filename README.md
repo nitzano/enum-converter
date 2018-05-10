@@ -103,8 +103,15 @@ modify('enums.py' {
 
 ## Styling options
 
-| Tables        | Are             | Cool   |
-| ------------- | :-------------: | -----: |
-| col 3 is      | right-aligned   | $1600  |
-| col 2 is      | centered        | $12    |
-| zebra stripes | are neat        | $1     |
+| Name          | Meaning                                | type        | default |
+| ------------- | -------------------------------------- | ----------- | ------- |
+| --emit-header | emit header to destination file        | boolean     | true    |
+| --emit-stats  | emit stats to destination file         | boolean     | true    |
+| --sort-enums  | sort enums in files                    | EnumsOrder  |         |
+| --sort-values | sort values in enums                   | ValuesOrder |         |
+| --key-style   | enum key string style                  | StringStyle |         |
+| --name-style  | enum name string style                 | StringStyle |         |
+| --value-style | enum value string style (strings only) | StringStyle |         |
+
+
+
