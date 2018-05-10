@@ -75,7 +75,7 @@ modify('enums.py' {
 })
 
 modify('enums.py' {
-  sortEnums: StringStyle.Upper,
+  sortEnums: StringStyle.UpperCase,
   sortValues: ValuesOrder.ValueDesc,
 })
 ```
@@ -98,8 +98,8 @@ modify('enums.py' {
   * enums in a file
   * keys and values in every enum
 * Style enum names, keys and values
-* Future versions
-  * converting programmatically
+* Convert by Api or Cli
+* Future versions  
   * More languages parsers/dumpers
   * converting from configuration file
   * directory conversion
