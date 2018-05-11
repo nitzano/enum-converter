@@ -1,4 +1,5 @@
 import { existsSync, writeFileSync } from 'fs';
+import { fileSync } from 'tmp';
 import { ConfigurationOptions } from '../config/configuration-options.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
@@ -17,6 +18,16 @@ export function convertFile(
   config: ConfigurationOptions
 ) {
   return convertConfig({ ...config, file, to: language });
+}
+
+export function convertString(enumStr: string, config: ConfigurationOptions) {
+  const result = fileSync();
+  try {
+    writeFileSync(result.name, enumStr);
+    convertConfig({ ...config, file: result.name });
+  } finally {
+    result.removeCallback();
+  }
 }
 
 /* tslint:disable:no-console **/
