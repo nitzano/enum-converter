@@ -9,7 +9,9 @@ import {
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
 
-export function convert(
+export const convert = convertFile;
+
+export function convertFile(
   file: string,
   language: Language,
   config: ConfigurationOptions
