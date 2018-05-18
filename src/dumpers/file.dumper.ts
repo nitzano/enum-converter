@@ -16,7 +16,7 @@ export abstract class FileDumper {
     const fileData: string[] = [];
 
     // header
-    if (config.emitFileName && this.commentChar) {
+    if (this.commentChar && (config.emitFileName || config.emitStats)) {
       fileData.push(this.getHeader(config));
       fileData.push(''); // extra space
     }
@@ -42,7 +42,8 @@ export abstract class FileDumper {
   private getHeader(config: ConfigurationOptions): string {
     let header: string = `${this.commentChar}`;
 
-    if (this.enumFile.filePath) {
+    // file name
+    if (config.emitFileName && this.enumFile.filePath) {
       header += ` From ${basename(this.enumFile.filePath)}`;
     }
 
