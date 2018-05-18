@@ -16,7 +16,7 @@ export abstract class FileDumper {
     const fileData: string[] = [];
 
     // header
-    if (config.emitHeader && this.commentChar) {
+    if (config.emitFileName && this.commentChar) {
       fileData.push(this.getHeader(config));
       fileData.push(''); // extra space
     }

@@ -12,7 +12,7 @@ export interface ConversionOptions {
 }
 
 export interface StylingOptions {
-  emitHeader?: boolean;
+  emitFileName?: boolean;
   emitStats?: boolean;
   keyStyle?: StringStyle;
   nameStyle?: StringStyle;
