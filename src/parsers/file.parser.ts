@@ -10,13 +10,8 @@ export abstract class FileParser {
 
   constructor(public enumFile: EnumFile = new EnumFile()) {}
 
-  parse(filePath: string): void {
-    this.parseFile(filePath);
-  }
-
-  parseFile(filePath: string): void {
-    this.enumFile.filePath = filePath;
-    this.enumFile.entries = this.extractEntries(filePath);
+  parse(fileData: string): void {
+    this.parseString(fileData);
   }
 
   parseString(fileData: string) {
@@ -31,5 +26,14 @@ export abstract class FileParser {
   protected getData(filePath: string): string {
     const fileData: Buffer = readFileSync(filePath);
     return fileData.toString();
+  }
+
+  // private because we always want to dump the file ourselves
+  // since some parsers work with filePath and some with fileStrings
+  // and we want to control the suffix etc'
+  // TODO: add public parseFile() that will call parseString
+  private parseFile(filePath: string): void {
+    this.enumFile.filePath = filePath;
+    this.enumFile.entries = this.extractEntries(filePath);
   }
 }
