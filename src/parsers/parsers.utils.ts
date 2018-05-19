@@ -4,6 +4,7 @@ import { TypescriptParser } from '../parsers/typescript/typescript.parser';
 import { Language, LanguageSuffix } from '../utils/language.enums';
 import { JsonParser } from './json/json.parser';
 import { PythonParser } from './python/python.parser';
+import { file } from 'tmp';
 
 export const ALL_PARSERS = [PythonParser, TypescriptParser, JsonParser];
 export const ALL_PARSER_NAMES = ALL_PARSERS.map(p => p.language);
@@ -33,9 +34,19 @@ export function createParserFromLanguage(language: Language): FileParser {
 
 export function languageFromFilePath(filePath: string): Language {
   if (filePath) {
-    const fileExtension: string = extname(filePath).toLowerCase();
-    if (Object.values(LanguageSuffix).includes(fileExtension)) {
-      return LanguageSuffix[fileExtension as any] as Language;
+    const fileExtension: string = extname(filePath)
+      .toLowerCase()
+      .slice(1);
+
+    switch (fileExtension) {
+      case LanguageSuffix.Json:
+        return Language.Json;
+      case LanguageSuffix.Python:
+        return Language.Python;
+      case LanguageSuffix.Typescript:
+        return Language.Typescript;
+      default:
+        break;
     }
   }
 
