@@ -16,7 +16,7 @@ describe('Json Parser', () => {
       __dirname,
       '../../../__tests__/samples/basic/json.basic.sample.json'
     );
-    parser.parse(samplePath);
+    parser.parseFile(samplePath);
     const enumFile: EnumFile = parser.enumFile;
 
     expect(enumFile.entries).toHaveLength(2);

@@ -14,10 +14,19 @@ export abstract class FileParser {
     this.parseString(fileData);
   }
 
+  parseFile(filePath: string) {
+    // Note we always want to dump the file ourselves
+    // since some parsers work with filePath and some with fileStrings
+    // and we want to control the suffix etc'
+    // TODO: add public parseFile() that will call parseString
+    const enumStr: string = readFileSync(filePath).toString();
+    this.parseString(enumStr);
+  }
+
   parseString(fileData: string) {
     const result = fileSync({ postfix: `.${this.tmpFileSuffix}` });
     writeFileSync(result.name, fileData);
-    this.parseFile(result.name);
+    this.analyzeEnum(result.name);
     result.removeCallback();
   }
 
@@ -28,11 +37,8 @@ export abstract class FileParser {
     return fileData.toString();
   }
 
-  // private because we always want to dump the file ourselves
-  // since some parsers work with filePath and some with fileStrings
-  // and we want to control the suffix etc'
-  // TODO: add public parseFile() that will call parseString
-  private parseFile(filePath: string): void {
+  // the actual function which extracts the entries from enums
+  private analyzeEnum(filePath: string): void {
     this.enumFile.filePath = filePath;
     this.enumFile.entries = this.extractEntries(filePath);
   }

@@ -10,7 +10,7 @@ describe('Python Parser', () => {
       '../../../__tests__/samples/basic/python.basic.sample.py'
     );
     const parser = new PythonParser();
-    parser.parse(fullPath);
+    parser.parseFile(fullPath);
     const enumFile = parser.enumFile;
 
     expect(enumFile.entries).toHaveLength(2);
