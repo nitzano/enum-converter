@@ -8,14 +8,6 @@ import { PythonParser } from './python/python.parser';
 export const ALL_PARSERS = [PythonParser, TypescriptParser, JsonParser];
 export const ALL_PARSER_NAMES = ALL_PARSERS.map(p => p.language);
 
-export function findLanguageFromArgument(parserName: string): Language | null {
-  if (parserName) {
-    const parser = ALL_PARSERS.find(p => p.language === parserName);
-    return parser ? parser.language : null;
-  }
-  return null;
-}
-
 export function parserFromLanguage(language: Language): FileParser {
   switch (language) {
     case Language.Python:
