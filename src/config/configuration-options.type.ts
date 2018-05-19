@@ -19,3 +19,9 @@ export interface StylingOptions {
 }
 
 export type ConfigurationOptions = ConversionOptions & StylingOptions;
+
+export interface ApiConfiguration extends ConfigurationOptions {
+  file: string;
+  modify?: boolean;
+  out?: string;
+}

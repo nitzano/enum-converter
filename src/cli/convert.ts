@@ -1,6 +1,9 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { fileSync } from 'tmp';
-import { ConfigurationOptions } from '../config/configuration-options.type';
+import {
+  ApiConfiguration,
+  ConfigurationOptions
+} from '../config/configuration-options.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
 import { FileParser } from '../parsers/file.parser';
@@ -9,7 +12,6 @@ import {
   languageFromFilePath
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
-import { CliConfiguration } from './cli';
 
 export const convert = convertString;
 
@@ -59,12 +61,12 @@ export function convertConfig(
   return fileDumper.dump(config);
 }
 
-export function convertFromCLi(cliConfig: CliConfiguration): void {
+export function convertApi(apiConfig: ApiConfiguration): void {
   const config: ConfigurationOptions = {
-    ...(cliConfig as ConfigurationOptions)
+    ...(apiConfig as ConfigurationOptions)
   };
 
-  const sourceFileName: string | undefined = cliConfig.file;
+  const sourceFileName: string | undefined = apiConfig.file;
   let destinationFileName: string | undefined;
 
   // make source source file exists
@@ -75,14 +77,14 @@ export function convertFromCLi(cliConfig: CliConfiguration): void {
   const enumStr: string = readFileSync(sourceFileName).toString();
 
   // try to fix from language
-  if (!cliConfig.from) {
+  if (!apiConfig.from) {
     // from file name
     config.from = languageFromFilePath(sourceFileName);
   }
 
-  if (cliConfig.out) {
-    destinationFileName = cliConfig.out;
-  } else if (cliConfig.modify) {
+  if (apiConfig.out) {
+    destinationFileName = apiConfig.out;
+  } else if (apiConfig.modify) {
     destinationFileName = sourceFileName;
     config.to = config.from;
   }
