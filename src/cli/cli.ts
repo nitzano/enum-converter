@@ -6,10 +6,12 @@ import { CLI_ARGS } from './args';
 import { convertConfig, convertFromCLi } from './convert';
 import { modify } from './modify';
 
-export interface CliConfiguration extends Arguments, ConfigurationOptions {
+export interface CliConfiguration extends ConfigurationOptions {
   file: string;
   modify?: boolean;
   out?: string;
 }
 
-convertFromCLi(CLI_ARGS.argv as CliConfiguration);
+export type YargsConfiguration = CliConfiguration & Arguments;
+
+convertFromCLi(CLI_ARGS.argv as YargsConfiguration);

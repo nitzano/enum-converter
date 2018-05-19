@@ -1,6 +1,8 @@
+import { readFileSync } from 'fs';
 import { ConfigurationOptions } from '../config/configuration-options.type';
-import { convertConfig } from './convert';
+import { CliConfiguration } from './cli';
+import { convertConfig, convertFromCLi } from './convert';
 
-export function modify(file: string, config: ConfigurationOptions) {
-  return convertConfig({ ...config, file, modify: true });
+export function modify(file: string, config: CliConfiguration) {
+  return convertFromCLi({ ...config, file, modify: true });
 }
