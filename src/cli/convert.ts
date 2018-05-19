@@ -8,7 +8,7 @@ import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
 import { FileParser } from '../parsers/file.parser';
 import {
-  createParserFromLanguage,
+  parserFromLanguage,
   languageFromFilePath
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
@@ -61,7 +61,7 @@ export function convertConfig(
   }
 
   // find parser
-  fileParser = createParserFromLanguage(config.from);
+  fileParser = parserFromLanguage(config.from);
 
   // parse enum
   fileParser.parseFile(filePath);
