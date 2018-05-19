@@ -43,3 +43,18 @@ export function languageFromFilePath(filePath: string): Language {
 
   throw new Error(`could not detect language from path ${filePath}`);
 }
+
+export function suffixFromLanguage(language: Language): string {
+  switch (language) {
+    case Language.Json:
+      return LanguageSuffix.Json;
+    case Language.Python:
+      return LanguageSuffix.Python;
+    case Language.Typescript:
+      return LanguageSuffix.Typescript;
+    default:
+      break;
+  }
+
+  throw new Error(`could not detect language ${language}`);
+}

@@ -8,8 +8,9 @@ import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
 import { FileParser } from '../parsers/file.parser';
 import {
+  languageFromFilePath,
   parserFromLanguage,
-  languageFromFilePath
+  suffixFromLanguage
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
 
@@ -24,10 +25,10 @@ export function convertString(
   config: ConfigurationOptions
 ): string {
   // create tmp file
-  // TODO: create suffix according to config so that parsers won't fail
-  // const result = fileSync({ postfix: `.${this.tmpFileSuffix}` });
-  console.warn(`make sure suffix matches from parser`);
-  const result = fileSync();
+  // Note: we must match the suffix here so that parser will work ok
+  const result = fileSync({ postfix: `.${suffixFromLanguage(config.from!)}` });
+
+  // write enum to it
   writeFileSync(result.name, enumStr);
 
   // convert
