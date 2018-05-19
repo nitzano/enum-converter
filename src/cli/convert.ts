@@ -16,29 +16,40 @@ import { Language } from '../utils/language.enums';
 export const convert = convertString;
 
 export function convertFile(filePath: string, config: ConfigurationOptions) {
-  const enumStr: string = readFileSync(filePath).toString();
-  return convertConfig(enumStr, config);
+  return convertConfig(filePath, config);
 }
 
 export function convertString(
   enumStr: string,
   config: ConfigurationOptions
 ): string {
-  return convertConfig(enumStr, config);
+  // create tmp file
+  // TODO: create suffix according to config so that parsers won't fail
+  // const result = fileSync({ postfix: `.${this.tmpFileSuffix}` });
+  console.warn(`make sure suffix matches from parser`);
+  const result = fileSync();
+  writeFileSync(result.name, enumStr);
+
+  // convert
+  const outputString: string = convertConfig(result.name, config);
+
+  // remove tmp file
+  result.removeCallback();
+
+  return outputString;
 }
 
 /* tslint:disable:no-console **/
 export function convertConfig(
-  enumStr: string,
-  config: ConfigurationOptions,
-  silent: boolean = true
+  filePath: string,
+  config: ConfigurationOptions
 ): string {
   let fileParser: FileParser | undefined;
   let fileDumper: FileDumper | undefined;
 
   // make sure we have enum string, parser and dumper configurations
-  if (enumStr === undefined || enumStr === null) {
-    throw new Error('invalid enum string');
+  if (!filePath || !existsSync(filePath)) {
+    throw new Error(`could not find file: ${filePath}`);
   }
 
   if (!config.from) {
@@ -53,7 +64,7 @@ export function convertConfig(
   fileParser = createParserFromLanguage(config.from);
 
   // parse enum
-  fileParser.parse(enumStr);
+  fileParser.parseFile(filePath);
 
   // find dumper
   fileDumper = createDumperFromLanguage(config.to, fileParser.enumFile);
@@ -74,8 +85,6 @@ export function convertApi(apiConfig: ApiConfiguration): void {
     throw new Error(`could not find file: ${sourceFileName}`);
   }
 
-  const enumStr: string = readFileSync(sourceFileName).toString();
-
   // try to fix from language
   if (!apiConfig.from) {
     // from file name
@@ -90,7 +99,7 @@ export function convertApi(apiConfig: ApiConfiguration): void {
   }
 
   // convert
-  const outputString: string = convertConfig(enumStr, config);
+  const outputString: string = convertConfig(sourceFileName, config);
 
   // determine if should print to console or file
   if (destinationFileName) {

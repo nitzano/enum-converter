@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { convertApi, convertConfig } from './convert';
+import { convertApi } from './convert';
 import {
   ApiConfiguration,
   ConfigurationOptions
