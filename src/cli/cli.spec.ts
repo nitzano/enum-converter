@@ -47,7 +47,7 @@ describe('CLI', () => {
     );
   });
 
-  it('should not emit stats when emitStats flag is false', () => {
+  it('should not emit currect header for flags', () => {
     const cliOutput: string = runCli(
       `${pythonSampleFile} --to python --emitStats false`
     );
