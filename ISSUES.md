@@ -4,10 +4,10 @@
   * [x] Make emitHeader (change to emitFileName) and emitStats work independently
   * [ ] Change api to be
     * [x] remove 'file', 'modify', 'out' from config options
-    * [ ] create convertString(enumStr, config)
-      * [ ] make convert() point to convertString
-    * [ ] create convertFile(filePath, config)
-    * [ ] create convertLanguage (filePath, language, config)
+    * [x] create convertString(enumStr, config)
+      * [x] make convert() point to convertString
+    * [x] create convertFile(filePath, config)
+    * [ ] Add more tests to cli and convert
   * [ ] Refactor parser to return EnumFile in parse instead of null and remove EnumFile from ctor
   * [ ] parse yargs as api and not external process
   * [ ] change emit-header and emit-stats to --no-header and --no-stats
