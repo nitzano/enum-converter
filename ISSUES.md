@@ -3,7 +3,7 @@
 * [ ] Next Version - Patch version (1.1.1)
   * [x] Make emitHeader (change to emitFileName) and emitStats work independently
   * [ ] Change api to be
-    * [ ] remove 'file' from config options
+    * [x] remove 'file', 'modify', 'out' from config options
     * [ ] create convertString(enumStr, config)
       * [ ] make convert() point to convertString
     * [ ] create convertFile(filePath, config)

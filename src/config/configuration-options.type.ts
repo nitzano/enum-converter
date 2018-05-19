@@ -4,10 +4,7 @@ import { Language } from '../utils/language.enums';
 import { StringStyle } from '../utils/string-styler/string-styler.enums';
 
 export interface ConversionOptions {
-  file?: string;
   from?: Language; // parser
-  modify?: boolean;
-  out?: string;
   to?: Language; // dumper
 }
 
