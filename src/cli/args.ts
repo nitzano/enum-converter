@@ -47,7 +47,7 @@ export const CLI_ARGS = yargs
           [
             'emit-file-name',
             'emit-stats',
-            'sort',
+            'sort-enums',
             'name-style',
             'key-style',
             'value-style',

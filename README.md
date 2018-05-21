@@ -112,23 +112,23 @@ modify('enums.py' {
 
 | Name          | Meaning                                | type        | default                   |
 | ------------- | -------------------------------------- | ----------- | ------------------------- |
-| --from        | source language (explicit)             | Language    |                           |
-| --to          | destination language                   | Language    |                           |
-| --output      | destination file                       | string      |                           |
-| --modify      | modify existing file                   | boolean     | false                     |
+| from          | source language (explicit)             | Language    |                           |
+| to            | destination language                   | Language    |                           |
+| out           | destination file                       | string      |                           |
+| modify        | modify existing file                   | boolean     | false                     |
 
 
 ### Styling options
 
-| Name          | Meaning                                | type        | default |
-| ------------- | -------------------------------------- | ----------- | ------- |
-| --emit-header | emit header to destination file        | boolean     | true    |
-| --emit-stats  | emit stats to destination file         | boolean     | true    |
-| --sort-enums  | sort enums in files                    | EnumsOrder  |         |
-| --sort-values | sort values in enums                   | ValuesOrder |         |
-| --key-style   | enum key string style                  | StringStyle |         |
-| --name-style  | enum name string style                 | StringStyle |         |
-| --value-style | enum value string style (strings only) | StringStyle |         |
+| Name           | Meaning                                   | type        | default |
+| -------------- | ----------------------------------------- | ----------- | ------- |
+| emit-file-name | emit source file name to destination file | boolean     | true    |
+| emit-stats     | emit stats to destination file            | boolean     | true    |
+| sort-enums     | sort enums in files                       | EnumsOrder  |         |
+| sort-values    | sort values in enums                      | ValuesOrder |         |
+| key-style      | enum key string style                     | StringStyle |         |
+| name-style     | enum name string style                    | StringStyle |         |
+| value-style    | enum value string style (strings only)    | StringStyle |         |
 
 
 
