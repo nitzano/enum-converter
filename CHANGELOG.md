@@ -1,5 +1,13 @@
 ## Unreleased
 
+## 1.1.1
+
+### Fixes
+
+* emitFileName (previously: emitHeader) and emitStats options
+  now work independently.
+* fixed convertString() to use mediator file with the correct suffix.
+
 ## 1.1.0
 
 * Added Typescript/Javascript lib support
