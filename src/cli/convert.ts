@@ -14,7 +14,13 @@ import {
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
 
-export const convert = convertString;
+export function convert(
+  file: string,
+  language: Language,
+  config: ApiConfiguration
+) {
+  return convertApi({ ...config, file, to: language });
+}
 
 export function convertFile(filePath: string, config: ConfigurationOptions) {
   return convertConfig(filePath, config);
