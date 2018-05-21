@@ -45,7 +45,7 @@ export const CLI_ARGS = yargs
         })
         .group(
           [
-            'emit-header',
+            'emit-file-name',
             'emit-stats',
             'sort',
             'name-style',
@@ -56,9 +56,9 @@ export const CLI_ARGS = yargs
           'Styling options:\n'
         )
         .options({
-          'emit-header': {
+          'emit-file-name': {
             default: true,
-            describe: 'emit header in enum file',
+            describe: 'emit file name in enum file',
             type: 'boolean'
           },
           'emit-stats': {

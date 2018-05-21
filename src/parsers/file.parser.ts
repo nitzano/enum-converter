@@ -10,19 +10,19 @@ export abstract class FileParser {
 
   constructor(public enumFile: EnumFile = new EnumFile()) {}
 
-  parse(filePath: string): void {
-    this.parseFile(filePath);
-  }
-
-  parseFile(filePath: string): void {
-    this.enumFile.filePath = filePath;
-    this.enumFile.entries = this.extractEntries(filePath);
+  parseFile(filePath: string) {
+    this.parseEnum(filePath);
   }
 
   parseString(fileData: string) {
+    // create tmp file
     const result = fileSync({ postfix: `.${this.tmpFileSuffix}` });
+
+    // parse enum
     writeFileSync(result.name, fileData);
-    this.parseFile(result.name);
+    this.parseEnum(result.name);
+
+    // remove tmp file
     result.removeCallback();
   }
 
@@ -31,5 +31,11 @@ export abstract class FileParser {
   protected getData(filePath: string): string {
     const fileData: Buffer = readFileSync(filePath);
     return fileData.toString();
+  }
+
+  // the actual function which extracts the entries from enums
+  private parseEnum(filePath: string): void {
+    this.enumFile.filePath = filePath;
+    this.enumFile.entries = this.extractEntries(filePath);
   }
 }

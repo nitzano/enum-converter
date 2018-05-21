@@ -3,3 +3,9 @@ export enum Language {
   Typescript = 'typescript',
   Json = 'json'
 }
+
+export enum LanguageSuffix {
+  Python = 'py',
+  Typescript = 'ts',
+  Json = 'json'
+}

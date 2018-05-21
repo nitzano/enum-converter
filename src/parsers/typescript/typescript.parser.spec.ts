@@ -10,7 +10,7 @@ describe('Typescript Parser', () => {
       '../../../__tests__/samples/basic/typescript.basic.sample.ts'
     );
     const parser = new TypescriptParser();
-    parser.parse(fullPath);
+    parser.parseFile(fullPath);
     const enumFile = parser.enumFile;
 
     expect(enumFile.entries).toHaveLength(2);

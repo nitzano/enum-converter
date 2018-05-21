@@ -1,6 +1,6 @@
-import { ConfigurationOptions } from '../config/configuration-options.type';
-import { convertConfig } from './convert';
+import { ApiConfiguration } from '../config/configuration-options.type';
+import { convertApi } from './convert';
 
-export function modify(file: string, config: ConfigurationOptions) {
-  return convertConfig({ ...config, file, modify: true });
+export function modify(file: string, config: ApiConfiguration) {
+  return convertApi({ ...config, file, modify: true });
 }

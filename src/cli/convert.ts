@@ -1,111 +1,118 @@
-import { existsSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { fileSync } from 'tmp';
-import { ConfigurationOptions } from '../config/configuration-options.type';
+import {
+  ApiConfiguration,
+  ConfigurationOptions
+} from '../config/configuration-options.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
 import { FileParser } from '../parsers/file.parser';
 import {
-  createParserFromLanguage,
-  createParserFromPath
+  languageFromFilePath,
+  parserFromLanguage,
+  suffixFromLanguage
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
 
-export const convert = convertFile;
-
-export function convertFile(
+export function convert(
   file: string,
   language: Language,
-  config: ConfigurationOptions
+  config: ApiConfiguration
 ) {
-  return convertConfig({ ...config, file, to: language });
+  return convertApi({ ...config, file, to: language });
 }
 
-export function convertString(enumStr: string, config: ConfigurationOptions) {
-  const result = fileSync();
-  try {
-    writeFileSync(result.name, enumStr);
-    convertConfig({ ...config, file: result.name });
-  } finally {
-    result.removeCallback();
-  }
+export function convertFile(filePath: string, config: ConfigurationOptions) {
+  return convertConfig(filePath, config);
+}
+
+export function convertString(
+  enumStr: string,
+  config: ConfigurationOptions
+): string {
+  // create tmp file
+  // Note: we must match the suffix here so that parser will work ok
+  const result = fileSync({ postfix: `.${suffixFromLanguage(config.from!)}` });
+
+  // write enum to it
+  writeFileSync(result.name, enumStr);
+
+  // convert
+  const outputString: string = convertConfig(result.name, config);
+
+  // remove tmp file
+  result.removeCallback();
+
+  return outputString;
 }
 
 /* tslint:disable:no-console **/
 export function convertConfig(
-  config: ConfigurationOptions,
-  silent: boolean = true
+  filePath: string,
+  config: ConfigurationOptions
 ): string {
   let fileParser: FileParser | undefined;
   let fileDumper: FileDumper | undefined;
 
-  const filePath: string | undefined = config.file;
-
+  // make sure we have enum string, parser and dumper configurations
   if (!filePath || !existsSync(filePath)) {
     throw new Error(`could not find file: ${filePath}`);
   }
 
+  if (!config.from) {
+    throw new Error('could not find source parser in config');
+  }
+
+  if (!config.to) {
+    throw new Error('could not detect destination dumper in config');
+  }
+
   // find parser
-  fileParser = findParser(filePath, config);
+  fileParser = parserFromLanguage(config.from);
 
-  if (!fileParser) {
-    throw new Error('could not find file parser');
-  }
-
-  // parse the file
-  fileParser.parse(filePath);
+  // parse enum
+  fileParser.parseFile(filePath);
 
   // find dumper
-  if (config.modify) {
-    fileDumper = createDumperFromLanguage(
-      (fileParser.constructor as typeof FileParser).language,
-      fileParser.enumFile
-    );
-  } else if (config.to) {
-    fileDumper = createDumperFromLanguage(config.to, fileParser.enumFile);
-  } else {
-    throw new Error(
-      'No dumper supplied, use either `modify` or `to` arguments'
-    );
-  }
+  fileDumper = createDumperFromLanguage(config.to, fileParser.enumFile);
 
-  // find dumper
-  if (!fileDumper) {
-    throw new Error('could not find dumper');
-  }
-
-  const outputString: string = fileDumper.dump(config);
-
-  if (config.modify) {
-    writeFileSync(filePath, outputString);
-    if (!silent) {
-      console.log(`dumped to ${filePath}`);
-    }
-  } else if (config.out) {
-    writeFileSync(config.out, outputString);
-    if (!silent) {
-      console.log(`dumped to ${config.out}`);
-    }
-  } else {
-    if (!silent) {
-      console.log(outputString);
-    }
-  }
-
-  // dump to file or screen
-  return outputString;
+  return fileDumper.dump(config);
 }
 
-function findParser(
-  filePath: string,
-  config: ConfigurationOptions
-): FileParser | undefined {
-  if (config.from) {
-    // from language
-    const parser = createParserFromLanguage(config.from);
-    return parser ? parser : undefined;
-  } else {
+export function convertApi(apiConfig: ApiConfiguration): void {
+  const config: ConfigurationOptions = {
+    ...(apiConfig as ConfigurationOptions)
+  };
+
+  const sourceFileName: string | undefined = apiConfig.file;
+  let destinationFileName: string | undefined;
+
+  // make source source file exists
+  if (!sourceFileName || !existsSync(sourceFileName)) {
+    throw new Error(`could not find file: ${sourceFileName}`);
+  }
+
+  // try to fix from language
+  if (!apiConfig.from) {
     // from file name
-    const parser = createParserFromPath(filePath);
-    return parser ? parser : undefined;
+    config.from = languageFromFilePath(sourceFileName);
+  }
+
+  if (apiConfig.out) {
+    destinationFileName = apiConfig.out;
+  } else if (apiConfig.modify) {
+    destinationFileName = sourceFileName;
+    config.to = config.from;
+  }
+
+  // convert
+  const outputString: string = convertConfig(sourceFileName, config);
+
+  // determine if should print to console or file
+  if (destinationFileName) {
+    writeFileSync(destinationFileName, outputString);
+    console.log(`dumped to ${destinationFileName}`);
+  } else {
+    console.log(outputString);
   }
 }

@@ -11,7 +11,7 @@ export const ALL_DUMPERS_NAMES: string[] = ALL_DUMPERS.map(
 export function createDumperFromLanguage(
   language: Language,
   enumFile: EnumFile
-): FileDumper | undefined {
+): FileDumper {
   switch (language) {
     case Language.Python:
       return new PythonDumper(enumFile);
@@ -23,5 +23,5 @@ export function createDumperFromLanguage(
       break;
   }
 
-  return undefined;
+  throw new Error(`could not find file dumper for ${language}`);
 }

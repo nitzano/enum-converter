@@ -1,8 +1,7 @@
 import * as path from 'path';
-
+import { EnumFile } from '../../models/enum-file/enum-file.model';
 import { EnumValue } from '../../models/enum-value/enum-value.model';
 import { JsonParser } from './json.parser';
-import { EnumFile } from '../../models/enum-file/enum-file.model';
 
 describe('Json Parser', () => {
   let parser: JsonParser;
@@ -16,7 +15,7 @@ describe('Json Parser', () => {
       __dirname,
       '../../../__tests__/samples/basic/json.basic.sample.json'
     );
-    parser.parse(samplePath);
+    parser.parseFile(samplePath);
     const enumFile: EnumFile = parser.enumFile;
 
     expect(enumFile.entries).toHaveLength(2);
