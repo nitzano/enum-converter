@@ -5,18 +5,8 @@
 
 # Enum Converter (enumc)
 
-Convert Enums from one language to another
+> Convert Enums from one language to another
 
-- [Enum Converter (enumc)](#enum-converter-enumc)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [CLI](#cli)
-    - [API](#api)
-  - [Supported languages](#supported-languages)
-  - [Features](#features)
-  - [Options](#options)
-    - [Conversion options](#conversion-options)
-    - [Styling options](#styling-options)
 
 ## Installation
 
@@ -93,7 +83,7 @@ modify('enums.py' {
 
 ## Features
 
-* Convert from one file to another
+* Converting enums for fame and glory
 * Modify existing files
 * Sort
   * enums in a file
@@ -110,12 +100,12 @@ modify('enums.py' {
 
 ### Conversion options
 
-| Name          | Meaning                                | type        | default                   |
-| ------------- | -------------------------------------- | ----------- | ------------------------- |
-| from          | source language (explicit)             | Language    |                           |
-| to            | destination language                   | Language    |                           |
-| out           | destination file                       | string      |                           |
-| modify        | modify existing file                   | boolean     | false                     |
+| Name   | Meaning                    | type     | default |
+| ------ | -------------------------- | -------- | ------- |
+| from   | source language (explicit) | Language |         |
+| to     | destination language       | Language |         |
+| out    | destination file           | string   |         |
+| modify | modify existing file       | boolean  | false   |
 
 
 ### Styling options
