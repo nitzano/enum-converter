@@ -83,7 +83,7 @@ modify('enums.py' {
 
 ## Features
 
-* Converting enums for fame and glory
+* Converting enum files/strings
 * Modify existing files
 * Sort
   * enums in a file
