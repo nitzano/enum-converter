@@ -9,8 +9,6 @@
 
 ## Development Setup
 
-You can work on docker (recommended) or on your own setup.
-
 ### Docker Setup
 
 1.  Install Docker Toolbox / Docker
