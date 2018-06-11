@@ -32,7 +32,7 @@
     "build:prod": "yarn run build -- -p tsconfig.prod.json",
     "cli": "ts-node ./src/cli/cli.ts",
     "clean": "rimraf lib",
-    "clean:soft": "rm -rf lib/*",
+    "clean:soft": "rimraf lib/*",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "yarn run lint -- --fix",
     "test": "jest --verbose",

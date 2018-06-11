@@ -9,7 +9,7 @@
 
 ## Development Setup
 
-You can work on docker (recommended) or on your own setup
+You can work on docker (recommended) or on your own setup.
 
 ### Docker Setup
 
