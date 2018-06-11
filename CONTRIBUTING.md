@@ -25,7 +25,7 @@ You can work on docker (recommended) or on your own setup
         3.  `cli` - run cli commands
         4.  `debug` - attach debug to cli commands
 
-### VSCode Debugger Setup
+### VSCode Docker Debugger Setup
 
 #### launch.json
 
