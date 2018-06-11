@@ -15,6 +15,7 @@ You can work on docker (recommended) or on your own setup
 
 1.  Install Docker Toolbox / Docker
 2.  Inside docker cli
+
     1.  `docker-compose up` - builds the image for live mode
     2.  commands
 
@@ -39,5 +40,5 @@ You can work on docker (recommended) or on your own setup
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "/work",
       "outFiles": ["${workspaceFolder}/lib/*/.js"]
-    }
+}
 ```
