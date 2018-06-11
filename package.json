@@ -33,6 +33,8 @@
     "cli": "ts-node ./src/cli/cli.ts",
     "clean": "rimraf lib",
     "clean:soft": "rimraf lib/*",
+    "predebug": "yarn run build",
+    "debug": "node --inspect-brk=0.0.0.0:9229 --nolazy ./lib/src/cli/cli.js",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "yarn run lint -- --fix",
     "test": "jest --verbose",
