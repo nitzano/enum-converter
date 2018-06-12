@@ -32,7 +32,7 @@
       "type": "node",
       "request": "attach",
       "name": "Attach to Docker",
-      "address": "192.168.99.100",
+      "address": "DOCKER_DAEMON_IP",
       "port": 9229,
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "/work"
