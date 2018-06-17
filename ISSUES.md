@@ -14,3 +14,4 @@
     3.  Yargs tester should parser as api and not an external process
     4.  Use A better logging library
     5.  Enable to style string values
+    6.  Enable to sort enums by number of values (asc, desc)
