@@ -19,7 +19,7 @@ services:
     container_name: enumc
     command: ["/bin/bash"]
     tty: true
-  dev_registry:
-    image: verdaccio/verdaccio
-    ports:
-    - "4873:4873"
+  # dev_registry:
+  #   image: verdaccio/verdaccio
+  #   ports:
+  #   - "4873:4873"
