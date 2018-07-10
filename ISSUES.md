@@ -1,5 +1,6 @@
 ## Issues
 
+1.  Add DCO description to CONTRIBUTING.md
 1.  Support more languages
     1.  Java, Go, C++, ...
         1.  Requirements
