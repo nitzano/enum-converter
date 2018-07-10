@@ -1,7 +1,8 @@
 import { extname } from 'path';
-import { FileParser } from '../parsers/file.parser';
-import { TypescriptParser } from '../parsers/typescript/typescript.parser';
+import { FileParser } from './file.parser';
+import { TypescriptParser } from './typescript/typescript.parser';
 import { Language, LanguageSuffix } from '../utils/language.enums';
+import { JavaParser } from './java/java.parser';
 import { JsonParser } from './json/json.parser';
 import { PythonParser } from './python/python.parser';
 
@@ -16,6 +17,8 @@ export function parserFromLanguage(language: Language): FileParser {
       return new TypescriptParser();
     case Language.Json:
       return new JsonParser();
+    case Language.Java:
+      return new JavaParser();
     default:
       break;
   }
@@ -36,6 +39,8 @@ export function languageFromFilePath(filePath: string): Language {
         return Language.Python;
       case LanguageSuffix.Typescript:
         return Language.Typescript;
+      case LanguageSuffix.Java:
+        return Language.Java;
       default:
         break;
     }
@@ -52,6 +57,8 @@ export function suffixFromLanguage(language: Language): string {
       return LanguageSuffix.Python;
     case Language.Typescript:
       return LanguageSuffix.Typescript;
+    case Language.Java:
+      return LanguageSuffix.Java;
     default:
       break;
   }
