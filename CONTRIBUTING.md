@@ -1,5 +1,9 @@
 # Contributing to Enum-Converter
 
+## DCO
+
+Please sign off your Git commits (```git commit -s```) to indicate that you agree to the terms of [Developer Certificate of Origin](https://developercertificate.org/).
+
 ## Recommended knowledge
 
 * Node.js
@@ -40,8 +44,3 @@
 ```
 
 (Note : you might need to add `"outFiles": ["${workspaceFolder}/lib/**/*.js"]` )
-
-
-### License
-
-All contributed code will be licensed under the MIT license. By submitting a pull-request you are agreeing to publish your code under this license.
