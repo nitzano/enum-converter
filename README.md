@@ -88,12 +88,12 @@ modify('enums.py' {
 
 ## Supported languages
 
+* [x] Java
+* [x] Json
 * [x] Python
 * [x] Typescript
-* [x] Json
-* [ ] Java
-* [ ] C#
 * [ ] C/C++
+* [ ] C#
 * [ ] Go
 
 ## Features
