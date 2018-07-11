@@ -1,6 +1,6 @@
 # Contributing to Enum-Converter
 
-## DCO
+## Developer Certificate of Origin (DCO)
 
 Please sign off your Git commits (```git commit -s```) to indicate that you agree to the terms of [Developer Certificate of Origin](https://developercertificate.org/).
 
