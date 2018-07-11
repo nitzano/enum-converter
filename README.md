@@ -9,6 +9,7 @@
 
 Demo :  https://enum-converter.herokuapp.com
 
+---
 
 - [Enum Converter (enumc)](#enum-converter-enumc)
   - [Installation](#installation)
