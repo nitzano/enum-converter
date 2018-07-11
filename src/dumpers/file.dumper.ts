@@ -86,7 +86,8 @@ export abstract class FileDumper {
 
     // style values (strings only)
     if (config.valueStyle) {
-      throw new Error('not implemented yet');
+      const enumValuesStyle: StringStyle = config.valueStyle;
+      this.enumFile.entries.forEach(entry => entry.styleValues(enumValuesStyle));
     }
 
     // sort enum values

@@ -8,17 +8,24 @@ export class EnumValue {
   name: string;
   value: EnumValueType;
 
-  constructor(name: string, value: EnumValueType, nameStyle?: StringStyle) {
+  constructor(name: string, value: EnumValueType, nameStyle?: StringStyle, valueStyle?: StringStyle) {
     this.name = name;
     this.value = value;
 
+    if(valueStyle) {
+      this.styleValue(valueStyle);
+    }
+
     if (nameStyle) {
-      this.styleName(nameStyle);
+      this.value = styleString(this.name, nameStyle);
     }
   }
 
-  private styleName(style: StringStyle) {
-    this.name = styleString(this.name, style);
+  styleValue(style: StringStyle ) {
+    if(typeof this.value == 'string') {
+      this.value = styleString(this.name, style);
+    }
+
   }
 
   get isAutomatic(): boolean {

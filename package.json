@@ -24,7 +24,12 @@
   "bin": {
     "enumc": "./lib/src/cli/cli.js"
   },
-  "files": ["CHANGELOG", "README.md", "LICENSE", "lib/"],
+  "files": [
+    "CHANGELOG",
+    "README.md",
+    "LICENSE",
+    "lib/"
+  ],
   "scripts": {
     "prebuild": "yarn run clean:soft",
     "build": "tsc",
