@@ -9,6 +9,19 @@
 
 Demo :  https://enum-converter.herokuapp.com
 
+
+- [Enum Converter (enumc)](#enum-converter-enumc)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [CLI](#cli)
+    - [API](#api)
+  - [Supported languages](#supported-languages)
+  - [Features](#features)
+  - [Options](#options)
+    - [Conversion options](#conversion-options)
+    - [Styling options](#styling-options)
+
+
 ## Installation
 
 ```
