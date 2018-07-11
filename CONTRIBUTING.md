@@ -1,17 +1,21 @@
 # Contributing to Enum-Converter
 
+Thanks for helping Enum Converter! Here's you'll find 
+the basic guidelines for contributing new code.
+
 ## Developer Certificate of Origin (DCO)
 
 Please sign off your Git commits (```git commit -s```) to indicate that you agree to the terms of [Developer Certificate of Origin](https://developercertificate.org/).
 
-## Recommended knowledge
+
+## Development Environment
+
+### Recommended knowledge
 
 * Node.js
 * Typescript
-* Working with Dockers
+* Docker
 * Jest
-
-## Development Setup
 
 ### Docker Setup
 
@@ -27,10 +31,9 @@ Please sign off your Git commits (```git commit -s```) to indicate that you agre
         4.  `test:watch` : run tests in continues mode
             (not auto updates at the moment because of jest watcher)
 
-### VSCode Docker Debugger Setup
+#### VSCode Docker Debugger Setup
 
-#### launch.json
-
+**launch.json**
 ```
     {
       "type": "node",
