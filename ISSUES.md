@@ -8,10 +8,8 @@
 
 ## Issues
 
-1.  Misc
-    1.  Allow the library be consumed from web (ehhmm..enum server ehmm)
-    2.  parser should return EnumFile in parse instead of null and remove EnumFile from ctor
-    3.  Yargs tester should parser as api and not an external process
-    4.  Use A better logging library
-    5.  Enable to style string values
-    6.  Enable to sort enums by number of values (asc, desc)
+1.  Misc    
+    1.  parser should return EnumFile in parse instead of null and remove EnumFile from ctor
+    2.  Yargs tester should parser as api and not an external process
+
+
