@@ -1,7 +1,16 @@
 # Contributing to Enum-Converter
 
-Thanks for helping Enum Converter! Here's you'll find 
-the basic guidelines for contributing new code.
+Thanks for helping Enum Converter! Here's you'll find the basic guidelines for contributing new code.
+
+## What we need ? 
+
+We are always looking for help in the following :
+
+1.  Supporting more languages
+    1.  GO, C++ or any other language you want
+        1.  Requirements
+            1.  MIT or similar
+            2.  Can be downloaded from NPM :)
 
 ## Developer Certificate of Origin (DCO)
 
