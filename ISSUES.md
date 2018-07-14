@@ -8,10 +8,7 @@
 
 ## Issues
 
-2.  Testing
-    1.  Adding coverage tests
-    2.  tests for parsers/dumpers/etc
-3.  Misc
+1.  Misc
     1.  Allow the library be consumed from web (ehhmm..enum server ehmm)
     2.  parser should return EnumFile in parse instead of null and remove EnumFile from ctor
     3.  Yargs tester should parser as api and not an external process
