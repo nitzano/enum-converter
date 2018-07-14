@@ -7,7 +7,7 @@
 
 > Convert Enums from one language to another
 
-Demo :  https://enum-converter.herokuapp.com
+Live Server :  https://enum-converter.herokuapp.com
 
 ---
 
