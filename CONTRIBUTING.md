@@ -22,7 +22,7 @@ Can be found here : [Issues](https://github.com/nitzano/enum-converter/issues)
 Please sign off your Git commits (```git commit -s```) to indicate that you agree to the terms of [Developer Certificate of Origin](https://developercertificate.org/).
 
 
-## Development Environment
+## Development Environment Seup
 
 ### Recommended knowledge
 
@@ -31,7 +31,7 @@ Please sign off your Git commits (```git commit -s```) to indicate that you agre
 * Docker
 * Jest
 
-### Docker Setup
+### Using Docker
 
 1.  Install Docker Toolbox / Docker
 2.  Inside docker cli
