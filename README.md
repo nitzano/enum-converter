@@ -19,8 +19,8 @@ Live Server :  https://enum-converter.herokuapp.com
   - [Supported languages](#supported-languages)
   - [Features](#features)
   - [Options](#options)
-    - [Conversion options](#conversion-options)
-    - [Styling options](#styling-options)
+    - [Conversion](#conversion)
+    - [Styling](#styling)
 
 
 ## Installation
@@ -113,7 +113,7 @@ modify('enums.py' {
 
 ## Options
 
-### Conversion options
+### Conversion
 
 | Name   | Meaning                    | type     | default |
 | ------ | -------------------------- | -------- | ------- |
@@ -123,7 +123,7 @@ modify('enums.py' {
 | modify | modify existing file       | boolean  | false   |
 
 
-### Styling options
+### Styling
 
 | Name           | Meaning                                   | type        | default |
 | -------------- | ----------------------------------------- | ----------- | ------- |
