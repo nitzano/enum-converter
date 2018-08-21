@@ -19,7 +19,11 @@ export class EnumEntry {
   }
 
   styleKeys(style: StringStyle): void {
-    this.values.forEach(value => (value.name = styleString(value.name, style)));
+    this.values.forEach(value => value.styleName(style));
+  }
+
+  styleValues(style: StringStyle): void {
+    this.values.forEach(value => value.styleValue(style));
   }
 
   sortEnumValues(enumValueOrder: ValuesOrder): void {
