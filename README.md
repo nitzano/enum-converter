@@ -21,6 +21,7 @@ Web Version :  https://enum-converter.herokuapp.com
   - [Options](#options)
     - [Conversion](#conversion)
     - [Styling](#styling)
+  - [Example](#example)
 
 
 ## Installation
@@ -135,5 +136,27 @@ modify('enums.py' {
 | name-style     | enum name string style                    | StringStyle |         |
 | value-style    | enum value string style (strings only)    | StringStyle |         |
 
+## Example
 
+```bash
+cat enum.ts
+enum Direction {
+    Up = 1,
+    Down,
+    Left,
+    Right,
+}
+```
 
+```
+enumc enum.ts --to python
+# From enum.ts (1 Enums 4 Values)
+
+from enum import Enum, auto
+
+class Direction(Enum):
+    Up = 1
+    Down = auto()
+    Left = auto()
+    Right = auto()
+```
