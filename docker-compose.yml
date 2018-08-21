@@ -16,6 +16,7 @@ services:
     - ./README.md:/work/README.md
     - ./LICENSE:/work/LICENSE
     - ./CHANGELOG.md:/work/CHANGELOG.md
+    - ./out:/out
     container_name: enumc
     command: ["/bin/bash"]
     tty: true

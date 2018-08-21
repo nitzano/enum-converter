@@ -17,8 +17,14 @@ export class EnumValue {
     }
   }
 
-  private styleName(style: StringStyle) {
+  styleName(style: StringStyle): void {
     this.name = styleString(this.name, style);
+  }
+
+  styleValue(style: StringStyle): void {
+    if (typeof this.value === 'string') {
+      this.value = styleString(this.value, style);
+    }
   }
 
   get isAutomatic(): boolean {
