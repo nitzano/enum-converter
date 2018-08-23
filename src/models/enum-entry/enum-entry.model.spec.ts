@@ -17,25 +17,25 @@ describe('EnumEntry', () => {
 
     it('should sort by name entry ascending', () => {
       enumEntry.values = [enumC, enumB, enumA];
-      enumEntry.sortEnumValues(ValuesOrder.NameAsc);
+      enumEntry.sortEnumValues(ValuesOrder.NameAscending);
       expect(enumEntry.values).toEqual([enumA, enumB, enumC]);
     });
 
     it('should sort by name entry descending', () => {
       enumEntry.values = [enumC, enumB, enumA];
-      enumEntry.sortEnumValues(ValuesOrder.NameDesc);
+      enumEntry.sortEnumValues(ValuesOrder.NameDescending);
       expect(enumEntry.values).toEqual([enumC, enumB, enumA]);
     });
 
     it('should sort by values ascending', () => {
       enumEntry.values = [enumD, enumC, enumB, enumA];
-      enumEntry.sortEnumValues(ValuesOrder.ValueAsc);
+      enumEntry.sortEnumValues(ValuesOrder.ValueAscending);
       expect(enumEntry.values).toEqual([enumA, enumD, enumB, enumC]);
     });
 
     it('should sort by values descending', () => {
       enumEntry.values = [enumD, enumC, enumB, enumA];
-      enumEntry.sortEnumValues(ValuesOrder.ValueDesc);
+      enumEntry.sortEnumValues(ValuesOrder.ValueDescending);
       expect(enumEntry.values).toEqual([enumC, enumB, enumD, enumA]);
     });
   });

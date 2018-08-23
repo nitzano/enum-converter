@@ -5,10 +5,10 @@ import { styleString } from '../../utils/string-styler/string-styler';
 import { EnumValue } from '../enum-value/enum-value.model';
 
 export enum ValuesOrder {
-  NameAsc = 'name_asc',
-  NameDesc = 'name_desc',
-  ValueAsc = 'value_asc',
-  ValueDesc = 'value_desc'
+  NameAscending = 'name_asc',
+  NameDescending = 'name_desc',
+  ValueAscending = 'value_asc',
+  ValueDescending = 'value_desc'
 }
 
 export class EnumEntry {
@@ -28,21 +28,21 @@ export class EnumEntry {
 
   sortEnumValues(enumValueOrder: ValuesOrder): void {
     switch (enumValueOrder) {
-      case ValuesOrder.NameAsc: {
+      case ValuesOrder.NameAscending: {
         this.values = orderBy(this.values, 'name', 'asc');
         break;
       }
-      case ValuesOrder.NameDesc: {
+      case ValuesOrder.NameDescending: {
         this.values = orderBy(this.values, 'name', 'desc');
         break;
       }
 
-      case ValuesOrder.ValueAsc: {
+      case ValuesOrder.ValueAscending: {
         this.values = orderBy(this.values, 'value', 'asc');
         break;
       }
 
-      case ValuesOrder.ValueDesc: {
+      case ValuesOrder.ValueDescending: {
         this.values = orderBy(this.values, 'value', 'desc');
         break;
       }
