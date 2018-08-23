@@ -59,17 +59,20 @@ import {
 } from 'enum-converter';
 
 // convert files
-convert('enums.py', Language.Typescript);
+convert('enums.py',  { to: Language.Typescript } );
 
-convert('enums.ts', Language.Python, {
+convert('enums.ts', {
+  to:  Language.Python,
   out: 'my-enums.py'
 });
 
-convert('enums.x', Language.Json, {
-  from: Language.Python
+convert('enums.x', {
+  from: Language.Python,
+  to: Language.Json
 });
 
-convert('enums.py', Language.Typescript, {
+convert('enums.py', {
+  to: Language.Typescript,
   sortEnums: EnumsOrder.Ascending
 });
 

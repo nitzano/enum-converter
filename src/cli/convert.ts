@@ -1,8 +1,8 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { fileSync } from 'tmp';
 import {
-  ApiConfiguration,
-  ConfigurationOptions
+  ConfigurationOptions,
+  FileOptions
 } from '../config/configuration-options.type';
 import { createDumperFromLanguage } from '../dumpers/dumpers.utils';
 import { FileDumper } from '../dumpers/file.dumper';
@@ -14,16 +14,9 @@ import {
 } from '../parsers/parsers.utils';
 import { Language } from '../utils/language.enums';
 
-export function convert(
-  file: string,
-  language: Language,
-  config: ApiConfiguration
-) {
-  return convertApi({ ...config, file, to: language });
-}
-
-export function convertFile(filePath: string, config: ConfigurationOptions) {
-  return convertConfig(filePath, config);
+export function convert(file: string, fileOptions: FileOptions) {
+  // converts to a string + dumps to file
+  return convertApi({ file, ...fileOptions });
 }
 
 export function convertString(
@@ -38,7 +31,7 @@ export function convertString(
   writeFileSync(result.name, enumStr);
 
   // convert
-  const outputString: string = convertConfig(result.name, config);
+  const outputString: string = convertFile(result.name, config);
 
   // remove tmp file
   result.removeCallback();
@@ -47,7 +40,7 @@ export function convertString(
 }
 
 /* tslint:disable:no-console **/
-export function convertConfig(
+export function convertFile(
   filePath: string,
   config: ConfigurationOptions
 ): string {
@@ -79,12 +72,13 @@ export function convertConfig(
   return fileDumper.dump(config);
 }
 
-export function convertApi(apiConfig: ApiConfiguration): void {
+// TODO: merge to convertFile
+export function convertApi(fileOptions: FileOptions): void {
   const config: ConfigurationOptions = {
-    ...(apiConfig as ConfigurationOptions)
+    ...(fileOptions as ConfigurationOptions)
   };
 
-  const sourceFileName: string | undefined = apiConfig.file;
+  const sourceFileName: string | undefined = fileOptions.file;
   let destinationFileName: string | undefined;
 
   // make source source file exists
@@ -93,20 +87,20 @@ export function convertApi(apiConfig: ApiConfiguration): void {
   }
 
   // try to fix from language
-  if (!apiConfig.from) {
+  if (!fileOptions.from) {
     // from file name
     config.from = languageFromFilePath(sourceFileName);
   }
 
-  if (apiConfig.out) {
-    destinationFileName = apiConfig.out;
-  } else if (apiConfig.modify) {
+  if (fileOptions.out) {
+    destinationFileName = fileOptions.out;
+  } else if (fileOptions.modify) {
     destinationFileName = sourceFileName;
     config.to = config.from;
   }
 
   // convert
-  const outputString: string = convertConfig(sourceFileName, config);
+  const outputString: string = convertFile(sourceFileName, config);
 
   // determine if should print to console or file
   if (destinationFileName) {
