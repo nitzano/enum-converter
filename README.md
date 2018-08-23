@@ -74,12 +74,12 @@ convert('enums.py', Language.Typescript, {
 });
 
 // modify exiting files
-modify('enums.py' {
+modify('enums.py',{
   nameStyle: StringStyle.KebabCase,
   keyStyle: StringStyle.UpperCase,
 })
 
-modify('enums.py' {
+modify('enums.py', {
   sortEnums: EnumsOrder.Ascending,
   sortValues: ValuesOrder.ValueDescending,
 })
