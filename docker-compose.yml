@@ -9,6 +9,7 @@ services:
     - ./__tests__:/work/__tests__
     - ./lib:/work/lib
     - ./package.json:/work/package.json
+    - ./yarn.lock:/work/yarn.lock
     - ./tslint.json:/work/tslint.json
     - ./tsconfig.json:/work/tsconfig.json
     - ./.prettierrc:/work/.prettierrc
