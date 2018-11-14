@@ -1,8 +1,7 @@
 version: '3'
 services:
   app:    
-    build: .
-    image: enumc-image
+    build: .    
     ports:
     - "9229:9229"
     volumes:
@@ -10,6 +9,7 @@ services:
     - ./__tests__:/work/__tests__
     - ./lib:/work/lib
     - ./package.json:/work/package.json
+    - ./yarn.lock:/work/yarn.lock
     - ./tslint.json:/work/tslint.json
     - ./tsconfig.json:/work/tsconfig.json
     - ./.prettierrc:/work/.prettierrc
@@ -18,7 +18,7 @@ services:
     - ./CHANGELOG.md:/work/CHANGELOG.md
     - ./out:/out
     container_name: enumc
-    command: ["/bin/bash"]
+    command: /bin/sh
     tty: true
   # dev_registry:
   #   image: verdaccio/verdaccio
