@@ -1,12 +1,6 @@
-FROM node:carbon
-LABEL description="Enum-Converter dev"
-
+FROM node:carbon-alpine
 WORKDIR /work
-
-# install packages
-COPY package.json .
+COPY ["package.json", "yarn.lock",  "./"]
 RUN yarn
-
-# copy source
 COPY . .
 
