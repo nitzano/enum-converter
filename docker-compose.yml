@@ -6,8 +6,7 @@ services:
     - "9229:9229"
     volumes:
     - ./src:/work/src
-    - ./__tests__:/work/__tests__
-    - ./lib:/work/lib
+    - ./__tests__:/work/__tests__    
     - ./package.json:/work/package.json
     - ./yarn.lock:/work/yarn.lock
     - ./tslint.json:/work/tslint.json
@@ -16,8 +15,7 @@ services:
     - ./README.md:/work/README.md
     - ./LICENSE:/work/LICENSE
     - ./CHANGELOG.md:/work/CHANGELOG.md
-    - ./out:/out
-    container_name: enumc
+    - ./out:/out    
     command: /bin/sh
     tty: true
   # dev_registry:
