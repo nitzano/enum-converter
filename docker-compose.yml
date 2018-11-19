@@ -2,8 +2,8 @@ version: '3'
 services:
   app:    
     build: .    
-    ports:
-    - "9229:9229"
+    # ports:
+    # - "9229:9229"
     volumes:
     - ./src:/work/src
     - ./__tests__:/work/__tests__    
