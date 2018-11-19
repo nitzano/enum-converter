@@ -1,6 +1,8 @@
+import * as parsers from './parsers';
+import * as dumpers from './dumpers';
+
 export * from './cli';
 export * from './config';
-export * from './dumpers';
+export { parsers, dumpers };
 export * from './models';
-export * from './parsers';
 export * from './utils';
