@@ -1,11 +1,14 @@
 import * as yargs from 'yargs';
-
 import { Argv } from 'yargs';
-import { ALL_DUMPERS_NAMES } from '../dumpers/dumpers.utils';
 import { ValuesOrder } from '../models/enum-entry/enum-entry.model';
 import { EnumsOrder } from '../models/enum-file/enum-file.model';
-import { ALL_PARSER_NAMES } from '../parsers/parsers.utils';
+import * as ALL_PARSERS from '../parsers/index';
+import * as ALL_DUMPERS from '../dumpers/index';
 import { StringStyleTypes } from '../utils/string-styler/string-styler.enums';
+
+
+export const ALL_PARSER_NAMES = Object.values(ALL_PARSERS).map(p => p.language);
+export const ALL_DUMPERS_NAMES = Object.values(ALL_DUMPERS).map(p => p.language);
 
 /* tslint:disable:object-literal-sort-keys */
 export const CLI_ARGS = yargs

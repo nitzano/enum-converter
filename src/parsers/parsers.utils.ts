@@ -6,9 +6,6 @@ import { JavaParser } from './java/java.parser';
 import { JsonParser } from './json/json.parser';
 import { PythonParser } from './python/python.parser';
 
-export const ALL_PARSERS = [PythonParser, TypescriptParser, JsonParser];
-export const ALL_PARSER_NAMES = ALL_PARSERS.map(p => p.language);
-
 export function parserFromLanguage(language: Language): FileParser {
   switch (language) {
     case Language.Python:
