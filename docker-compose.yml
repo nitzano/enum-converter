@@ -1,14 +1,12 @@
 version: '3'
 services:
   app:
-    build: .
-    image: enumc-image
+    build: .    
     ports:
       - '9229:9229'
     volumes:
       - ./src:/work/src
-      - ./__tests__:/work/__tests__
-      - ./lib:/work/lib
+      - ./__tests__:/work/__tests__      
       - ./package.json:/work/package.json
       - ./yarn.lock:/work/yarn.lock
       - ./tslint.json:/work/tslint.json
@@ -16,9 +14,7 @@ services:
       - ./.prettierrc:/work/.prettierrc
       - ./README.md:/work/README.md
       - ./LICENSE:/work/LICENSE
-      - ./CHANGELOG.md:/work/CHANGELOG.md
-      - ./out:/out
-    container_name: enumc
+      - ./CHANGELOG.md:/work/CHANGELOG.md          
     command: ['/bin/bash']
     tty: true
   # dev_registry:
