@@ -4,11 +4,11 @@ services:
     build:
       context: .
       dockerfile: dev/Dockerfile
-    ports:
-      - '5000:5000'
     command: 'yarn workspace enum-server-api dev'
     environment:
-      - NODE_ENV=development       
+      - NODE_ENV=development
+    ports:
+      - '5000:5000'
     volumes:
       - ./packages/enum-server-api/src:/usr/src/app/packages/enum-server-api/src
       - ./packages/enum-server-api/package.json:/usr/src/app/packages/enum-server-api/package.json
@@ -18,13 +18,13 @@ services:
     build:
       context: .
       dockerfile: dev/Dockerfile
-    ports:
-      - '3000:3000'
-      - '9229:9229'
     environment:
       - CHOKIDAR_USEPOLLING=true
     command: 'yarn workspace enum-server-web dev'
-        volumes:
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    volumes:
       - ./packages/enum-server-web/src:/usr/src/app/packages/enum-server-web/src
       - ./packages/enum-server-web/public:/usr/src/app/packages/enum-server-web/public
       - ./packages/enum-server-web/package.json:/usr/src/app/packages/enum-server-web/package.json
