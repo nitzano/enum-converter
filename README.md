@@ -1,5 +1,7 @@
-# Enum-Server
+# Enum Converter
 
-Web version for [Enum Converter](https://github.com/nitzano/enum-converter)
+Container project for the following packages:
 
-Website: https://enum-converter.herokuapp.com/
+- enum-converter - library to convert enums
+- enum-converter-api - back-end api
+- enum-converter-web - web version
