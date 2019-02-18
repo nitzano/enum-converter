@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig",
   "include": ["index.ts", "src/**/*"],
-  "exclude": ["node_modules", "__tests__/**/*", "lib/**/*", "src/**/*.spec.*"],
+  "exclude": ["node_modules", "__tests__/**/*", "build/**/*", "src/**/*.spec.*"],
   "compilerOptions": {
     "sourceMap": false
   }
