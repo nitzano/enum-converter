@@ -1,0 +1,12 @@
+{
+  "Colors": {
+    "Green": 1,
+    "Yellow": null,
+    "Blue": 5
+  },
+  "Pets": {
+    "Dog": "Dog",
+    "Cat": 2,
+    "Mouse": 4
+  }
+}
