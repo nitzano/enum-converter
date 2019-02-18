@@ -1,0 +1,40 @@
+@import './src/sass/abstracts/all';
+@import './src/sass/base/all';
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__convert {
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  &--ready {
+    .App__convert {
+      // @include fadeIn(0.4s);
+    }
+  }
+
+  &__loader {
+    background-color: rgba(lightgrey, 0.6);
+    user-select: none;
+    flex: 1;
+    width: 100%;
+    z-index: 999;
+    overflow: hidden;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__loader-text {
+    font-size: 120%;
+    margin-top: 15px;
+    font-weight: 700;
+  }
+}

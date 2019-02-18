@@ -1,24 +1,47 @@
-version: '3'
+version: '3.4'
 services:
-  app:    
-    build: .    
-    # ports:
-    # - "9229:9229"
+  api:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    command: 'yarn workspace enum-converter-api dev'
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '5000:5000'
     volumes:
-    - ./src:/work/src
-    - ./__tests__:/work/__tests__    
-    - ./package.json:/work/package.json
-    - ./yarn.lock:/work/yarn.lock
-    - ./tslint.json:/work/tslint.json
-    - ./tsconfig.json:/work/tsconfig.json
-    - ./.prettierrc:/work/.prettierrc
-    - ./README.md:/work/README.md
-    - ./LICENSE:/work/LICENSE
-    - ./CHANGELOG.md:/work/CHANGELOG.md
-    - ./out:/out    
-    command: /bin/sh
-    tty: true
-  # dev_registry:
-  #   image: verdaccio/verdaccio
-  #   ports:
-  #   - "4873:4873"
+      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
+      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+      - static-volume:/usr/src/app/packages/enum-converter-api/static
+      - build-volume:/usr/src/app/node_modules/enum-converter/build
+  web:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: 'yarn workspace enum-converter-web dev'
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    volumes:
+      - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
+      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+      - static-volume:/usr/src/app/packages/enum-converter-web/build
+  lib:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    command: 'yarn workspace enum-converter dev'
+    volumes:
+      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
+      - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+      - build-volume:/usr/src/app/packages/enum-converter/build
+
+volumes:
+  static-volume:
+  build-volume:

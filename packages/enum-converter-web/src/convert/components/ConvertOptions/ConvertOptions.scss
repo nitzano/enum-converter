@@ -1,0 +1,59 @@
+// TODO: find a way without importing it every time
+@import './src/sass//abstracts/all';
+
+.toolbar-sep {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.ConvertOptions .style-option label {
+  color: rgba(78, 78, 78, 0.9) !important;
+}
+
+.ConvertOptions {
+  display: flex;
+  margin-top: 5px;
+
+  &__buttons {
+    display: flex;
+  }
+
+  .reset-button,
+  .emit-stats {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &__options {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+
+    .option {
+      flex: 1 1 140px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  @media screen and (max-width: $bp-md) {
+    &__options {
+      flex-wrap: wrap;
+
+      .option {
+        flex: 1 0 140px;
+        max-width: 30%;
+      }
+    }
+  }
+
+  @media screen and (max-width: $bp-sm) {
+    flex-direction: column;
+
+    &__buttons {
+      align-self: center;
+    }
+  }
+}
