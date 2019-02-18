@@ -1,0 +1,66 @@
+.ConvertCode {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  &__icons {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    color: white;
+    display: flex;
+
+    @media only screen and (max-width: 960px) {
+      flex-direction: column-reverse;
+      right: 3%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      right: 4%;
+    }
+  }
+
+  &__languages {
+    display: flex;
+
+    .language-dropdown {
+      flex: 1;
+    }
+  }
+
+  &__code {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__editor {
+    flex: 1 0 260px;
+    border: 1px solid black;
+    display: flex;
+    font-size: 1.2rem;
+
+    .CodeMirror {
+      height: 100%;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    font-size: 18px;
+  }
+
+  &__input {
+    flex: 1;
+  }
+
+  &__text--error {
+    border: 2px solid red;
+  }
+}
