@@ -7,7 +7,7 @@
     "clean": "yarn workspaces run clean",
     "dev": "yarn workspaces run start",
     "heroku-postbuild": "yarn run build",
-    "start": "yarn workspace enum-server-api run serve"
+    "start": "yarn workspace enum-server-api run start"
   },
   "engines": {
     "yarn": "^1.10.0"

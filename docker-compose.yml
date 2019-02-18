@@ -10,10 +10,10 @@ services:
     ports:
       - '5000:5000'
     volumes:
-      - ./packages/enum-server-api/src:/usr/src/app/packages/enum-server-api/src
-      - ./packages/enum-server-api/package.json:/usr/src/app/packages/enum-server-api/package.json
+      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
+      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       # - ./yarn.lock:/usr/src/app/yarn.lock
-      - static-volume:/usr/src/app/packages/enum-server-api/static
+      - static-volume:/usr/src/app/packages/enum-converter-api/static
   web:
     build:
       context: .
@@ -25,10 +25,10 @@ services:
       - '3000:3000'
       - '9229:9229'
     volumes:
-      - ./packages/enum-server-web/src:/usr/src/app/packages/enum-server-web/src
-      - ./packages/enum-server-web/public:/usr/src/app/packages/enum-server-web/public
-      - ./packages/enum-server-web/package.json:/usr/src/app/packages/enum-server-web/package.json
+      - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
+      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       # - ./yarn.lock:/usr/src/app/yarn.lock
-      - static-volume:/usr/src/app/packages/enum-server-web/build
+      - static-volume:/usr/src/app/packages/enum-converter-web/build
 volumes:
   static-volume:
