@@ -1,0 +1,35 @@
+version: '3.4'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    volumes:
+      - web-build-volume:/usr/src/app/packages/enum-server-web/build
+      - ./packages/enum-server-web/src:/usr/src/app/packages/enum-server-web/src
+      - ./packages/enum-server-web/public:/usr/src/app/packages/enum-server-web/public
+      - ./packages/enum-server-web/package.json:/usr/src/app/packages/enum-server-web/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: 'yarn workspace enum-server-web start'
+  api:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    ports:
+      - '5000:5000'
+    volumes:
+      - web-build-volume:/usr/src/app/packages/enum-server-web/build
+      - ./packages/enum-server-api/src:/usr/src/app/packages/enum-server-api/src
+      - ./packages/enum-server-api/package.json:/usr/src/app/packages/enum-server-api/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock
+    command: 'yarn workspace enum-server-api start'
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+volumes:
+  web-build-volume:
