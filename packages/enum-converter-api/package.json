@@ -11,8 +11,8 @@
     "build:dev": "yarn build --source-maps",
     "prebuild": "yarn clean",
     "clean": "rm -rf build/*",
-    "start": "nodemon -L --exec babel-node ./src/server.js ",
-    "serve": "node ./build/server.js --stream",
+    "dev": "nodemon -L --exec babel-node ./src/server.js",
+    "start": "node ./build/server.js --stream",
     "debug": "yarn build && node --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
     "debug:nodemon": "nodemon -L --watch ./dist --inspect=0.0.0.0:9229 --nolazy ./build/server.js"
   },
