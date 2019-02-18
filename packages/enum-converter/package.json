@@ -33,8 +33,8 @@
   "scripts": {
     "prebuild": "yarn run clean:soft",
     "build": "tsc",
-    "build:watch": "yarn run build -- -w",
-    "build:prod": "yarn run build -- -p tsconfig.prod.json",
+    "build:watch": "yarn run build -w",
+    "build:prod": "yarn run build -p tsconfig.prod.json",
     "cli": "ts-node ./src/cli/cli.ts",
     "clean": "rimraf lib",
     "clean:soft": "rimraf lib/*",
@@ -44,7 +44,8 @@
     "lint:fix": "yarn run lint -- --fix",
     "test": "jest --verbose",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/jest -i",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "dev": "yarn run build:watch"
   },
   "dependencies": {
     "antlr4ts": "^0.4.1-alpha.0",
