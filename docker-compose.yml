@@ -27,7 +27,7 @@ services:
     volumes:
       - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
       - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
-      - ./packages/enum-sconverter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       # - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - static-volume:/usr/src/app/packages/enum-converter-web/build
   lib:
