@@ -19,16 +19,16 @@
   "bugs": {
     "url": "https://github.com/nitzano/enum-converter/issues"
   },
-  "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
   "bin": {
-    "enumc": "./lib/src/cli/cli.js"
+    "enumc": "./build/src/cli/cli.js"
   },
   "files": [
     "CHANGELOG",
     "README.md",
     "LICENSE",
-    "lib/"
+    "build/"
   ],
   "scripts": {
     "prebuild": "yarn run clean:soft",
@@ -36,10 +36,10 @@
     "build:watch": "yarn run build -w",
     "build:prod": "yarn run build -p tsconfig.prod.json",
     "cli": "ts-node ./src/cli/cli.ts",
-    "clean": "rimraf lib",
-    "clean:soft": "rimraf lib/*",
+    "clean": "rimraf build",
+    "clean:soft": "rimraf build/*",
     "predebug": "yarn run build",
-    "debug": "node --inspect-brk=0.0.0.0:9229 --nolazy ./lib/src/cli/cli.js",
+    "debug": "node --inspect-brk=0.0.0.0:9229 --nolazy ./build/src/cli/cli.js",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "yarn run lint -- --fix",
     "test": "jest --verbose",
