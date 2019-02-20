@@ -2,7 +2,6 @@ import express from 'express';
 import morgan from 'morgan';
 import apiRouter from './app/api';
 
-// create the app
 export const app = express();
 
 // middleware
