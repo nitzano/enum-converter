@@ -14,7 +14,7 @@ services:
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - static-volume:/usr/src/app/packages/enum-converter-api/static
-      - build-volume:/usr/src/app/node_modules/enum-converter/build
+      - build-volume:/usr/src/app/packages/enum-converter/build
   web:
     build:
       context: .
