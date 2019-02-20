@@ -42,7 +42,7 @@
     "debug": "node --inspect-brk=0.0.0.0:9229 --nolazy ./build/src/cli/cli.js",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "yarn run lint -- --fix",
-    "test": "jest --verbose",
+    "test": "jest",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/jest -i",
     "test:watch": "jest --watch",
     "dev": "yarn run build:watch"
