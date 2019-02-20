@@ -14,4 +14,4 @@ COPY --from=builder ["/usr/src/app/packages/enum-converter-api/package.json", "/
 COPY --from=builder ["/usr/src/app/packages/enum-converter-api/build", "./build"]
 COPY --from=builder ["/usr/src/app/packages/enum-converter-web/build", "./static"]
 RUN yarn
-RUN yarn start
+CMD yarn start
