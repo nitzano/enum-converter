@@ -12,7 +12,13 @@
   "engines": {
     "yarn": "^1.10.0"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/jest/**"
+    ]
+  }
 }
