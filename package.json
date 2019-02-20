@@ -5,7 +5,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
-    "dev": "yarn workspaces run start",
+    "test": "yarn workspaces run test",
     "heroku-postbuild": "yarn run build",
     "start": "yarn workspace enum-server-api run start"
   },
