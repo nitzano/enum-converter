@@ -8,7 +8,7 @@
     "test": "yarn workspaces run test",
     "copy-static": "mv ./packages/enum-converter-web/build ./packages/enum-converter-api/static",
     "heroku-postbuild": "yarn build && yarn copy-static",
-    "start": "yarn workspace enum-server-api start"
+    "start": "yarn workspace enum-converter-api start"
   },
   "engines": {
     "yarn": "^1.10.0"
