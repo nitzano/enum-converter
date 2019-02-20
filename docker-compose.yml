@@ -39,6 +39,7 @@ services:
     volumes:
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
+      - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - build-volume:/usr/src/app/packages/enum-converter/build
 

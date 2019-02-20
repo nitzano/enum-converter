@@ -5,14 +5,20 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
-    "dev": "yarn workspaces run start",
+    "test": "yarn workspaces run test",
     "heroku-postbuild": "yarn run build",
     "start": "yarn workspace enum-server-api run start"
   },
   "engines": {
     "yarn": "^1.10.0"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/jest/**"
+    ]
+  }
 }

@@ -1,7 +1,8 @@
-import * as path from 'path';
+import { resolve } from 'path';
 import { EnumFile } from '../../models/enum-file/enum-file.model';
 import { EnumValue } from '../../models/enum-value/enum-value.model';
 import { JsonParser } from './json.parser';
+
 
 describe('Json Parser', () => {
   let parser: JsonParser;
@@ -11,10 +12,7 @@ describe('Json Parser', () => {
   });
 
   it('should parse the basic sample file', () => {
-    const samplePath = path.resolve(
-      __dirname,
-      '../../../__tests__/samples/basic/json.basic.sample.json'
-    );
+    const samplePath = resolve(__dirname, '../../../__tests__/samples/basic/json.basic.sample.json')
     parser.parseFile(samplePath);
     const enumFile: EnumFile = parser.enumFile;
 
