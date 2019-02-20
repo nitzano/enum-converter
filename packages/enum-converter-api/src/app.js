@@ -16,7 +16,7 @@ app.set('json spaces', 2);
 app.use('/api', apiRouter);
 
 // static
-app.use(express.static());
+app.use(express.static('static'));
 
 app.use((err, req, res, next) => {
   res.status(err.status ? err.status : 500).json({ error: err.message });
