@@ -15,7 +15,8 @@
     "dev": "nodemon -L --exec babel-node ./src/server.js",
     "start": "node ./build/server.js --stream",
     "debug": "yarn build && node --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
-    "debug:nodemon": "nodemon -L --watch ./dist --inspect=0.0.0.0:9229 --nolazy ./build/server.js"
+    "debug:nodemon": "nodemon -L --watch ./dist --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
+    "test": "echo test ok"
   },
   "keywords": [],
   "license": "ISC",
