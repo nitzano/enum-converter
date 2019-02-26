@@ -1,12 +1,11 @@
 import { handleActions } from 'redux-actions';
 import {
+  changeConfiguration,
   changeSource,
   convertEnum,
-  changeConfiguration,
   resetConfiguration
 } from '../actions/converter.actions';
-
-import { PYTHON_SAMPLE_ENUM } from './../../convert/components/Convert/pythonSample';
+import { PYTHON_SAMPLE_ENUM } from './../../convert/components/ConvertScreen/pythonSample';
 
 const DEFAULT_STYLING_OPTIONS = {
   emitFileName: false,

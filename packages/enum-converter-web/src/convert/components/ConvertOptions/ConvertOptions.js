@@ -12,7 +12,7 @@ import {
   changeConfiguration,
   resetConfiguration
 } from '../../actions/converter.actions';
-import './ConvertOptions.scss';
+import styles from './ConvertOptions.module.scss';
 
 class ConvertOptions extends Component {
   constructor(props) {
@@ -81,9 +81,9 @@ class ConvertOptions extends Component {
     const configuration = this.props.configuration;
 
     return (
-      <div className="ConvertOptions">
-        <div className="ConvertOptions__buttons">
-          <div className="reset-button">
+      <div className={styles.root}>
+        <div className={styles.buttons}>
+          <div className={styles.button}>
             <Button
               variant="contained"
               color={'primary'}
@@ -92,7 +92,7 @@ class ConvertOptions extends Component {
               Reset
             </Button>
           </div>
-          <div className="emit-stats">
+          <div className={styles.button}>
             <div>Emit Stats</div>
             <Switch
               checked={configuration.emitStats}
@@ -106,8 +106,8 @@ class ConvertOptions extends Component {
           </div>
         </div>
 
-        <form className="ConvertOptions__options">
-          <FormControl className="option">
+        <form className={styles.options}>
+          <FormControl className={styles.option}>
             <InputLabel htmlFor="sort-enums">Sort Enums</InputLabel>
             <Select
               value={configuration.sortEnums}
@@ -123,7 +123,7 @@ class ConvertOptions extends Component {
               {this.renderEnumOrderOptions()}
             </Select>
           </FormControl>
-          <FormControl className="option">
+          <FormControl className={styles.option}>
             <InputLabel htmlFor="sort-values">Sort Values</InputLabel>
             <Select
               value={configuration.sortValues}
@@ -139,10 +139,10 @@ class ConvertOptions extends Component {
               {this.renderValueOrderOptions()}
             </Select>
           </FormControl>
-          <FormControl className="option">
+          <FormControl className={styles.option}>
             <InputLabel htmlFor="name-style">Name Style</InputLabel>
             <Select
-              className="style-option"
+              className={styles.styleOption}
               value={configuration.nameStyle}
               onChange={(event, child) =>
                 this.changeConfiguration({
@@ -156,7 +156,7 @@ class ConvertOptions extends Component {
               {this.renderStringStyleOptions()}
             </Select>
           </FormControl>
-          <FormControl className="option">
+          <FormControl className={styles.option}>
             <InputLabel htmlFor="key-style">Key Style</InputLabel>
             <Select
               value={configuration.keyStyle}
@@ -170,7 +170,7 @@ class ConvertOptions extends Component {
               {this.renderStringStyleOptions()}
             </Select>
           </FormControl>
-          <FormControl className="option">
+          <FormControl className={styles.option}>
             <InputLabel htmlFor="value-style">Value Style</InputLabel>
             <Select
               value={configuration.valueStyle}
@@ -187,10 +187,6 @@ class ConvertOptions extends Component {
             </Select>
           </FormControl>
         </form>
-
-        {/*
-
-        */}
       </div>
     );
   }

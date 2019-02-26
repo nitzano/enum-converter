@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import ConvertCode from '../ConvertCode/ConvertCode';
-import ConvertOptions from '../ConvertOptions/ConvertOptions';
-import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  changeSource,
   changeConfiguration,
+  changeSource,
   convertEnum
 } from '../../actions/converter.actions';
-import './Convert.scss';
+import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
+import ConvertOptions from '../ConvertOptions/ConvertOptions';
+import styles from './ConvertScreen.module.scss';
 
 class Convert extends Component {
   componentDidMount() {
@@ -29,13 +29,11 @@ class Convert extends Component {
 
   render() {
     return (
-      <div className="Convert">
-        <div className="Convert__options">
-          <ConvertOptions />
-        </div>
-        <div className="Convert__main">
-          <div className="Convert__code">
-            <ConvertCode
+      <div className={styles.root}>
+        <ConvertOptions />
+        <main className={styles.main}>
+          <div className={styles.codeEditor}>
+            <CodeEditor
               code={this.props.source}
               language={this.props.configuration.from}
               onCodeChange={event => this.props.changeSource(event)}
@@ -47,7 +45,7 @@ class Convert extends Component {
               showUpload
             />
           </div>
-          <div className="Convert__sep">
+          <div className={styles.separator}>
             <IconButton onClick={this.handleTestMe}>
               <Hidden smDown>
                 <KeyboardArrowRight />
@@ -57,8 +55,8 @@ class Convert extends Component {
               </Hidden>
             </IconButton>
           </div>
-          <div className="Convert__code">
-            <ConvertCode
+          <div className={styles.codeEditor}>
+            <CodeEditor
               code={this.props.destination}
               language={this.props.configuration.to}
               onLanguageChange={event =>
@@ -67,7 +65,7 @@ class Convert extends Component {
               showDownload
             />
           </div>
-        </div>
+        </main>
       </div>
     );
   }
