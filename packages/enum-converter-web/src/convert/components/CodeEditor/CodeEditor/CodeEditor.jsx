@@ -14,8 +14,8 @@ import { saveAs } from 'file-saver';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import Languages from '../Languages/Languages';
-import './ConvertCode.scss';
+import CodeEditorLanguages from '../Languages/Languages';
+import './CodeEditor.scss';
 
 const styles = {
   tooltip: {
@@ -23,7 +23,7 @@ const styles = {
   }
 };
 
-class ConvertCode extends Component {
+class CodeEditor extends Component {
   state = {
     languageOptions: {},
     suffixOptions: {}
@@ -113,7 +113,7 @@ class ConvertCode extends Component {
 
     return (
       <div className="ConvertCode">
-        <Languages
+        <CodeEditorLanguages
           value={language}
           languages={languageOptions}
           onChange={this.handleLanguageChange}
@@ -189,13 +189,13 @@ class ConvertCode extends Component {
   }
 }
 
-ConvertCode.defaultProps = {
+CodeEditor.defaultProps = {
   showClear: false,
   showDownload: false,
   showUpload: false
 };
 
-ConvertCode.propTypes = {
+CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   onCodeChange: PropTypes.func,
@@ -206,4 +206,4 @@ ConvertCode.propTypes = {
   showUpload: PropTypes.bool
 };
 
-export default withStyles(styles)(ConvertCode);
+export default withStyles(styles)(CodeEditor);

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import ConvertCode from '../ConvertCode/ConvertCode';
-import ConvertOptions from '../ConvertOptions/ConvertOptions';
-import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  changeSource,
   changeConfiguration,
+  changeSource,
   convertEnum
 } from '../../actions/converter.actions';
+import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
+import ConvertOptions from '../ConvertOptions/ConvertOptions';
 import './Convert.scss';
 
 class Convert extends Component {
@@ -35,7 +35,7 @@ class Convert extends Component {
         </div>
         <div className="Convert__main">
           <div className="Convert__code">
-            <ConvertCode
+            <CodeEditor
               code={this.props.source}
               language={this.props.configuration.from}
               onCodeChange={event => this.props.changeSource(event)}
@@ -58,7 +58,7 @@ class Convert extends Component {
             </IconButton>
           </div>
           <div className="Convert__code">
-            <ConvertCode
+            <CodeEditor
               code={this.props.destination}
               language={this.props.configuration.to}
               onLanguageChange={event =>

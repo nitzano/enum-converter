@@ -6,12 +6,11 @@ import React, { Component } from 'react';
 
 const styles = {
   select: {
-    // flexGrow: 1,
     textAlign: 'center'
   }
 };
 
-class Languages extends Component {
+class CodeEditorLanguages extends Component {
   handleSelectChange = event => {
     this.props.onChange && this.props.onChange(event.target.value);
   };
@@ -35,10 +34,10 @@ class Languages extends Component {
   }
 }
 
-Languages.propTypes = {
+CodeEditorLanguages.propTypes = {
   value: PropTypes.string.isRequired,
   languages: PropTypes.object.isRequired,
   onChange: PropTypes.func
 };
 
-export default withStyles(styles)(Languages);
+export default withStyles(styles)(CodeEditorLanguages);
