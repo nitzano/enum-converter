@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import CodeEditorActions from '../Actions/Actions';
 import CodeEditorLanguages from '../Languages/Languages';
-import './CodeEditor.scss';
+import styles from './CodeEditor.module.scss';
 
 class CodeEditor extends Component {
   state = {
@@ -105,13 +105,13 @@ class CodeEditor extends Component {
     const { languageOptions } = this.state;
 
     return (
-      <div className="ConvertCode">
+      <div className={styles.root}>
         <CodeEditorLanguages
           value={language}
           languages={languageOptions}
           onChange={this.handleLanguageChange}
         />
-        <div className="ConvertCode__code">
+        <div className={styles.code}>
           <CodeEditorActions
             showClear={showClear}
             showDownload={showDownload}
@@ -133,7 +133,7 @@ class CodeEditor extends Component {
           />
 
           <CodeMirror
-            className="ConvertCode__editor"
+            className={styles.editor}
             value={this.props.code}
             autoCursor={false}
             inputStyle={'textarea'}
