@@ -5,22 +5,20 @@ import Toolbar from '@material-ui/core/Toolbar';
 import withWidth from '@material-ui/core/withWidth';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import './Toolbar.scss';
+import styles from './Toolbar.module.scss';
 
 class AppToolbar extends Component {
   render() {
+    const { version } = this.props;
+
     return (
-      <div className="AppToolbar">
+      <div className={styles.root}>
         <AppBar position="static">
           <Toolbar>
-            <h2 className="AppToolbar__typography">
-              {`Enum Converter ${
-                this.props.version ? `${this.props.version}` : ''
-              }`}
-            </h2>
+            <h2 className={styles.header}>{`Enum Converter ${version}`}</h2>
 
             <a
-              className="AppToolbar__link"
+              className={styles.link}
               href="https://www.npmjs.com/package/enum-converter"
               target="_blank"
               rel="noopener noreferrer"
@@ -28,7 +26,7 @@ class AppToolbar extends Component {
               <FontAwesomeIcon icon={faNpm} />
             </a>
             <a
-              className="AppToolbar__link"
+              className={styles.link}
               href="https://github.com/nitzano/enum-converter"
               target="_blank"
               rel="noopener noreferrer"
@@ -44,6 +42,10 @@ class AppToolbar extends Component {
 
 AppToolbar.propTypes = {
   version: PropTypes.string
+};
+
+AppToolbar.defaultProps = {
+  version: ''
 };
 
 export default withWidth()(AppToolbar);
