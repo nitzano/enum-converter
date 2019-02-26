@@ -1,2 +1,16 @@
 .root {
+  display: flex;
+  font-size: 1.2rem;
+  flex: 1;
+
+  & > * {
+    flex: 1;
+  }
+
+  :global(.CodeMirror) {
+    height: 100%;
+    flex: 1;
+    margin: 0;
+    padding: 1px;
+  }
 }
