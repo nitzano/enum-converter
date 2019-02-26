@@ -1,7 +1,9 @@
 # Enum Converter
 
-Container project for the following packages:
+Container project for enum converter's packages
 
-- enum-converter - library to convert enums
+## Packages
+
+- enum-converter - Convert enums from one language to another
 - enum-converter-api - back-end api
 - enum-converter-web - web version
