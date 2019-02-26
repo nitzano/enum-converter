@@ -11,7 +11,7 @@ import {
 } from '../../actions/converter.actions';
 import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
-import './Convert.scss';
+import styles from './Convert.module.scss';
 
 class Convert extends Component {
   componentDidMount() {
@@ -29,12 +29,10 @@ class Convert extends Component {
 
   render() {
     return (
-      <div className="Convert">
-        <div className="Convert__options">
-          <ConvertOptions />
-        </div>
-        <div className="Convert__main">
-          <div className="Convert__code">
+      <div className={styles.root}>
+        <ConvertOptions />
+        <main className={styles.main}>
+          <div className={styles.codeEditor}>
             <CodeEditor
               code={this.props.source}
               language={this.props.configuration.from}
@@ -47,7 +45,7 @@ class Convert extends Component {
               showUpload
             />
           </div>
-          <div className="Convert__sep">
+          <div className={styles.separator}>
             <IconButton onClick={this.handleTestMe}>
               <Hidden smDown>
                 <KeyboardArrowRight />
@@ -57,7 +55,7 @@ class Convert extends Component {
               </Hidden>
             </IconButton>
           </div>
-          <div className="Convert__code">
+          <div className={styles.codeEditor}>
             <CodeEditor
               code={this.props.destination}
               language={this.props.configuration.to}
@@ -67,7 +65,7 @@ class Convert extends Component {
               showDownload
             />
           </div>
-        </div>
+        </main>
       </div>
     );
   }
