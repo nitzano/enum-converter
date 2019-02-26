@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import withWidth from '@material-ui/core/withWidth';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNpm, faGithub } from '@fortawesome/free-brands-svg-icons';
 import PropTypes from 'prop-types';
-import './AppToolbar.scss';
+import React, { Component } from 'react';
+import './Toolbar.scss';
 
 class AppToolbar extends Component {
-  static propTypes = {
-    version: PropTypes.string
-  };
-
   render() {
     return (
       <div className="AppToolbar">
@@ -45,5 +41,9 @@ class AppToolbar extends Component {
     );
   }
 }
+
+AppToolbar.propTypes = {
+  version: PropTypes.string
+};
 
 export default withWidth()(AppToolbar);

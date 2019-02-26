@@ -3,7 +3,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import axios from 'axios';
 import React, { Component } from 'react';
 import ConvertScreen from '../../../convert/components/ConvertScreen/ConvertScreen';
-import AppToolbar from '../AppToolbar/AppToolbar';
+import AppToolbar from '../Toolbar/Toolbar';
 import styles from './App.module.scss';
 import { EnumConverterTheme } from './theme';
 
