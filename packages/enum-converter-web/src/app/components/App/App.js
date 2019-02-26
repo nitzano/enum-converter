@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import ConvertScreen from '../../../convert/components/ConvertScreen/ConvertScreen';
 import AppToolbar from '../AppToolbar/AppToolbar';
-import './App.scss';
+import styles from './App.module.scss';
 import { EnumConverterTheme } from './theme';
 
 class App extends Component {
@@ -36,23 +36,19 @@ class App extends Component {
   }
 
   render() {
+    const { ready, loading, version } = this.state;
+
     return (
       <MuiThemeProvider theme={EnumConverterTheme}>
-        <div
-          className={`App ${this.state.loading ? 'App--loading' : ''} ${
-            this.state.ready ? 'App--ready' : ''
-          }`}
-        >
-          <div className="App__toolbar">
-            <AppToolbar version={this.state.version} />
-          </div>
-          {this.state.ready && (
-            <div className="App__convert">
+        <div className={styles.root}>
+          <AppToolbar version={version} />
+          {ready && (
+            <div className={styles.convertScreen}>
               <ConvertScreen />
             </div>
           )}
-          {this.state.loading && (
-            <div className="App__loader">
+          {loading && (
+            <div className={styles.loader}>
               <CircularProgress size={65} thickness={4} />
             </div>
           )}
