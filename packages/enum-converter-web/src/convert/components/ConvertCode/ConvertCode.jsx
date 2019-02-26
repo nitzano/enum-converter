@@ -1,6 +1,4 @@
 import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Cancel from '@material-ui/icons/Cancel';
@@ -16,13 +14,10 @@ import { saveAs } from 'file-saver';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
+import Languages from '../Languages/Languages';
 import './ConvertCode.scss';
 
 const styles = {
-  select: {
-    flexGrow: 1,
-    textAlign: 'center'
-  },
   tooltip: {
     fontSize: '1rem'
   }
@@ -43,19 +38,6 @@ class ConvertCode extends Component {
       this.setState({ suffixOptions: resp.data.LanguageSuffix });
     });
   }
-
-  handleLanguageChange = (event, child) => {
-    const value = event.target.value;
-    this.props.onLanguageChange && this.props.onLanguageChange(value);
-  };
-
-  handleClearCode = event => {
-    this.props.onCodeChange && this.props.onCodeChange('');
-  };
-
-  handleCodeChange = code => {
-    this.props.onCodeChange && this.props.onCodeChange(code);
-  };
 
   convertToMode = language => {
     switch (language) {
@@ -113,26 +95,29 @@ class ConvertCode extends Component {
     }
   };
 
-  renderLanguages = () => {
-    return (
-      <Select
-        className={this.props.classes.select}
-        value={this.props.language}
-        onChange={this.handleLanguageChange}
-      >
-        {Object.entries(this.state.languageOptions).map(([label, value]) => (
-          <MenuItem key={value} value={value}>
-            {label}
-          </MenuItem>
-        ))}
-      </Select>
-    );
+  handleLanguageChange = value => {
+    this.props.onLanguageChange && this.props.onLanguageChange(value);
+  };
+
+  handleClearCode = event => {
+    this.props.onCodeChange && this.props.onCodeChange('');
+  };
+
+  handleCodeChange = code => {
+    this.props.onCodeChange && this.props.onCodeChange(code);
   };
 
   render() {
+    const { languageOptions } = this.state;
+    const { language } = this.props;
+
     return (
       <div className="ConvertCode">
-        <div className="ConvertCode__languages">{this.renderLanguages()}</div>
+        <Languages
+          value={language}
+          languages={languageOptions}
+          onChange={this.handleLanguageChange}
+        />
         <div className="ConvertCode__code">
           <div className="ConvertCode__icons">
             {this.props.showClear && (
