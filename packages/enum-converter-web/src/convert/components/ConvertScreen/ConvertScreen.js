@@ -11,7 +11,7 @@ import {
 } from '../../actions/converter.actions';
 import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
-import styles from './Convert.module.scss';
+import styles from './ConvertScreen.module.scss';
 
 class Convert extends Component {
   componentDidMount() {

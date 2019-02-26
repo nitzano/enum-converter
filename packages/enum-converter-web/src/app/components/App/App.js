@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import './App.scss';
-import Convert from '../../../convert/components/Convert/Convert';
-import AppToolbar from '../AppToolbar/AppToolbar';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import { EnumConverterTheme } from './theme';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import axios from 'axios';
+import React, { Component } from 'react';
+import ConvertScreen from '../../../convert/components/ConvertScreen/ConvertScreen';
+import AppToolbar from '../AppToolbar/AppToolbar';
+import './App.scss';
+import { EnumConverterTheme } from './theme';
 
 class App extends Component {
   constructor(props) {
@@ -48,13 +48,12 @@ class App extends Component {
           </div>
           {this.state.ready && (
             <div className="App__convert">
-              <Convert />
+              <ConvertScreen />
             </div>
           )}
           {this.state.loading && (
             <div className="App__loader">
               <CircularProgress size={65} thickness={4} />
-              {/* <div className="App__loader-text">Loading...</div> */}
             </div>
           )}
         </div>
