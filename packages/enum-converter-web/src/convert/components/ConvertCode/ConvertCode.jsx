@@ -1,25 +1,22 @@
-import axios from 'axios';
-import React, { Component } from 'react';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
-import Cancel from '@material-ui/icons/Cancel';
-import Save from '@material-ui/icons/Save';
-import CloudUpload from '@material-ui/icons/CloudUpload';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import PropTypes from 'prop-types';
-import { UnControlled as CodeMirror } from 'react-codemirror2';
-
+import Cancel from '@material-ui/icons/Cancel';
+import CloudUpload from '@material-ui/icons/CloudUpload';
+import Save from '@material-ui/icons/Save';
+import axios from 'axios';
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/monokai.css';
 import 'codemirror/mode/clike/clike';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
-
-import './ConvertCode.scss';
-
+import 'codemirror/theme/monokai.css';
 import { saveAs } from 'file-saver';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
+import './ConvertCode.scss';
 
 const styles = {
   select: {
@@ -192,21 +189,22 @@ class ConvertCode extends Component {
                   color="inherit"
                 >
                   <CloudUpload />
-                  <input
-                    type="file"
-                    ref={fileUpload => {
-                      this.fileUpload = fileUpload;
-                    }}
-                    style={{ display: 'none' }}
-                    onChange={this.handleUpload}
-                    onClick={event => {
-                      event.target.value = null;
-                    }}
-                  />
                 </IconButton>
               </Tooltip>
             )}
           </div>
+
+          <input
+            type="file"
+            ref={fileUpload => {
+              this.fileUpload = fileUpload;
+            }}
+            style={{ display: 'none' }}
+            onChange={this.handleUpload}
+            onClick={event => {
+              event.target.value = null;
+            }}
+          />
 
           <CodeMirror
             className="ConvertCode__editor"
