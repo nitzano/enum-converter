@@ -29,30 +29,9 @@ const styles = {
 };
 
 class ConvertCode extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      languageOptions: {},
-      suffixOptions: {}
-    };
-  }
-
-  static defaultProps = {
-    showClear: false,
-    showDownload: false,
-    showUpload: false
-  };
-
-  static propTypes = {
-    code: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-    onCodeChange: PropTypes.func,
-    onLanguageChange: PropTypes.func,
-    showClear: PropTypes.bool,
-    showDownload: PropTypes.bool,
-    showError: PropTypes.bool,
-    showUpload: PropTypes.bool
+  state = {
+    languageOptions: {},
+    suffixOptions: {}
   };
 
   componentDidMount() {
@@ -224,5 +203,22 @@ class ConvertCode extends Component {
     );
   }
 }
+
+ConvertCode.defaultProps = {
+  showClear: false,
+  showDownload: false,
+  showUpload: false
+};
+
+ConvertCode.propTypes = {
+  code: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  onCodeChange: PropTypes.func,
+  onLanguageChange: PropTypes.func,
+  showClear: PropTypes.bool,
+  showDownload: PropTypes.bool,
+  showError: PropTypes.bool,
+  showUpload: PropTypes.bool
+};
 
 export default withStyles(styles)(ConvertCode);
