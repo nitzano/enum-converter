@@ -76,6 +76,10 @@ class CodeEditor extends Component {
   };
 
   handleUpload = () => {
+    this.fileUpload.click();
+  };
+
+  handleFileUpload = () => {
     if (this.fileUpload && this.fileUpload.files && this.fileUpload.files[0]) {
       const file = this.fileUpload.files[0];
       const reader = new FileReader();
@@ -122,7 +126,7 @@ class CodeEditor extends Component {
               this.fileUpload = fileUpload;
             }}
             style={{ display: 'none' }}
-            onChange={this.handleUpload}
+            onChange={this.handleFileUpload}
             onClick={event => {
               event.target.value = null;
             }}
