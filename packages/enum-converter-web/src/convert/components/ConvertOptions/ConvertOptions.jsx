@@ -83,7 +83,7 @@ class ConvertOptions extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.buttons}>
-          <div className="reset-button">
+          <div className={styles.button}>
             <Button
               variant="contained"
               color={'primary'}
@@ -92,7 +92,7 @@ class ConvertOptions extends Component {
               Reset
             </Button>
           </div>
-          <div className="emit-stats">
+          <div className={styles.button}>
             <div>Emit Stats</div>
             <Switch
               checked={configuration.emitStats}
