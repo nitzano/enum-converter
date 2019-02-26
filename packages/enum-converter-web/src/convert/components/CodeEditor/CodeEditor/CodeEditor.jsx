@@ -1,9 +1,3 @@
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import Cancel from '@material-ui/icons/Cancel';
-import CloudUpload from '@material-ui/icons/CloudUpload';
-import Save from '@material-ui/icons/Save';
 import axios from 'axios';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/clike/clike';
@@ -14,14 +8,9 @@ import { saveAs } from 'file-saver';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
+import CodeEditorActions from '../Actions/Actions';
 import CodeEditorLanguages from '../Languages/Languages';
 import './CodeEditor.scss';
-
-const styles = {
-  tooltip: {
-    fontSize: '1rem'
-  }
-};
 
 class CodeEditor extends Component {
   state = {
@@ -73,7 +62,11 @@ class CodeEditor extends Component {
     return suffix;
   }
 
-  handleDownload = event => {
+  handleClear = () => {
+    this.props.onCodeChange('');
+  };
+
+  handleDownload = () => {
     const fileSuffix = this.getFileSuffix();
 
     var file = new File([this.props.code], `enums.${fileSuffix}`, {
@@ -82,7 +75,7 @@ class CodeEditor extends Component {
     saveAs(file);
   };
 
-  handleUpload = event => {
+  handleUpload = () => {
     if (this.fileUpload && this.fileUpload.files && this.fileUpload.files[0]) {
       const file = this.fileUpload.files[0];
       const reader = new FileReader();
@@ -99,17 +92,13 @@ class CodeEditor extends Component {
     this.props.onLanguageChange && this.props.onLanguageChange(value);
   };
 
-  handleClearCode = event => {
-    this.props.onCodeChange && this.props.onCodeChange('');
-  };
-
   handleCodeChange = code => {
     this.props.onCodeChange && this.props.onCodeChange(code);
   };
 
   render() {
+    const { language, showClear, showDownload, showUpload } = this.props;
     const { languageOptions } = this.state;
-    const { language } = this.props;
 
     return (
       <div className="ConvertCode">
@@ -119,45 +108,14 @@ class CodeEditor extends Component {
           onChange={this.handleLanguageChange}
         />
         <div className="ConvertCode__code">
-          <div className="ConvertCode__icons">
-            {this.props.showClear && (
-              <Tooltip
-                className="tooltip tooltip--clear"
-                title="Clear"
-                classes={{ tooltip: this.props.classes.tooltip }}
-              >
-                <IconButton onClick={this.handleClearCode} color="inherit">
-                  <Cancel />
-                </IconButton>
-              </Tooltip>
-            )}
-            {this.props.showDownload && (
-              <Tooltip
-                className="tooltip tooltip--download"
-                title="Download"
-                classes={{ tooltip: this.props.classes.tooltip }}
-              >
-                <IconButton onClick={this.handleDownload} color="inherit">
-                  <Save />
-                </IconButton>
-              </Tooltip>
-            )}
-            {this.props.showUpload && (
-              <Tooltip
-                className="tooltip tooltip--upload"
-                title="Upload"
-                classes={{ tooltip: this.props.classes.tooltip }}
-              >
-                <IconButton
-                  onClick={() => this.fileUpload.click()}
-                  color="inherit"
-                >
-                  <CloudUpload />
-                </IconButton>
-              </Tooltip>
-            )}
-          </div>
-
+          <CodeEditorActions
+            showClear={showClear}
+            showDownload={showDownload}
+            showUpload={showUpload}
+            onClear={this.handleClear}
+            onDownload={this.handleDownload}
+            onUpload={this.handleUpload}
+          />
           <input
             type="file"
             ref={fileUpload => {
@@ -192,7 +150,9 @@ class CodeEditor extends Component {
 CodeEditor.defaultProps = {
   showClear: false,
   showDownload: false,
-  showUpload: false
+  showUpload: false,
+  onCodeChange: () => {},
+  onLanguageChange: () => {}
 };
 
 CodeEditor.propTypes = {
@@ -206,4 +166,4 @@ CodeEditor.propTypes = {
   showUpload: PropTypes.bool
 };
 
-export default withStyles(styles)(CodeEditor);
+export default CodeEditor;

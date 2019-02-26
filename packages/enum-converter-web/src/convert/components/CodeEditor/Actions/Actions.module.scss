@@ -1,0 +1,18 @@
+.root {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  color: white;
+  display: flex;
+
+  @media only screen and (max-width: 960px) {
+    flex-direction: column-reverse;
+    right: 3%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    right: 4%;
+  }
+}
