@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import apiRouter from './app/api';
-import { apolloServer } from './app/schema/schema';
+import { apolloServer } from './app/schemas/schema';
 
 export const app = express();
 
