@@ -1,11 +1,10 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import axios from 'axios';
 import React, { Component } from 'react';
 import ConvertScreen from '../../../convert/components/ConvertScreen/ConvertScreen';
+import AppProviders from '../Providers/Providers';
 import AppToolbar from '../Toolbar/Toolbar';
 import styles from './App.module.scss';
-import { EnumConverterTheme } from './theme';
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class App extends Component {
     const { ready, loading, version } = this.state;
 
     return (
-      <MuiThemeProvider theme={EnumConverterTheme}>
+      <AppProviders>
         <div className={styles.root}>
           <AppToolbar version={version} />
           {ready && (
@@ -53,7 +52,7 @@ class App extends Component {
             </div>
           )}
         </div>
-      </MuiThemeProvider>
+      </AppProviders>
     );
   }
 }

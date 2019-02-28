@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import converterReducer from '../../../convert/reducers/converter.reducer';
+import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import reduxPromise from 'redux-promise';
+import { converterReducer } from '../../../convert/reducers/converter.reducer';
 
 export const store = createStore(
   converterReducer,
