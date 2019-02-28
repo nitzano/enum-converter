@@ -1,17 +1,13 @@
-import {
-  addMockFunctionsToSchema,
-  ApolloServer,
-  makeExecutableSchema
-} from 'apollo-server-express';
-import { convertTypeDefs } from './convert';
+import { ApolloServer, makeExecutableSchema } from 'apollo-server-express';
+import { convertResolvers, convertTypeDefs } from './convert';
 import { queryResolvers, queryTypeDef } from './query';
 import { versionResolvers, versionTypeDefs } from './version';
 
 const typeDefs = [queryTypeDef, versionTypeDefs, convertTypeDefs];
 
-const resolvers = [queryResolvers, versionResolvers];
+const resolvers = [queryResolvers, versionResolvers, convertResolvers];
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
-addMockFunctionsToSchema({ schema });
+// addMockFunctionsToSchema({ schema });
 
 export const apolloServer = new ApolloServer({ schema });
