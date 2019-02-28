@@ -28,27 +28,28 @@ const DEFAULT_STATE = {
   isError: false
 };
 
-const reducer = handleActions(
-  {
-    [changeSource]: (state, action) => ({
-      ...state,
-      source: action.payload.enumString
-    }),
-    [changeConfiguration]: (state, action) => ({
-      ...state,
-      configuration: { ...state.configuration, ...action.payload.configuration }
-    }),
-    [resetConfiguration]: (state, action) => ({
-      ...state,
-      configuration: { ...state.configuration, ...DEFAULT_STYLING_OPTIONS }
-    }),
-    [convertEnum]: (state, action) => ({
-      ...state,
-      destination: action.error ? 'Invalid Enum' : action.payload,
-      isError: action.error ? true : false
-    })
-  },
-  DEFAULT_STATE
-);
+const handlers = {
+  [changeSource]: (state, action) => ({
+    ...state,
+    source: action.payload.enumString
+  }),
+  [changeConfiguration]: (state, action) => ({
+    ...state,
+    configuration: { ...state.configuration, ...action.payload.configuration }
+  }),
+  [resetConfiguration]: (state, action) => ({
+    ...state,
+    configuration: { ...state.configuration, ...DEFAULT_STYLING_OPTIONS }
+  }),
+  [convertEnum]: (state, action) => ({
+    ...state,
+    destination: action.error ? 'Invalid Enum' : action.payload,
+    isError: action.error ? true : false
+  })
+};
+
+console.log('handlers', handlers);
+
+const reducer = handleActions(handlers, DEFAULT_STATE);
 
 export default reducer;
