@@ -42,6 +42,4 @@ const handlers = {
   })
 };
 
-const reducer = handleActions(handlers, DEFAULT_STATE);
-
-export default reducer;
+export const converterReducer = handleActions(handlers, DEFAULT_STATE);
