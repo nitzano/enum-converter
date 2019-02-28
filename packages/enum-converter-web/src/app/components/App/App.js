@@ -38,8 +38,8 @@ class App extends Component {
     const { ready, loading, version } = this.state;
 
     return (
-      <div className={styles.root}>
-        <AppProviders>
+      <AppProviders>
+        <div className={styles.root}>
           <AppToolbar version={version} />
           {ready && (
             <div className={styles.convertScreen}>
@@ -51,8 +51,8 @@ class App extends Component {
               <CircularProgress size={65} thickness={4} />
             </div>
           )}
-        </AppProviders>
-      </div>
+        </div>
+      </AppProviders>
     );
   }
 }
