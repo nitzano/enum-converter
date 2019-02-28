@@ -8,6 +8,5 @@ const typeDefs = [queryTypeDef, versionTypeDefs, convertTypeDefs];
 const resolvers = [queryResolvers, versionResolvers, convertResolvers];
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
-// addMockFunctionsToSchema({ schema });
 
 export const apolloServer = new ApolloServer({ schema });
