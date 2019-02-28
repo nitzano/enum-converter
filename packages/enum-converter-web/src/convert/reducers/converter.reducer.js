@@ -1,10 +1,4 @@
 import { handleActions } from 'redux-actions';
-import {
-  changeConfiguration,
-  changeSource,
-  convertEnum,
-  resetConfiguration
-} from '../actions/converter.actions';
 import { PYTHON_SAMPLE_ENUM } from './../../convert/components/ConvertScreen/pythonSample';
 
 const DEFAULT_STYLING_OPTIONS = {
@@ -29,26 +23,24 @@ const DEFAULT_STATE = {
 };
 
 const handlers = {
-  [changeSource]: (state, action) => ({
+  CHANGE_SOURCE: (state, action) => ({
     ...state,
     source: action.payload.enumString
   }),
-  [changeConfiguration]: (state, action) => ({
+  CHANGE_CONFIGURATION: (state, action) => ({
     ...state,
     configuration: { ...state.configuration, ...action.payload.configuration }
   }),
-  [resetConfiguration]: (state, action) => ({
+  RESET_CONFIGURATION: (state, action) => ({
     ...state,
     configuration: { ...state.configuration, ...DEFAULT_STYLING_OPTIONS }
   }),
-  [convertEnum]: (state, action) => ({
+  CONVERT_ENUM: (state, action) => ({
     ...state,
     destination: action.error ? 'Invalid Enum' : action.payload,
     isError: action.error ? true : false
   })
 };
-
-console.log('handlers', handlers);
 
 const reducer = handleActions(handlers, DEFAULT_STATE);
 
