@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Store from '../../../store/components/Store/Store';
 import { EnumConverterTheme } from '../App/theme';
 
-class Root extends Component {
+class AppProviders extends Component {
   render() {
     return (
       <Store>
@@ -15,4 +15,4 @@ class Root extends Component {
   }
 }
 
-export default Root;
+export default AppProviders;

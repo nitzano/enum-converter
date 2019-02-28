@@ -2,7 +2,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import React, { Component } from 'react';
 import ConvertScreen from '../../../convert/components/ConvertScreen/ConvertScreen';
-import Root from '../Root/Root';
+import AppProviders from '../Providers/Providers';
 import AppToolbar from '../Toolbar/Toolbar';
 import styles from './App.module.scss';
 
@@ -38,8 +38,8 @@ class App extends Component {
     const { ready, loading, version } = this.state;
 
     return (
-      <Root>
-        <div className={styles.root}>
+      <div className={styles.root}>
+        <AppProviders>
           <AppToolbar version={version} />
           {ready && (
             <div className={styles.convertScreen}>
@@ -51,8 +51,8 @@ class App extends Component {
               <CircularProgress size={65} thickness={4} />
             </div>
           )}
-        </div>
-      </Root>
+        </AppProviders>
+      </div>
     );
   }
 }
