@@ -15,7 +15,12 @@ import {
 import styles from './ConvertOptions.module.scss';
 
 class ConvertOptions extends Component {
-  state = { serverEnums: null };
+  state = {
+    serverEnums: null,
+    enumsOrder: [],
+    valuesOrder: [],
+    stringStyles: []
+  };
 
   componentDidMount() {
     axios.get('/api/options/enums').then(resp => {
@@ -27,18 +32,18 @@ class ConvertOptions extends Component {
     return str.split(/(?=[A-Z])/).join(' ');
   }
 
-  renderDictionaryOptions(optionsDict) {
+  renderSelectOption(options) {
     let items = [
       <MenuItem key={null} value={undefined}>
         {' '}
       </MenuItem>
     ];
 
-    if (optionsDict) {
+    if (options) {
       items.push(
-        Object.entries(optionsDict).map(([label, value]) => (
+        options.map(({ label, value }) => (
           <MenuItem key={value} value={value}>
-            {this.splitByCapital(label)}
+            {label}
           </MenuItem>
         ))
       );
@@ -48,21 +53,15 @@ class ConvertOptions extends Component {
   }
 
   renderEnumOrderOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.EnumsOrder
-    );
+    return this.renderSelectOption(this.state.enumsOrder);
   }
 
   renderValueOrderOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.ValuesOrder
-    );
+    return this.renderSelectOption(this.state.valuesOrder);
   }
 
   renderStringStyleOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.StringStyle
-    );
+    return this.renderSelectOption(this.state.stringStyles);
   }
 
   changeConfiguration(changedOption) {
