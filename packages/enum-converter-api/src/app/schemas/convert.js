@@ -7,7 +7,13 @@ import {
   StringStyle,
   ValuesOrder
 } from 'enum-converter';
-import { entries, map, values } from 'lodash';
+import { capitalize, entries, map, values } from 'lodash';
+
+function createLanguageOptions(obj) {
+  return values(obj)
+    .map(entry => entry.language)
+    .map(entry => ({ name: entry, label: capitalize(entry) }));
+}
 
 function flatOption(obj) {
   return map(entries(obj), element => ({
@@ -18,8 +24,8 @@ function flatOption(obj) {
 
 export const convertTypeDefs = gql`
   extend type Query {
-    parsers: [String]
-    dumpers: [String]
+    parsers: [SelectOption]
+    dumpers: [SelectOption]
     stringStyles: [SelectOption]
     enumsOrder: [SelectOption]
     valuesOrder: [SelectOption]
@@ -34,8 +40,8 @@ export const convertTypeDefs = gql`
 
 export const convertResolvers = {
   Query: {
-    parsers: () => map(values(parsers), 'language'),
-    dumpers: () => map(values(dumpers), 'language'),
+    parsers: () => createLanguageOptions(parsers),
+    dumpers: () => createLanguageOptions(dumpers),
     stringStyles: () => flatOption(StringStyle),
     enumsOrder: () => flatOption(EnumsOrder),
     valuesOrder: () => flatOption(ValuesOrder),

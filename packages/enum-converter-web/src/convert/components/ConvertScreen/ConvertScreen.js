@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import React, { Component } from 'react';
+import { compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import {
   changeConfiguration,
@@ -12,10 +13,16 @@ import {
 import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
 import styles from './ConvertScreen.module.scss';
-
+import { GET_LANGUAGES } from './get-languages';
 class ConvertScreen extends Component {
+  state = {
+    parsers: [],
+    dumpers: []
+  };
+
   componentDidMount() {
     this.props.convertEnum();
+    this.getLanguages();
   }
 
   componentDidUpdate(prevProps) {
@@ -27,7 +34,15 @@ class ConvertScreen extends Component {
     }
   }
 
+  async getLanguages() {
+    const { client } = this.props;
+    const result = await client.query({ query: GET_LANGUAGES });
+    console.log('languages', result);
+  }
+
   render() {
+    const { configuration, parsers, dumpers } = this.props;
+
     return (
       <div className={styles.root}>
         <ConvertOptions />
@@ -83,7 +98,10 @@ const mapDispatchToProps = {
   convertEnum
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withApollo,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(ConvertScreen);

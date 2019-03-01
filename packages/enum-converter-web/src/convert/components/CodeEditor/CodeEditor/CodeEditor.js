@@ -126,6 +126,7 @@ class CodeEditor extends Component {
 CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
+  languageOptions: PropTypes.array,
   onCodeChange: PropTypes.func,
   onLanguageChange: PropTypes.func,
   showClear: PropTypes.bool,
