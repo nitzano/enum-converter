@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import optionsRouter from './options';
-import versionRouter from './version';
 import convertRouter from './convert';
+import optionsRouter from './options';
 
 const router = Router();
 
 router.use('/options', optionsRouter);
-router.use('/version', versionRouter);
 router.use('/convert', convertRouter);
 
 export default router;
