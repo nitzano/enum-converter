@@ -137,6 +137,7 @@ CodeEditor.propTypes = {
 };
 
 CodeEditor.defaultProps = {
+  languageOptions: [],
   showClear: false,
   showDownload: false,
   showUpload: false,

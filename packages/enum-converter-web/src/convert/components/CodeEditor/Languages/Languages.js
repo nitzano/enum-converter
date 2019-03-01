@@ -36,7 +36,7 @@ class CodeEditorLanguages extends Component {
 
 CodeEditorLanguages.propTypes = {
   value: PropTypes.string.isRequired,
-  languages: PropTypes.object.isRequired,
+  languages: PropTypes.array.isRequired,
   onChange: PropTypes.func
 };
 
