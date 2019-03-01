@@ -4,32 +4,32 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import {
   changeConfiguration,
   resetConfiguration
 } from '../../actions/converter.actions';
 import styles from './ConvertOptions.module.scss';
-
+import { GET_OPTIONS } from './get-options';
 class ConvertOptions extends Component {
   state = {
-    serverEnums: null,
     enumsOrder: [],
     valuesOrder: [],
     stringStyles: []
   };
 
   componentDidMount() {
-    axios.get('/api/options/enums').then(resp => {
-      this.setState({ serverEnums: resp.data });
-    });
+    this.getOptions();
   }
 
-  splitByCapital(str) {
-    return str.split(/(?=[A-Z])/).join(' ');
+  async getOptions() {
+    const {
+      data: { enumsOrder, valuesOrder, stringStyles }
+    } = await this.props.client.query({ query: GET_OPTIONS });
+    this.setState({ enumsOrder, valuesOrder, stringStyles });
   }
 
   renderSelectOption(options) {
@@ -192,7 +192,10 @@ const mapDispatchToProps = {
   changeConfiguration,
   resetConfiguration
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withApollo,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(ConvertOptions);

@@ -12,14 +12,18 @@ import { capitalize, entries, map, values } from 'lodash';
 function createLanguageOptions(obj) {
   return values(obj)
     .map(entry => entry.language)
-    .map(entry => ({ value: entry, label: capitalize(entry) }));
+    .map(entry => ({ value: entry, label: splitByCapital(capitalize(entry)) }));
 }
 
 function flatOption(obj) {
   return map(entries(obj), element => ({
     value: element[1],
-    label: element[0]
+    label: splitByCapital(element[0])
   }));
+}
+
+function splitByCapital(str) {
+  return str.split(/(?=[A-Z])/).join(' ');
 }
 
 export const convertTypeDefs = gql`
