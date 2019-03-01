@@ -5,11 +5,29 @@ import Toolbar from '@material-ui/core/Toolbar';
 import withWidth from '@material-ui/core/withWidth';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { compose, withApollo } from 'react-apollo';
+import { GET_VERSION } from '../App/get-version';
 import styles from './Toolbar.module.scss';
 
 class AppToolbar extends Component {
+  state = {
+    version: ''
+  };
+
+  componentDidMount() {
+    this.getVersion();
+  }
+
+  async getVersion() {
+    const {
+      data: { version }
+    } = await this.props.client.query({ query: GET_VERSION });
+    this.setState({ version });
+    this.props.onReady();
+  }
+
   render() {
-    const { version } = this.props;
+    const { version } = this.state;
 
     return (
       <div className={styles.root}>
@@ -41,11 +59,14 @@ class AppToolbar extends Component {
 }
 
 AppToolbar.propTypes = {
-  version: PropTypes.string
+  onReady: PropTypes.func.isRequired
 };
 
 AppToolbar.defaultProps = {
-  version: ''
+  onReady: () => {}
 };
 
-export default withWidth()(AppToolbar);
+export default compose(
+  withApollo,
+  withWidth()
+)(AppToolbar);
