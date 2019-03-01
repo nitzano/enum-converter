@@ -12,7 +12,7 @@ import { capitalize, entries, map, values } from 'lodash';
 function createLanguageOptions(obj) {
   return values(obj)
     .map(entry => entry.language)
-    .map(entry => ({ name: entry, label: capitalize(entry) }));
+    .map(entry => ({ value: entry, label: capitalize(entry) }));
 }
 
 function flatOption(obj) {
