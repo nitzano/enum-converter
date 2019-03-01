@@ -13,7 +13,7 @@ import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
 import styles from './ConvertScreen.module.scss';
 
-class Convert extends Component {
+class ConvertScreen extends Component {
   componentDidMount() {
     this.props.convertEnum();
   }
@@ -86,4 +86,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Convert);
+)(ConvertScreen);
