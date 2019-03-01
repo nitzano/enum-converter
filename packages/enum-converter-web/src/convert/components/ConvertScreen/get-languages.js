@@ -2,7 +2,13 @@ import { gql } from 'apollo-boost';
 
 export const GET_LANGUAGES = gql`
   {
-    parsers
-    dumpers
+    parsers {
+      value
+      label
+    }
+    dumpers {
+      value
+      label
+    }
   }
 `;

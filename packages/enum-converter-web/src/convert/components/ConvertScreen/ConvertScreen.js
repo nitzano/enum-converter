@@ -36,12 +36,15 @@ class ConvertScreen extends Component {
 
   async getLanguages() {
     const { client } = this.props;
-    const result = await client.query({ query: GET_LANGUAGES });
-    console.log('languages', result);
+    const {
+      data: { parsers, dumpers }
+    } = await client.query({ query: GET_LANGUAGES });
+    this.setState({ parsers, dumpers });
   }
 
   render() {
-    const { configuration, parsers, dumpers } = this.props;
+    const { configuration } = this.props;
+    const { parsers, dumpers } = this.state;
 
     return (
       <div className={styles.root}>
@@ -51,6 +54,7 @@ class ConvertScreen extends Component {
             <CodeEditor
               code={this.props.source}
               language={this.props.configuration.from}
+              languageOptions={parsers}
               onCodeChange={event => this.props.changeSource(event)}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ from: event })
@@ -74,6 +78,7 @@ class ConvertScreen extends Component {
             <CodeEditor
               code={this.props.destination}
               language={this.props.configuration.to}
+              languageOptions={dumpers}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ to: event })
               }

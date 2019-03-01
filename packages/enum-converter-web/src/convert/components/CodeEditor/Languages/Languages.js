@@ -24,7 +24,7 @@ class CodeEditorLanguages extends Component {
         value={value}
         onChange={this.handleSelectChange}
       >
-        {Object.entries(languages).map(([label, value]) => (
+        {languages.map(({ value, label }) => (
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>
