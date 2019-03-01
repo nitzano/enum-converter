@@ -123,14 +123,6 @@ class CodeEditor extends Component {
   }
 }
 
-CodeEditor.defaultProps = {
-  showClear: false,
-  showDownload: false,
-  showUpload: false,
-  onCodeChange: () => {},
-  onLanguageChange: () => {}
-};
-
 CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
@@ -140,6 +132,14 @@ CodeEditor.propTypes = {
   showDownload: PropTypes.bool,
   showError: PropTypes.bool,
   showUpload: PropTypes.bool
+};
+
+CodeEditor.defaultProps = {
+  showClear: false,
+  showDownload: false,
+  showUpload: false,
+  onCodeChange: () => {},
+  onLanguageChange: () => {}
 };
 
 export default CodeEditor;
