@@ -15,11 +15,7 @@ import {
 import styles from './ConvertOptions.module.scss';
 
 class ConvertOptions extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { serverEnums: null };
-  }
+  state = { serverEnums: null };
 
   static propTypes = {
     configuration: PropTypes.object
