@@ -17,10 +17,6 @@ import styles from './ConvertOptions.module.scss';
 class ConvertOptions extends Component {
   state = { serverEnums: null };
 
-  static propTypes = {
-    configuration: PropTypes.object
-  };
-
   componentDidMount() {
     axios.get('/api/options/enums').then(resp => {
       this.setState({ serverEnums: resp.data });
@@ -187,6 +183,10 @@ class ConvertOptions extends Component {
     );
   }
 }
+
+ConvertOptions.propTypes = {
+  configuration: PropTypes.object
+};
 
 const mapStateToProps = state => ({ configuration: state.configuration });
 const mapDispatchToProps = {
