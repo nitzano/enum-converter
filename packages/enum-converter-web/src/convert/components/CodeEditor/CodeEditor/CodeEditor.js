@@ -9,15 +9,10 @@ import styles from './CodeEditor.module.scss';
 
 class CodeEditor extends Component {
   state = {
-    languageOptions: {},
     suffixOptions: {}
   };
 
   componentDidMount() {
-    axios.get('/api/options/languages').then(resp => {
-      this.setState({ languageOptions: resp.data.Language });
-    });
-
     axios.get('/api/options/enums').then(resp => {
       this.setState({ suffixOptions: resp.data.LanguageSuffix });
     });
@@ -82,8 +77,14 @@ class CodeEditor extends Component {
   };
 
   render() {
-    const { language, showClear, showDownload, showUpload, code } = this.props;
-    const { languageOptions } = this.state;
+    const {
+      language,
+      showClear,
+      showDownload,
+      showUpload,
+      code,
+      languageOptions
+    } = this.props;
 
     return (
       <div className={styles.root}>
@@ -126,7 +127,7 @@ class CodeEditor extends Component {
 CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
-  languageOptions: PropTypes.array,
+  languageOptions: PropTypes.array.isRequired,
   onCodeChange: PropTypes.func,
   onLanguageChange: PropTypes.func,
   showClear: PropTypes.bool,
