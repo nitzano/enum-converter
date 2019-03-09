@@ -4,49 +4,46 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import {
   changeConfiguration,
   resetConfiguration
 } from '../../actions/converter.actions';
 import styles from './ConvertOptions.module.scss';
-
+import { GET_OPTIONS } from './get-options';
 class ConvertOptions extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { serverEnums: null };
-  }
-
-  static propTypes = {
-    configuration: PropTypes.object
+  state = {
+    enumsOrder: [],
+    valuesOrder: [],
+    stringStyles: []
   };
 
   componentDidMount() {
-    axios.get('/api/options/enums').then(resp => {
-      this.setState({ serverEnums: resp.data });
-    });
+    this.getOptions();
   }
 
-  splitByCapital(str) {
-    return str.split(/(?=[A-Z])/).join(' ');
+  async getOptions() {
+    const {
+      data: { enumsOrder, valuesOrder, stringStyles }
+    } = await this.props.client.query({ query: GET_OPTIONS });
+    this.setState({ enumsOrder, valuesOrder, stringStyles });
   }
 
-  renderDictionaryOptions(optionsDict) {
+  renderSelectOption(options) {
     let items = [
       <MenuItem key={null} value={undefined}>
         {' '}
       </MenuItem>
     ];
 
-    if (optionsDict) {
+    if (options) {
       items.push(
-        Object.entries(optionsDict).map(([label, value]) => (
+        options.map(({ label, value }) => (
           <MenuItem key={value} value={value}>
-            {this.splitByCapital(label)}
+            {label}
           </MenuItem>
         ))
       );
@@ -56,21 +53,15 @@ class ConvertOptions extends Component {
   }
 
   renderEnumOrderOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.EnumsOrder
-    );
+    return this.renderSelectOption(this.state.enumsOrder);
   }
 
   renderValueOrderOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.ValuesOrder
-    );
+    return this.renderSelectOption(this.state.valuesOrder);
   }
 
   renderStringStyleOptions() {
-    return this.renderDictionaryOptions(
-      this.state.serverEnums && this.state.serverEnums.StringStyle
-    );
+    return this.renderSelectOption(this.state.stringStyles);
   }
 
   changeConfiguration(changedOption) {
@@ -192,12 +183,19 @@ class ConvertOptions extends Component {
   }
 }
 
+ConvertOptions.propTypes = {
+  configuration: PropTypes.object
+};
+
 const mapStateToProps = state => ({ configuration: state.configuration });
 const mapDispatchToProps = {
   changeConfiguration,
   resetConfiguration
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withApollo,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(ConvertOptions);

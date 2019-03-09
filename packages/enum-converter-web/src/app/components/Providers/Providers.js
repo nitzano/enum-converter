@@ -1,6 +1,7 @@
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import React, { Component } from 'react';
 import Store from '../../../store/components/Store/Store';
+import GraphQLProvider from '../../providers/graphql/GraphQLProvider';
 import { EnumConverterTheme } from '../App/theme';
 
 class AppProviders extends Component {
@@ -8,7 +9,7 @@ class AppProviders extends Component {
     return (
       <Store>
         <MuiThemeProvider theme={EnumConverterTheme}>
-          {this.props.children}
+          <GraphQLProvider>{this.props.children}</GraphQLProvider>
         </MuiThemeProvider>
       </Store>
     );

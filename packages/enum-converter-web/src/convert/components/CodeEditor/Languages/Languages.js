@@ -12,7 +12,7 @@ const styles = {
 
 class CodeEditorLanguages extends Component {
   handleSelectChange = event => {
-    this.props.onChange && this.props.onChange(event.target.value);
+    this.props.onChange(event.target.value);
   };
 
   render() {
@@ -24,7 +24,7 @@ class CodeEditorLanguages extends Component {
         value={value}
         onChange={this.handleSelectChange}
       >
-        {Object.entries(languages).map(([label, value]) => (
+        {languages.map(({ value, label }) => (
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>
@@ -36,8 +36,14 @@ class CodeEditorLanguages extends Component {
 
 CodeEditorLanguages.propTypes = {
   value: PropTypes.string.isRequired,
-  languages: PropTypes.object.isRequired,
+  languages: PropTypes.array.isRequired,
   onChange: PropTypes.func
+};
+
+CodeEditorLanguages.defaultProps = {
+  value: '',
+  languages: [],
+  onChange: () => {}
 };
 
 export default withStyles(styles)(CodeEditorLanguages);

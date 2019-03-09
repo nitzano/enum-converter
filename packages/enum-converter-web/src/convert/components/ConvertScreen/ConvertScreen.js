@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import React, { Component } from 'react';
+import { compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import {
   changeConfiguration,
@@ -10,12 +11,21 @@ import {
   convertEnum
 } from '../../actions/converter.actions';
 import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
+import { GET_SUFFIX } from '../CodeEditor/CodeEditor/get-suffix';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
 import styles from './ConvertScreen.module.scss';
+import { GET_LANGUAGES } from './get-languages';
+class ConvertScreen extends Component {
+  state = {
+    parsers: [],
+    dumpers: [],
+    suffixOptions: []
+  };
 
-class Convert extends Component {
   componentDidMount() {
     this.props.convertEnum();
+    this.getLanguagesOptions();
+    this.loadSuffixOptions();
   }
 
   componentDidUpdate(prevProps) {
@@ -27,7 +37,25 @@ class Convert extends Component {
     }
   }
 
+  async loadSuffixOptions() {
+    const { client } = this.props;
+    const {
+      data: { languageSuffix }
+    } = await client.query({ query: GET_SUFFIX });
+    this.setState({ suffixOptions: languageSuffix });
+  }
+
+  async getLanguagesOptions() {
+    const { client } = this.props;
+    const {
+      data: { parsers, dumpers }
+    } = await client.query({ query: GET_LANGUAGES });
+    this.setState({ parsers, dumpers });
+  }
+
   render() {
+    const { parsers, dumpers, suffixOptions } = this.state;
+
     return (
       <div className={styles.root}>
         <ConvertOptions />
@@ -36,6 +64,8 @@ class Convert extends Component {
             <CodeEditor
               code={this.props.source}
               language={this.props.configuration.from}
+              languageOptions={parsers}
+              suffixOptions={suffixOptions}
               onCodeChange={event => this.props.changeSource(event)}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ from: event })
@@ -59,6 +89,8 @@ class Convert extends Component {
             <CodeEditor
               code={this.props.destination}
               language={this.props.configuration.to}
+              languageOptions={dumpers}
+              suffixOptions={suffixOptions}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ to: event })
               }
@@ -83,7 +115,10 @@ const mapDispatchToProps = {
   convertEnum
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Convert);
+export default compose(
+  withApollo,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(ConvertScreen);

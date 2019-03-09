@@ -1,18 +1,19 @@
 import { createActions } from 'redux-actions';
-
+import { apolloClient } from '../../app/providers/graphql/apollo-client';
 import { store } from '../../store/components/Store/Store';
-
-import axios from 'axios';
+import { CONVERT_ENUM } from './convert-enum';
 
 async function apiConvertEnum() {
   const { source, configuration } = store.getState();
 
-  const response = await axios.post('/api/convert', {
-    enum: source,
-    configuration
+  const {
+    data: { convert }
+  } = await apolloClient.query({
+    query: CONVERT_ENUM,
+    variables: { source, configuration }
   });
 
-  return response.data.result;
+  return convert;
 }
 
 export const {
