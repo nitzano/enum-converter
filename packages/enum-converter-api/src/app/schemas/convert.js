@@ -23,9 +23,7 @@ export const convertResolvers = {
   Query: {
     convert: (parent, args, context, info) => {
       const { source, configuration } = args;
-      console.log('source', source);
-      const result = convertString(source, configuration);
-      return result;
+      return convertString(source, configuration);
     }
   }
 };
