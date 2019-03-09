@@ -1,41 +1,31 @@
-import axios from 'axios';
 import { saveAs } from 'file-saver';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { withApollo } from 'react-apollo';
 import CodeEditorActions from '../Actions/Actions';
 import CodeEditorCode from '../Code/Code';
 import CodeEditorLanguages from '../Languages/Languages';
 import styles from './CodeEditor.module.scss';
-
 class CodeEditor extends Component {
-  state = {
-    suffixOptions: {}
-  };
-
-  componentDidMount() {
-    axios.get('/api/options/enums').then(resp => {
-      this.setState({ suffixOptions: resp.data.LanguageSuffix });
-    });
-  }
-
   getFileSuffix() {
-    let suffix = 'txt';
+    const DEFAULT_SUFFIX = 'txt';
 
-    const languages = Object.entries(this.state.languageOptions);
-    const languageToken = languages.find(
-      pair => pair[1] === this.props.language
+    const { languageOptions, suffixOptions, language } = this.props;
+
+    const languageOption = languageOptions.find(
+      option => option.value === language
     );
 
-    if (languageToken) {
-      const suffixPair = Object.entries(this.state.suffixOptions).find(
-        pair => pair[0] === languageToken[0]
+    if (languageOption) {
+      const languageSuffix = suffixOptions.find(
+        suffixOption => suffixOption.label === languageOption.label
       );
-      if (suffixPair) {
-        suffix = suffixPair[1];
+      if (languageSuffix) {
+        return languageSuffix.value;
       }
     }
 
-    return suffix;
+    return DEFAULT_SUFFIX;
   }
 
   handleClear = () => {
@@ -128,6 +118,7 @@ CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   languageOptions: PropTypes.array.isRequired,
+  suffixOptions: PropTypes.array.isRequired,
   onCodeChange: PropTypes.func,
   onLanguageChange: PropTypes.func,
   showClear: PropTypes.bool,
@@ -138,6 +129,7 @@ CodeEditor.propTypes = {
 
 CodeEditor.defaultProps = {
   languageOptions: [],
+  suffixOptions: [],
   showClear: false,
   showDownload: false,
   showUpload: false,
@@ -145,4 +137,4 @@ CodeEditor.defaultProps = {
   onLanguageChange: () => {}
 };
 
-export default CodeEditor;
+export default withApollo(CodeEditor);

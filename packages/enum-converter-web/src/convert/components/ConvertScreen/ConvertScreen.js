@@ -11,18 +11,21 @@ import {
   convertEnum
 } from '../../actions/converter.actions';
 import CodeEditor from '../CodeEditor/CodeEditor/CodeEditor';
+import { GET_SUFFIX } from '../CodeEditor/CodeEditor/get-suffix';
 import ConvertOptions from '../ConvertOptions/ConvertOptions';
 import styles from './ConvertScreen.module.scss';
 import { GET_LANGUAGES } from './get-languages';
 class ConvertScreen extends Component {
   state = {
     parsers: [],
-    dumpers: []
+    dumpers: [],
+    suffixOptions: []
   };
 
   componentDidMount() {
     this.props.convertEnum();
-    this.getLanguages();
+    this.getLanguagesOptions();
+    this.loadSuffixOptions();
   }
 
   componentDidUpdate(prevProps) {
@@ -34,7 +37,15 @@ class ConvertScreen extends Component {
     }
   }
 
-  async getLanguages() {
+  async loadSuffixOptions() {
+    const { client } = this.props;
+    const {
+      data: { languageSuffix }
+    } = await client.query({ query: GET_SUFFIX });
+    this.setState({ suffixOptions: languageSuffix });
+  }
+
+  async getLanguagesOptions() {
     const { client } = this.props;
     const {
       data: { parsers, dumpers }
@@ -43,7 +54,7 @@ class ConvertScreen extends Component {
   }
 
   render() {
-    const { parsers, dumpers } = this.state;
+    const { parsers, dumpers, suffixOptions } = this.state;
 
     return (
       <div className={styles.root}>
@@ -54,6 +65,7 @@ class ConvertScreen extends Component {
               code={this.props.source}
               language={this.props.configuration.from}
               languageOptions={parsers}
+              suffixOptions={suffixOptions}
               onCodeChange={event => this.props.changeSource(event)}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ from: event })
@@ -78,6 +90,7 @@ class ConvertScreen extends Component {
               code={this.props.destination}
               language={this.props.configuration.to}
               languageOptions={dumpers}
+              suffixOptions={suffixOptions}
               onLanguageChange={event =>
                 this.props.changeConfiguration({ to: event })
               }
