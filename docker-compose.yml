@@ -4,9 +4,7 @@ services:
     build:
       context: .
       dockerfile: dev/Dockerfile
-    # command: 'yarn workspace enum-converter-api dev'
-    command: /bin/sh
-    tty: yes
+    command: 'yarn workspace enum-converter-api dev'
     environment:
       - NODE_ENV=development
     ports:
