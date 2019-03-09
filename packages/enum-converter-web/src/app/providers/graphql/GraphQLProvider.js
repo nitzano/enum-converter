@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
-import { client } from './apollo-client';
+import { apolloClient } from './apollo-client';
 
 class GraphQLProvider extends Component {
   render() {
     return (
-      <ApolloProvider client={client}>{this.props.children}</ApolloProvider>
+      <ApolloProvider client={apolloClient}>
+        {this.props.children}
+      </ApolloProvider>
     );
   }
 }

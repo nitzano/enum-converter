@@ -43,7 +43,6 @@ class ConvertScreen extends Component {
   }
 
   render() {
-    const { configuration } = this.props;
     const { parsers, dumpers } = this.state;
 
     return (
