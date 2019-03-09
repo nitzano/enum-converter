@@ -1,5 +1,8 @@
+import '@babel/polyfill';
 import { app } from './app';
 
-console.log('Enum Server started');
+const PORT = process.env.PORT || 5000;
 
-app.listen(process.env.PORT || 5000);
+console.log(`Enum Server started on port ${PORT}`);
+
+app.listen(PORT);
