@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import { app } from './app';
 
 console.log('Enum Server started');

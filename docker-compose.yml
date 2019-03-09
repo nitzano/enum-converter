@@ -4,7 +4,9 @@ services:
     build:
       context: .
       dockerfile: dev/Dockerfile
-    command: 'yarn workspace enum-converter-api dev'
+    # command: 'yarn workspace enum-converter-api dev'
+    command: /bin/sh
+    tty: yes
     environment:
       - NODE_ENV=development
     ports:
@@ -42,7 +44,6 @@ services:
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - build-volume:/usr/src/app/packages/enum-converter/build
-
 volumes:
   static-volume:
   build-volume:
