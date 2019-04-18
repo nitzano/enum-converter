@@ -40,7 +40,8 @@
     "build": "react-scripts build",
     "test": "CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "now-build": "react-scripts build"
   },
   "proxy": "http://api:5000",
   "eslintConfig": {

@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "name": "enum-converter",
+  "builds": [
+    {
+      "src": "packages/enum-converter-web/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "dest": "packages/enum-converter-web/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "packages/enum-converter-web/favicon.ico"
+    },
+    {
+      "src": "/asset-manifest.json",
+      "dest": "packages/enum-converter-web/asset-manifest.json"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "packages/enum-converter-web/manifest.json"
+    },
+    {
+      "src": "/precache-manifest.(.*)",
+      "dest": "packages/enum-converter-web/precache-manifest.$1"
+    },
+    {
+      "src": "/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "packages/enum-converter-web/service-worker.js"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "packages/enum-converter-web/index.html"
+    }
+  ]
+}
