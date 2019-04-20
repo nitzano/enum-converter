@@ -4,10 +4,11 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
-    "test": "yarn workspaces run test",
     "copy-static": "mv ./packages/enum-converter-web/build ./packages/enum-converter-api/static",
+    "deploy": "now --target production",
     "heroku-postbuild": "yarn build && yarn copy-static",
-    "start": "yarn workspace enum-converter-api start"
+    "start": "yarn workspace enum-converter-api start",
+    "test": "yarn workspaces run test"
   },
   "engines": {
     "yarn": "^1.10.0"
