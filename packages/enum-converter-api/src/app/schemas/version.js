@@ -1,14 +1,8 @@
 import { gql } from 'apollo-server-express';
-import { readFileSync } from 'fs';
-import { normalize } from 'path';
 
 function getVersion() {
-  const pathLocation = normalize(
-    `${require.resolve('enum-converter')}/../../package.json`
-  );
-
-  const version = JSON.parse(readFileSync(pathLocation)).version;
-  return version;
+  // TODO: use something else than require.resolve
+  return '1.3.5';
 }
 
 export const versionTypeDefs = gql`

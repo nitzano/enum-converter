@@ -6,9 +6,14 @@
       "src": "packages/enum-converter-web/package.json",
       "use": "@now/static-build",
       "config": { "distDir": "build" }
+    },
+    {
+      "src": "packages/enum-converter-api/src/server.js",
+      "use": "@now/node-server"
     }
   ],
   "routes": [
+    { "src": "/api/.*", "dest": "packages/enum-converter-api/src/server.js" },
     {
       "src": "/static/(.*)",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
