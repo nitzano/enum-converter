@@ -7,19 +7,30 @@
 
 > Convert Enums from one language to another
 
-Web Version :  https://enum-converter.herokuapp.com
+Web Version :  https://enum-converter.now.sh
 
 ---
 
-- [Enum Converter (enumc)](#enum-converter-enumc)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [CLI](#cli)
-    - [API](#api)
-  - [Supported languages](#supported-languages)
-  - [Options](#options)
-    - [Conversion](#conversion)
-    - [Styling](#styling)
+- [Enum Converter (enumc)](#Enum-Converter-enumc)
+  - [Supported languages](#Supported-languages)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+    - [CLI](#CLI)
+    - [API](#API)
+  - [Options](#Options)
+    - [Conversion](#Conversion)
+    - [Styling](#Styling)
+
+
+## Supported languages
+
+* [x] Java
+* [x] Json
+* [x] Python
+* [x] Typescript
+* [ ] C/C++
+* [ ] C#
+* [ ] Go
 
 
 ## Installation
@@ -85,15 +96,6 @@ modify('enums.py' {
 })
 ```
 
-## Supported languages
-
-* [x] Java
-* [x] Json
-* [x] Python
-* [x] Typescript
-* [ ] C/C++
-* [ ] C#
-* [ ] Go
 
 ## Options
 
