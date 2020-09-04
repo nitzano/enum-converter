@@ -5,12 +5,12 @@
   "builds": [
     {
       "src": "packages/enum-converter-web/package.json",
-      "use": "@now/static-build",
+      "use": "@vercel/static-build",
       "config": { "distDir": "build" }
     },
     {
       "src": "packages/enum-converter-api/src/server.js",
-      "use": "@now/node-server"
+      "use": "@vercel/node-server"
     }
   ],
   "routes": [
