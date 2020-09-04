@@ -7,19 +7,19 @@
 
 > Convert Enums from one language to another
 
-Web Version :  https://enum-converter.now.sh
+Web Version :  https://enum-converter.vercel.app
 
 ---
 
-- [Enum Converter (enumc)](#Enum-Converter-enumc)
-  - [Supported languages](#Supported-languages)
-  - [Installation](#Installation)
-  - [Usage](#Usage)
-    - [CLI](#CLI)
-    - [API](#API)
-  - [Options](#Options)
-    - [Conversion](#Conversion)
-    - [Styling](#Styling)
+- [Enum Converter (enumc)](#enum-converter-enumc)
+  - [Supported languages](#supported-languages)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [CLI](#cli)
+    - [API](#api)
+  - [Options](#options)
+    - [Conversion](#conversion)
+    - [Styling](#styling)
 
 
 ## Supported languages

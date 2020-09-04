@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: dev/Dockerfile
     image: enumc:base
-    container_name: enumc:base
+    container_name: enumc.base
     command: /bin/sh
     tty: yes
     volumes:
@@ -15,6 +15,7 @@ services:
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
   api:
     image: enumc:base
+    container_name: enumc.api
     command: "yarn workspace enum-converter-api dev"
     environment:
       - NODE_ENV=development
@@ -27,6 +28,7 @@ services:
       - build-volume:/usr/src/app/packages/enum-converter/build
   web:
     image: enumc:base
+    container_name: enumc.web
     environment:
       - CHOKIDAR_USEPOLLING=true
     command: "yarn workspace enum-converter-web dev"
@@ -40,6 +42,7 @@ services:
       - static-volume:/usr/src/app/packages/enum-converter-web/build
   lib:
     image: enumc:base
+    container_name: enumc.lib
     command: "yarn workspace enum-converter dev"
     volumes:
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
