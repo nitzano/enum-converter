@@ -1,46 +1,50 @@
-version: '3.4'
+version: "3.4"
 services:
-  api:
+  base:
     build:
       context: .
       dockerfile: dev/Dockerfile
-    command: 'yarn workspace enum-converter-api dev'
+    image: enumc:base
+    container_name: enumc:base
+    command: /bin/sh
+    tty: yes
+    volumes:
+      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
+      - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+  api:
+    image: enumc:base
+    command: "yarn workspace enum-converter-api dev"
     environment:
       - NODE_ENV=development
     ports:
-      - '5000:5000'
+      - "5000:5000"
     volumes:
       - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
-      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - static-volume:/usr/src/app/packages/enum-converter-api/static
       - build-volume:/usr/src/app/packages/enum-converter/build
   web:
-    build:
-      context: .
-      dockerfile: dev/Dockerfile
+    image: enumc:base
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: 'yarn workspace enum-converter-web dev'
+    command: "yarn workspace enum-converter-web dev"
     ports:
-      - '3000:3000'
-      - '9229:9229'
+      - "3000:3000"
+      - "9229:9229"
     volumes:
       - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
       - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
       - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
-      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - static-volume:/usr/src/app/packages/enum-converter-web/build
   lib:
-    build:
-      context: .
-      dockerfile: dev/Dockerfile
-    command: 'yarn workspace enum-converter dev'
+    image: enumc:base
+    command: "yarn workspace enum-converter dev"
     volumes:
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
-      - ./yarn.lock:/usr/src/app/yarn.lock:delegated
       - build-volume:/usr/src/app/packages/enum-converter/build
 volumes:
   static-volume:
