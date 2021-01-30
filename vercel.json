@@ -9,8 +9,8 @@
       "config": { "distDir": "build" }
     },
     {
-      "src": "packages/enum-converter-api/src/server.js",
-      "use": "@vercel/node-server"
+      "src": "packages/enum-converter-api/src/app.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
