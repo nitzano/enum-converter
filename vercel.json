@@ -10,7 +10,7 @@
     },
     {
       "src": "packages/enum-converter-api/src/server.js",
-      "use": "@vercel/node-server"
+      "use": "@vercel/node"
     }
   ],
   "routes": [
