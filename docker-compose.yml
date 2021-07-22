@@ -42,11 +42,13 @@ services:
   lib:
     image: enumc:base
     command: "yarn workspace enum-converter dev"
+    working_dir: /usr/src/app/packages/enum-converter
     volumes_from:
       - base          
     volumes:
-      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src      
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
+      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src      
+      - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json
       - build-volume:/usr/src/app/packages/enum-converter/build
 volumes:
   static-volume:
