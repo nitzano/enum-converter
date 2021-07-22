@@ -9,7 +9,7 @@ services:
     tty: yes
     volumes:
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
-      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json      
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
   api:
@@ -19,9 +19,10 @@ services:
       - NODE_ENV=development
     ports:
       - "5000:5000"
+    volumes_from:
+      - base
     volumes:
-      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
-      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
+      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src      
       - static-volume:/usr/src/app/packages/enum-converter-api/static
       - build-volume:/usr/src/app/packages/enum-converter/build
   web:
@@ -32,17 +33,19 @@ services:
     ports:
       - "3000:3000"
       - "9229:9229"
+    volumes_from:
+      - base      
     volumes:
       - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
-      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
-      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
+      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public      
       - static-volume:/usr/src/app/packages/enum-converter-web/build
   lib:
     image: enumc:base
     command: "yarn workspace enum-converter dev"
+    volumes_from:
+      - base          
     volumes:
-      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
-      - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
+      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src      
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - build-volume:/usr/src/app/packages/enum-converter/build
 volumes:
