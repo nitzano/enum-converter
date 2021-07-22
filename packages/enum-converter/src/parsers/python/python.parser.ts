@@ -33,11 +33,12 @@ export class PythonParser extends FileParser {
           node.body.body.length > 1 &&
           this.isEnumCallExpression(node.body.body[0])
         ) {
-          const entryName = node.id.name;
+          const entryName = node?.id?.name;
           const entryValues: EnumValue[] = this.extractEnumValues(node);
-
-          const enumEntry = new EnumEntry(entryName, entryValues);
-          entries.push(enumEntry);
+          if (entryName) {
+            const enumEntry = new EnumEntry(entryName, entryValues);
+            entries.push(enumEntry);
+          }
         }
       }
     });
