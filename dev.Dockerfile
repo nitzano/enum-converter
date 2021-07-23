@@ -10,4 +10,6 @@ COPY packages/enum-converter-web/package.json ./packages/enum-converter-web/pack
 
 RUN yarn install --pure-lockfile --non-interactive
 
+RUN yarn workspace enum-converter run build
+
 COPY . .
