@@ -10,6 +10,16 @@ services:
       - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+  lib:
+    image: enumc:base
+    command: "yarn dev"
+    working_dir: /usr/src/app/packages/enum-converter
+    volumes_from:
+      - base
+    volumes:
+      - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
+      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
+      - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json      
   api:
     image: enumc:base
     working_dir: /usr/src/app/packages/enum-converter-api
@@ -39,15 +49,5 @@ services:
       - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
       - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
       - static-volume:/usr/src/app/packages/enum-converter-web/build
-  lib:
-    image: enumc:base
-    command: "yarn dev"
-    working_dir: /usr/src/app/packages/enum-converter
-    volumes_from:
-      - base
-    volumes:
-      - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
-      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
-      - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json
 volumes:
   static-volume:
