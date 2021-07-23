@@ -31,21 +31,22 @@
     "build/"
   ],
   "scripts": {
-    "prebuild": "yarn run clean:soft",
-    "build": "tsc",
-    "build:watch": "yarn run build -w",
     "build:prod": "yarn run build -p tsconfig.prod.json",
-    "cli": "ts-node ./src/cli/cli.ts",
-    "clean": "rimraf build",
+    "build:watch": "yarn run build -w",
+    "build": "tsc",
     "clean:soft": "rimraf build/*",
-    "predebug": "yarn run build",
+    "clean": "rimraf build",
+    "cli": "ts-node ./src/cli/cli.ts",
     "debug": "node --inspect-brk=0.0.0.0:9229 --nolazy ./build/src/cli/cli.js",
-    "lint": "tslint -p tsconfig.json",
+    "dev": "yarn run build:watch",
     "lint:fix": "yarn run lint -- --fix",
-    "test": "jest",
+    "lint": "tslint -p tsconfig.json",
+    "prebuild": "yarn run clean:soft",
+    "predebug": "yarn run build",
+    "prepare": "yarn build",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/jest -i",
     "test:watch": "jest --watch",
-    "dev": "yarn run build:watch"
+    "test": "jest"
   },
   "dependencies": {
     "antlr4ts": "^0.4.1-alpha.0",
