@@ -3,7 +3,7 @@ services:
   base:
     build:
       context: .
-      dockerfile: dev.dockerfile
+      dockerfile: dev.Dockerfile
     image: enumc:base
     volumes:
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
