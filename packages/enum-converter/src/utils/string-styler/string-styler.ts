@@ -1,4 +1,5 @@
-const changeCase = require('change-case');
+import changeCase from 'change-case';
+import { upperCase } from "upper-case";
 import { StringStyle } from './string-styler.enums';
 
 /**
@@ -39,7 +40,7 @@ export function styleString(source: string, stringStyle: StringStyle) {
       case StringStyle.TitleCase:
         return changeCase.titleCase(source);
       case StringStyle.UpperCase:
-        return changeCase.upperCase(source);
+        return upperCase(source);
     }
   }
 
