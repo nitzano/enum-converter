@@ -1,9 +1,6 @@
 import {
-  AssignmentExpression,
-  FunctionDeclaration,
-  Literal,
-  Node,
-  Program
+  AssignmentExpression, FunctionDeclaration,
+  Literal, Node, Program
 } from 'estree';
 import { walk } from 'estree-walker';
 import filbert from 'filbert';
@@ -25,7 +22,7 @@ export class PythonParser extends FileParser {
     const entries: EnumEntry[] = [];
     // scan ast for enums
     walk(ast, {
-      enter: (node: Node, parent: Node) => {
+      enter: (node: Node , parent: Node ) => {
         if (
           node &&
           node.type === 'FunctionDeclaration' &&
@@ -46,7 +43,7 @@ export class PythonParser extends FileParser {
     return entries;
   }
 
-  private isEnumCallExpression(node: Node): boolean {
+  private isEnumCallExpression(node: Node ): boolean {
     if (
       node &&
       node.type === 'ExpressionStatement' &&
@@ -70,7 +67,7 @@ export class PythonParser extends FileParser {
     const enumValues: EnumValue[] = [];
 
     if (node && node.body && node.body.body.length > 0) {
-      node.body.body.forEach(child => {
+      node.body.body.forEach( (child: any) => {
         if (
           child.type === 'ExpressionStatement' &&
           child.expression &&
