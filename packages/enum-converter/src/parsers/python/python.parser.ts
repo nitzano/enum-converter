@@ -5,6 +5,8 @@ import {
   Node,
   Program
 } from 'estree';
+import { walk } from 'estree-walker';
+import filbert from 'filbert';
 import { EnumEntry } from '../../models/enum-entry/enum-entry.model';
 import {
   EnumValue,
@@ -13,8 +15,6 @@ import {
 import { Language } from '../../utils/language.enums';
 import { FileParser } from '../file.parser';
 
-const filbert = require('filbert');
-const walk = require('estree-walker').walk;
 
 export class PythonParser extends FileParser {
   static language: Language = Language.Python;

@@ -12,4 +12,4 @@ RUN yarn install --pure-lockfile --non-interactive
 
 COPY . .
 
-RUN yarn workspace enum-converter run build
+# RUN yarn workspace enum-converter run build
