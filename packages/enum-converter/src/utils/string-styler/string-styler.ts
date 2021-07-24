@@ -1,4 +1,15 @@
-import changeCase from 'change-case';
+import {
+  camelCase, constantCase,
+  dotCase,
+  headerCase, paramCase,
+  pascalCase,
+  pathCase,
+  sentenceCase,
+  snakeCase
+} from "change-case";
+import { lowerCase } from "lower-case";
+import { swapCase } from "swap-case";
+import { titleCase } from "title-case";
 import { upperCase } from "upper-case";
 import { StringStyle } from './string-styler.enums';
 
@@ -14,31 +25,31 @@ export function styleString(source: string, stringStyle: StringStyle) {
   if (source && source.length) {
     switch (stringStyle) {
       case StringStyle.CamelCase:
-        return changeCase.camel(source);
+        return camelCase(source);
       case StringStyle.ConstantCase:
-        return changeCase.constantCase(source);
+        return constantCase(source);
       case StringStyle.DotCase:
-        return changeCase.dotCase(source);
+        return dotCase(source);
       case StringStyle.HeaderCase:
-        return changeCase.headerCase(source);
+        return headerCase(source);
       case StringStyle.KebabCase:
-        return changeCase.paramCase(source);
+        return paramCase(source);
       case StringStyle.LowerCase:
-        return changeCase.lowerCase(source);
+        return lowerCase(source);
       case StringStyle.ParamCase:
-        return changeCase.paramCase(source);
+        return paramCase(source);
       case StringStyle.PascalCase:
-        return changeCase.pascalCase(source);
+        return pascalCase(source);
       case StringStyle.PathCase:
-        return changeCase.pathCase(source);
+        return pathCase(source);
       case StringStyle.SentenceCase:
-        return changeCase.sentenceCase(source);
+        return sentenceCase(source);
       case StringStyle.SnakeCase:
-        return changeCase.snakeCase(source);
+        return snakeCase(source);
       case StringStyle.SwapCase:
-        return changeCase.swapCase(source);
+        return swapCase(source);
       case StringStyle.TitleCase:
-        return changeCase.titleCase(source);
+        return titleCase(source);
       case StringStyle.UpperCase:
         return upperCase(source);
     }
