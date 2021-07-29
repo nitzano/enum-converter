@@ -1,7 +1,7 @@
 import * as path from 'path';
-
 import { EnumValue } from '../../models/enum-value/enum-value.model';
 import { PythonParser } from './python.parser';
+
 
 describe('Python Parser', () => {
   it('should parse the sample file', () => {

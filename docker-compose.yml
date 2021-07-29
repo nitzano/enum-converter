@@ -19,6 +19,7 @@ services:
     volumes:
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
+      - ./packages/enum-converter/build:/usr/build/app/packages/enum-converter/build
       - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json      
   api:
     image: enumc:base
