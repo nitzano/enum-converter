@@ -18,7 +18,7 @@ export class PythonParser extends FileParser {
     walk(ast, {
       enter: (node: BaseNode , parent: BaseNode ) => {
         if (node.type === "FunctionDeclaration") {
-          let functionDeclaration: FunctionDeclaration = <FunctionDeclaration>node ;
+          let functionDeclaration: FunctionDeclaration = node as FunctionDeclaration;
           if (functionDeclaration.body.body.length > 1) {
             if (this.isEnumCallExpression(functionDeclaration.body.body[0])) {
               const entryName = functionDeclaration?.id?.name;
