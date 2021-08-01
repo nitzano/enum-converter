@@ -2,7 +2,7 @@ name: Run tests
 on: [push]
 
 jobs:
-  Lint:
+  Test-Enum-Converter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
