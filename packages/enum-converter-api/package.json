@@ -33,7 +33,7 @@
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.3.4",
-    "nodemon": "^1.18.10"
+    "nodemon": "^2.0.12"
   },
   "resolutions": {
     "@types/express-serve-static-core": "^4.17.21"
