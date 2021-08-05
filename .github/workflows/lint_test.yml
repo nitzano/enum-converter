@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  Test-Enum-Converter:
+  test_enumc:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
