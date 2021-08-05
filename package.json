@@ -7,6 +7,7 @@
     "copy-static": "mv ./packages/enum-converter-web/build ./packages/enum-converter-api/static",
     "deploy": "now --target production",
     "heroku-postbuild": "yarn build && yarn copy-static",
+    "prepare": "yarn workspace enum-converter prepare",
     "start": "yarn workspace enum-converter-api start",
     "test": "yarn workspaces run test"
   },
