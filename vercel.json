@@ -6,18 +6,25 @@
     {
       "src": "packages/enum-converter-web/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "config": {
+        "distDir": "build"
+      }
     },
     {
-      "src": "packages/enum-converter-api/src/app.js",
+      "src": "packages/enum-converter-api/src/server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/api/.*", "dest": "packages/enum-converter-api/src/server.js" },
+    {
+      "src": "/api/.*",
+      "dest": "packages/enum-converter-api/src/server.js"
+    },
     {
       "src": "/static/(.*)",
-      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      },
       "dest": "packages/enum-converter-web/static/$1"
     },
     {
@@ -38,12 +45,16 @@
     },
     {
       "src": "/service-worker.js",
-      "headers": { "cache-control": "s-maxage=0" },
+      "headers": {
+        "cache-control": "s-maxage=0"
+      },
       "dest": "packages/enum-converter-web/service-worker.js"
     },
     {
       "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=0" },
+      "headers": {
+        "cache-control": "s-maxage=0"
+      },
       "dest": "packages/enum-converter-web/index.html"
     }
   ]
