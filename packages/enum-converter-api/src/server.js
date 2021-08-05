@@ -1,8 +1,11 @@
-import '@babel/polyfill';
-import { app } from './app';
+import "@babel/polyfill";
+import { startApolloServer } from "./app";
 
-const PORT = process.env.PORT || 5000;
+async function startServer() {
+  const app = await startApolloServer();
+  const PORT = process.env.PORT || 5000;
+  console.log(`Enum Server started on port ${PORT}`);
+  app.listen(PORT);
+}
 
-console.log(`Enum Server started on port ${PORT}`);
-
-app.listen(PORT);
+startServer();

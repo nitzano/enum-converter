@@ -1,29 +1,33 @@
 import express from "express";
 import morgan from "morgan";
 import apiRouter from "./app/api";
-import { apolloServer } from "./app/schemas/schema";
+import { apolloServer } from "./app/schemas/apollo-server";
 
-export const app = express();
+export async function startApolloServer() {
+  await apolloServer.start();
 
-// middleware
-app.use(express.json());
-app.use(morgan("tiny"));
+  const app = express();
 
-// settings
-app.set("json spaces", 2);
+  // middleware
+  app.use(express.json());
+  app.use(morgan("tiny"));
 
-// routes
-app.use("/api", apiRouter);
+  // settings
+  app.set("json spaces", 2);
 
-// graphql
-apolloServer.applyMiddleware({ app, path: "/api/graphql" });
+  // routes
+  app.use("/api", apiRouter);
 
-// static
-app.use(express.static("static"));
+  // graphql
+  apolloServer.applyMiddleware({ app, path: "/api/graphql" });
 
-app.use((err, req, res, next) => {
-  res.status(err.status ? err.status : 500).json({ error: err.message });
-  next(err);
-});
+  // static
+  app.use(express.static("static"));
 
-module.exports = app;
+  app.use((err, req, res, next) => {
+    res.status(err.status ? err.status : 500).json({ error: err.message });
+    next(err);
+  });
+
+  return app;
+}
