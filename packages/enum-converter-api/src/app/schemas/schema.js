@@ -1,4 +1,4 @@
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
 import { convertResolvers, convertTypeDefs } from "./convert";
 import { optionsResolvers, optionsTypeDefs } from "./options";
 import { queryResolvers, queryTypeDef } from "./query";
@@ -18,4 +18,6 @@ const resolvers = [
   optionsResolvers,
 ];
 
-export const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+export const apolloServer = new ApolloServer({ schema });
