@@ -37,7 +37,7 @@ export class PythonParser extends FileParser {
   }
 
   private isEnumCallExpression(node: BaseNode): boolean {
-    if (node && node.type === "ExpressionStatement") {      
+    if (node?.type === "ExpressionStatement") {      
       const expressionStatement  = node as ExpressionStatement;
 
       const expression = expressionStatement.expression;
