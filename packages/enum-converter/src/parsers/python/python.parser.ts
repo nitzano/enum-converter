@@ -1,20 +1,11 @@
-import {
-  AssignmentExpression,
-  FunctionDeclaration,
-  Literal,
-  Node,
-  Program
-} from 'estree';
+import { AssignmentExpression, BaseNode, ExpressionStatement, FunctionDeclaration, Literal, Program } from 'estree';
+import { walk } from 'estree-walker';
+import filbert from 'filbert';
+import { EnumValue, EnumValueType } from '../../models';
 import { EnumEntry } from '../../models/enum-entry/enum-entry.model';
-import {
-  EnumValue,
-  EnumValueType
-} from '../../models/enum-value/enum-value.model';
 import { Language } from '../../utils/language.enums';
 import { FileParser } from '../file.parser';
 
-const filbert = require('filbert');
-const walk = require('estree-walker').walk;
 
 export class PythonParser extends FileParser {
   static language: Language = Language.Python;
@@ -25,20 +16,19 @@ export class PythonParser extends FileParser {
     const entries: EnumEntry[] = [];
     // scan ast for enums
     walk(ast, {
-      enter: (node: Node, parent: Node) => {
-        if (
-          node &&
-          node.type === 'FunctionDeclaration' &&
-          node.body &&
-          node.body.body.length > 1 &&
-          this.isEnumCallExpression(node.body.body[0])
-        ) {
-          const entryName = node?.id?.name;
-          const entryValues: EnumValue[] = this.extractEnumValues(node);
-          if (entryName) {
-            const enumEntry = new EnumEntry(entryName, entryValues);
-            entries.push(enumEntry);
-          }
+      enter: (node: BaseNode , parent: BaseNode ) => {
+        if (node.type === "FunctionDeclaration") {
+          let functionDeclaration: FunctionDeclaration = node as FunctionDeclaration;
+          if (functionDeclaration.body.body.length > 1) {
+            if (this.isEnumCallExpression(functionDeclaration.body.body[0])) {
+              const entryName = functionDeclaration?.id?.name;
+              const entryValues: EnumValue[] = this.extractEnumValues(functionDeclaration);
+              if (entryName) {
+                const enumEntry = new EnumEntry(entryName, entryValues);
+                entries.push(enumEntry);
+              }
+            }
+          }          
         }
       }
     });
@@ -46,24 +36,31 @@ export class PythonParser extends FileParser {
     return entries;
   }
 
-  private isEnumCallExpression(node: Node): boolean {
-    if (
-      node &&
-      node.type === 'ExpressionStatement' &&
-      node.expression &&
-      node.expression.type === 'CallExpression' &&
-      node.expression.arguments &&
-      node.expression.arguments.length === 1 &&
-      node.expression.arguments[0].type === 'ThisExpression' &&
-      node.expression.callee &&
-      node.expression.callee.type === 'MemberExpression' &&
-      node.expression.callee.object &&
-      node.expression.callee.object.type === 'Identifier' &&
-      ['Enum', 'IntEnum'].includes(node.expression.callee.object.name)
-    ) {
-      return true;
+  private isEnumCallExpression(node: BaseNode): boolean {
+    if (node?.type === "ExpressionStatement") {      
+      const expressionStatement  = node as ExpressionStatement;
+
+      const expression = expressionStatement.expression;
+
+      if (expression.type === 'CallExpression') {
+
+        if (expression.arguments.length === 1 && expression.arguments[0].type === 'ThisExpression') {
+          const argument = expression.arguments[0];
+          if (argument.type === 'ThisExpression' && expression.callee.type === 'MemberExpression' && expression.callee.object && expression.callee.object.type === 'Identifier') {
+            const indentifier = expression.callee.object
+
+            if (  ['Enum', 'IntEnum'].includes(indentifier.name)) {
+              return true
+            }
+          }
+        }
+      }
     }
+
     return false;
+
+
+
   }
 
   private extractEnumValues(node: FunctionDeclaration): EnumValue[] {
@@ -130,3 +127,4 @@ export class PythonParser extends FileParser {
     );
   }
 }
+

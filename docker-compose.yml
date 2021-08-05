@@ -3,18 +3,28 @@ services:
   base:
     build:
       context: .
-      dockerfile: dev/Dockerfile
+      dockerfile: dev.Dockerfile
     image: enumc:base
-    command: /bin/sh
-    tty: yes
     volumes:
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
-      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json      
+      - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+  lib:
+    image: enumc:base
+    command: "yarn dev"
+    working_dir: /usr/src/app/packages/enum-converter
+    volumes_from:
+      - base
+    volumes:
+      - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
+      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
+      - ./packages/enum-converter/build:/usr/build/app/packages/enum-converter/build
+      - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json      
   api:
     image: enumc:base
-    command: "yarn workspace enum-converter-api dev"
+    working_dir: /usr/src/app/packages/enum-converter-api
+    command: "yarn dev"
     environment:
       - NODE_ENV=development
     ports:
@@ -22,11 +32,12 @@ services:
     volumes_from:
       - base
     volumes:
-      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src      
+      - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
       - static-volume:/usr/src/app/packages/enum-converter-api/static
-      - build-volume:/usr/src/app/packages/enum-converter/build
   web:
     image: enumc:base
+    working_dir: /usr/src/app/packages/enum-converter-web
+    command: "yarn dev"
     environment:
       - CHOKIDAR_USEPOLLING=true
     command: "yarn workspace enum-converter-web dev"
@@ -34,22 +45,10 @@ services:
       - "3000:3000"
       - "9229:9229"
     volumes_from:
-      - base      
+      - base
     volumes:
       - ./packages/enum-converter-web/src:/usr/src/app/packages/enum-converter-web/src
-      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public      
+      - ./packages/enum-converter-web/public:/usr/src/app/packages/enum-converter-web/public
       - static-volume:/usr/src/app/packages/enum-converter-web/build
-  lib:
-    image: enumc:base
-    command: "yarn workspace enum-converter dev"
-    working_dir: /usr/src/app/packages/enum-converter
-    volumes_from:
-      - base          
-    volumes:
-      - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
-      - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src      
-      - ./packages/enum-converter/tsconfig.json:/usr/src/app/packages/enum-converter/tsconfig.json
-      - build-volume:/usr/src/app/packages/enum-converter/build
 volumes:
   static-volume:
-  build-volume:
