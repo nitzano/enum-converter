@@ -5,7 +5,7 @@ const packageJson = require('../../package.json');
 
 describe('CLI', () => {
   let cliPath: string;
-  const samplesPath = resolve(`${__dirname}/../../__tests__/samples`);
+  const samplesPath = resolve(`${__dirname}/../__tests__/samples`);
   const pythonSampleFile = `${samplesPath}/cli/python.cli.sample.py`;
 
   beforeAll(() => {

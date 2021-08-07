@@ -1,13 +1,13 @@
 import * as path from 'path';
-
 import { EnumValue } from '../../models/enum-value/enum-value.model';
 import { JavaParser } from './java.parser';
+
 
 describe('Java Parser', () => {
   it('should parse the sample file', () => {
     const fullPath = path.resolve(
       __dirname,
-      '../../../__tests__/samples/basic/java.basic.sample.java'
+      '../../__tests__/samples/basic/java.basic.sample.java'
     );
     const parser = new JavaParser();
     parser.parseFile(fullPath);

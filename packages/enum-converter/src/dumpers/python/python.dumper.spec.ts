@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { EnumFile } from '../..';
-import { SAMPLE_ENUM_FILE } from '../../../__tests__/utils/utils';
 import { PythonParser } from '../../parsers/python/python.parser';
+import { SAMPLE_ENUM_FILE } from '../../__tests__/utils/utils';
 import { PythonDumper } from './python.dumper';
 
 describe('Python Dumper', () => {
@@ -16,7 +16,7 @@ describe('Python Dumper', () => {
   it('should dump the basic sample file', () => {
     const fullPath = resolve(
       __dirname,
-      '../../../__tests__/samples/basic/python.basic.sample.py'
+      '../../__tests__/samples/basic/python.basic.sample.py'
     );
     const parser = new PythonParser();
     parser.parseFile(fullPath);
