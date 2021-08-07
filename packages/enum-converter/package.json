@@ -22,7 +22,7 @@
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "bin": {
-    "enumc": "./build/src/cli/cli.js"
+    "enumc": "./build/cli/cli.js"
   },
   "files": [
     "CHANGELOG",
