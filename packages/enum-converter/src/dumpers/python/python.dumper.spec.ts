@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { EnumFile } from '../..';
-import { SAMPLE_ENUM_FILE } from '../../../__tests__/utils/utils';
 import { PythonParser } from '../../parsers/python/python.parser';
+import { SAMPLE_ENUM_FILE } from '../../__tests__/utils/utils';
 import { PythonDumper } from './python.dumper';
 
 describe('Python Dumper', () => {

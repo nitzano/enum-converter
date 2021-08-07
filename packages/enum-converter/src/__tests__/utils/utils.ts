@@ -1,6 +1,6 @@
-import { EnumEntry } from '../../src/models/enum-entry/enum-entry.model';
-import { EnumFile } from '../../src/models/enum-file/enum-file.model';
-import { EnumValue } from '../../src/models/enum-value/enum-value.model';
+import { EnumEntry } from '../../models/enum-entry/enum-entry.model';
+import { EnumFile } from '../../models/enum-file/enum-file.model';
+import { EnumValue } from '../../models/enum-value/enum-value.model';
 
 // set up file
 export const SAMPLE_ENUM_FILE: EnumFile = new EnumFile();
