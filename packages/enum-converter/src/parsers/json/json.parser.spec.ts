@@ -12,7 +12,7 @@ describe('Json Parser', () => {
   });
 
   it('should parse the basic sample file', () => {
-    const samplePath = resolve(__dirname, '../../../__tests__/samples/basic/json.basic.sample.json')
+    const samplePath = resolve(__dirname, '../../__tests__/samples/basic/json.basic.sample.json')
     parser.parseFile(samplePath);
     const enumFile: EnumFile = parser.enumFile;
 

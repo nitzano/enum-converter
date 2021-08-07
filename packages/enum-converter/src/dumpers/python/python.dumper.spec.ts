@@ -16,7 +16,7 @@ describe('Python Dumper', () => {
   it('should dump the basic sample file', () => {
     const fullPath = resolve(
       __dirname,
-      '../../../__tests__/samples/basic/python.basic.sample.py'
+      '../../__tests__/samples/basic/python.basic.sample.py'
     );
     const parser = new PythonParser();
     parser.parseFile(fullPath);
