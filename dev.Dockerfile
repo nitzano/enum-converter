@@ -11,5 +11,3 @@ COPY packages/enum-converter-web/package.json ./packages/enum-converter-web/pack
 RUN yarn install
 
 COPY . .
-
-RUN yarn workspace enum-converter prepare
