@@ -10,13 +10,15 @@ services:
       - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
       - ./yarn.lock:/usr/src/app/yarn.lock:delegated
+      - ./.yarn:/usr/src/app/.yarn
+      # - ./.yarnrc.yml:/usr/src/app/.yarnrc.yml
   lib:
     image: enumc:base
     command: "yarn dev"
     working_dir: /usr/src/app/packages/enum-converter
     volumes_from:
       - base
-    volumes:
+    volumes:      
       - ./packages/enum-converter/build:/usr/src/app/packages/enum-converter/build
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./packages/enum-converter/README.md:/usr/src/app/packages/enum-converter/README.md
