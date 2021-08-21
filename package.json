@@ -17,5 +17,8 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
   }
 }
