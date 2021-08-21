@@ -28,7 +28,6 @@ services:
   api:
     image: enumc:base
     working_dir: /usr/src/app/packages/enum-converter-api
-    command: "yarn dev"
     environment:
       - NODE_ENV=development
     ports:
@@ -38,6 +37,9 @@ services:
     volumes:
       - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
       - static-volume:/usr/src/app/packages/enum-converter-api/static
+    # command: yarn dev
+    command: /bin/sh
+    tty: yes
   web:
     image: enumc:base
     working_dir: /usr/src/app/packages/enum-converter-web
