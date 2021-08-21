@@ -1,6 +1,6 @@
 {
   "private": true,
-  "author": "Nitzan Ohana",'
+  "author": "Nitzan Ohana",
   "engines": {
     "yarn": "^1.22.0"
   },
