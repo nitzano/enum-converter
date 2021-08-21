@@ -23,7 +23,7 @@
   "dependencies": {
     "apollo-server-express": "2.25.2",
     "core-js": "^3.16.2",
-    "enum-converter": "workspace:packages/enum-converter",
+    "enum-converter": "alpha",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "lodash": "^4.17.21",
