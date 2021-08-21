@@ -21,8 +21,8 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
     "apollo-server-express": "2.25.2",
+    "core-js": "^3.16.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "morgan": "^1.9.0"
