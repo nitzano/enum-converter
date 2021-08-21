@@ -2905,7 +2905,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/yargs@npm:^17.0.2":
+"@types/yargs@npm:latest":
   version: 17.0.2
   resolution: "@types/yargs@npm:17.0.2"
   dependencies:
@@ -7319,7 +7319,7 @@ __metadata:
     "@types/lodash": ^4.14.171
     "@types/node": ^16.4.0
     "@types/tmp": ^0.2.1
-    "@types/yargs": ^17.0.2
+    "@types/yargs": latest
     antlr4ts: ^0.4.1-alpha.0
     change-case: 4.1.2
     estree-walker: 2.0.2
@@ -7340,7 +7340,7 @@ __metadata:
     tslint-plugin-prettier: 1.3.0
     typescript: ^4.3.5
     upper-case: ^2.0.2
-    yargs: 11.0.0
+    yargs: latest
   bin:
     enumc: ./build/cli/cli.js
   languageName: unknown
@@ -19938,6 +19938,21 @@ typescript@^4.3.5:
     y18n: ^3.2.1
     yargs-parser: ^5.0.1
   checksum: 0c330ce1338cd9f293157bf8955af6833ae59032ab1bc936510ce7a216de9bb65b05b39a82ff0e7359bfb643342cc05de5049ce50ee9404b0818f65911fb59a5
+  languageName: node
+  linkType: hard
+
+"yargs@npm:latest":
+  version: 17.1.1
+  resolution: "yargs@npm:17.1.1"
+  dependencies:
+    cliui: ^7.0.2
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.0
+    y18n: ^5.0.5
+    yargs-parser: ^20.2.2
+  checksum: b05a9467937172e01a4af7a7ad4361a22ee510cd12d1d5a3ad3b4c2e57eb8c35ca94ee22e4bdfbb40fe693fbf8000771e41824f77f6b224f1496c57f20f192b6
   languageName: node
   linkType: hard
 

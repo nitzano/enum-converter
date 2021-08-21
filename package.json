@@ -10,9 +10,6 @@
     "start": "yarn workspace enum-converter-api start",
     "test": "yarn workspaces run test"
   },
-  "engines": {
-    "yarn": "^1.10.0"
-  },
   "workspaces": {
     "packages": [
       "packages/*"
