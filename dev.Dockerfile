@@ -1,6 +1,7 @@
 FROM node:lts
 WORKDIR /usr/src/app
 
+RUN npm install -g yarn@latest
 
 COPY ["package.json", "yarn.lock","./"]
 
