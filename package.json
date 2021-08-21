@@ -1,6 +1,9 @@
 {
   "private": true,
-  "author": "Nitzan Ohana",
+  "author": "Nitzan Ohana",'
+  "engines": {
+    "yarn": "^1.22.0"
+  },
   "scripts": {
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
@@ -17,5 +20,9 @@
   },
   "installConfig": {
     "hoistingLimits": "workspaces"
-  }
+  },
+  "nohoist": [
+    "**/jest",
+    "**/jest/**"
+  ]
 }
