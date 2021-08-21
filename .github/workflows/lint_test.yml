@@ -21,7 +21,7 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: yarn --frozen-lockfile
 
       - name: Test enum converter
         run: yarn workspace enum-converter test
