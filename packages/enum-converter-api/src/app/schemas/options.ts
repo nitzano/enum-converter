@@ -5,20 +5,20 @@ import {
   LanguageSuffix,
   parsers,
   StringStyle,
-  ValuesOrder,
+  ValuesOrder
 } from "enum-converter";
 import { capitalize, entries, map, values } from "lodash";
 
-function createLanguageOptions(obj) {
+function createLanguageOptions(obj: any) {
   return values(obj)
-    .map((entry) => entry.language)
+    .map((entry) => entry?.language)
     .map((entry) => ({
       value: entry,
       label: splitByCapital(capitalize(entry)),
     }));
 }
 
-function flatOption(obj) {
+function flatOption(obj: any) {
   return map(entries(obj), (element) => ({
     value: element[1],
     label: splitByCapital(element[0]),

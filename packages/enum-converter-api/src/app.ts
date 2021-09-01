@@ -29,8 +29,7 @@ app.use(
     next: express.NextFunction
   ) => {
     res.status(err.status ? err.status : 500).json({ error: err.message });
-    next(err);
+    return next(err);
   }
 );
 
-module.exports = app;

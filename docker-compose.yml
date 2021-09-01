@@ -18,7 +18,7 @@ services:
     volumes_from:
       - base
     volumes:
-      - ./packages/enum-converter/build:/usr/src/app/packages/enum-converter/build
+      # - ./packages/enum-converter/build:/usr/src/app/packages/enum-converter/build
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./packages/enum-converter/README.md:/usr/src/app/packages/enum-converter/README.md
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
