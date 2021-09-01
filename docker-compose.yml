@@ -6,6 +6,7 @@ services:
       dockerfile: dev.Dockerfile
     image: enumc:base
     volumes:
+      - ./package.json:/usr/src/app/package.json
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
