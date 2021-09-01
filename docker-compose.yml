@@ -33,7 +33,11 @@ services:
       - "5000:5000"
     volumes_from:
       - base
+    command: /bin/sh
+    tty: yes
     volumes:
+      - ./packages/enum-converter-api/tsconfig.json:/usr/src/app/packages/enum-converter-api/tsconfig.json
+      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
       - static-volume:/usr/src/app/packages/enum-converter-api/static
   web:
