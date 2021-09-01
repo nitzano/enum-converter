@@ -11,14 +11,14 @@
       }
     },
     {
-      "src": "packages/enum-converter-api/src/handler.js",
+      "src": "packages/enum-converter-api/src/handler.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/.*",
-      "dest": "packages/enum-converter-api/src/handler.js"
+      "dest": "packages/enum-converter-api/src/handler.ts"
     },
     {
       "src": "/static/(.*)",
