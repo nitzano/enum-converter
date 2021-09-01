@@ -21,9 +21,16 @@ apolloServer.applyMiddleware({ app, path: "/api/graphql" });
 // static
 app.use(express.static("static"));
 
-app.use((err, req, res, next) => {
-  res.status(err.status ? err.status : 500).json({ error: err.message });
-  next(err);
-});
+app.use(
+  (
+    err: express.ErrorHandler,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    res.status(err.status ? err.status : 500).json({ error: err.message });
+    next(err);
+  }
+);
 
 module.exports = app;
