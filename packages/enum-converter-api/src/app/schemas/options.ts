@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from "apollo-server-express";
 import {
   dumpers,
   EnumsOrder,
@@ -6,24 +6,27 @@ import {
   parsers,
   StringStyle,
   ValuesOrder
-} from 'enum-converter';
-import { capitalize, entries, map, values } from 'lodash';
+} from "enum-converter";
+import { capitalize, entries, map, values } from "lodash";
 
-function createLanguageOptions(obj) {
+function createLanguageOptions(obj: any) {
   return values(obj)
-    .map(entry => entry.language)
-    .map(entry => ({ value: entry, label: splitByCapital(capitalize(entry)) }));
+    .map((entry) => entry?.language)
+    .map((entry) => ({
+      value: entry,
+      label: splitByCapital(capitalize(entry)),
+    }));
 }
 
-function flatOption(obj) {
-  return map(entries(obj), element => ({
+function flatOption(obj: any) {
+  return map(entries(obj), (element) => ({
     value: element[1],
-    label: splitByCapital(element[0])
+    label: splitByCapital(element[0]),
   }));
 }
 
-function splitByCapital(str) {
-  return str.split(/(?=[A-Z])/).join(' ');
+function splitByCapital(str: string): string {
+  return str.split(/(?=[A-Z])/).join(" ");
 }
 
 export const optionsTypeDefs = gql`
@@ -49,6 +52,6 @@ export const optionsResolvers = {
     stringStyles: () => flatOption(StringStyle),
     enumsOrder: () => flatOption(EnumsOrder),
     valuesOrder: () => flatOption(ValuesOrder),
-    languageSuffix: () => flatOption(LanguageSuffix)
-  }
+    languageSuffix: () => flatOption(LanguageSuffix),
+  },
 };

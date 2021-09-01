@@ -6,6 +6,7 @@ services:
       dockerfile: dev.Dockerfile
     image: enumc:base
     volumes:
+      - ./package.json:/usr/src/app/package.json
       - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       - ./packages/enum-converter-web/package.json:/usr/src/app/packages/enum-converter-web/package.json
       - ./packages/enum-converter/package.json:/usr/src/app/packages/enum-converter/package.json
@@ -17,7 +18,7 @@ services:
     volumes_from:
       - base
     volumes:
-      - ./packages/enum-converter/build:/usr/src/app/packages/enum-converter/build
+      # - ./packages/enum-converter/build:/usr/src/app/packages/enum-converter/build
       - ./packages/enum-converter/jest.config.js:/usr/src/app/packages/enum-converter/jest.config.js
       - ./packages/enum-converter/README.md:/usr/src/app/packages/enum-converter/README.md
       - ./packages/enum-converter/src:/usr/src/app/packages/enum-converter/src
@@ -33,8 +34,13 @@ services:
       - "5000:5000"
     volumes_from:
       - base
+    command: /bin/sh
+    tty: yes
     volumes:
+      - ./packages/enum-converter-api/tsconfig.json:/usr/src/app/packages/enum-converter-api/tsconfig.json
+      - ./packages/enum-converter-api/package.json:/usr/src/app/packages/enum-converter-api/package.json
       - ./packages/enum-converter-api/src:/usr/src/app/packages/enum-converter-api/src
+      - ./packages/enum-converter-api/build:/usr/src/app/packages/enum-converter-api/build
       - static-volume:/usr/src/app/packages/enum-converter-api/static
   web:
     image: enumc:base

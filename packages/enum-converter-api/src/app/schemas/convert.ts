@@ -1,5 +1,5 @@
-import { gql } from 'apollo-server-express';
-import { convertString } from 'enum-converter';
+import { gql } from "apollo-server-express";
+import { convertString } from "enum-converter";
 
 export const convertTypeDefs = gql`
   extend type Query {
@@ -21,9 +21,10 @@ export const convertTypeDefs = gql`
 
 export const convertResolvers = {
   Query: {
-    convert: (parent, args, context, info) => {
+    // TODO: add types
+    convert: (parent: any, args: any, context: any, info: any) => {
       const { source, configuration } = args;
       return convertString(source, configuration);
-    }
-  }
+    },
+  },
 };

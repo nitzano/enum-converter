@@ -1,5 +1,4 @@
-import "@babel/polyfill";
-import app from "./app";
+import { app } from "./app";
 
 const PORT = process.env.PORT || 5000;
 
