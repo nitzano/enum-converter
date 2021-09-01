@@ -1,4 +1,4 @@
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer } from "apollo-server";
 import { convertResolvers, convertTypeDefs } from "./convert";
 import { optionsResolvers, optionsTypeDefs } from "./options";
 import { queryResolvers, queryTypeDef } from "./query";
@@ -17,6 +17,5 @@ const resolvers = [
   convertResolvers,
   optionsResolvers,
 ];
-
 
 export const apolloServer = new ApolloServer({ typeDefs, resolvers });

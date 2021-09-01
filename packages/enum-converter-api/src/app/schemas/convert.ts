@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from "apollo-server";
 import { convertString } from "enum-converter";
 
 export const convertTypeDefs = gql`

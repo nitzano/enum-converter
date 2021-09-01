@@ -1,8 +1,8 @@
-import { gql } from "apollo-server-express";
+import { gql } from "apollo-server";
 
 function getVersion() {
   // TODO: use something else than require.resolve
-  return "1.3.6";
+  return "1.3.70-alpha";
 }
 
 export const versionTypeDefs = gql`
@@ -13,6 +13,6 @@ export const versionTypeDefs = gql`
 
 export const versionResolvers = {
   Query: {
-    version: () => getVersion()
-  }
+    version: () => getVersion(),
+  },
 };

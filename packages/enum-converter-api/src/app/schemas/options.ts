@@ -1,11 +1,11 @@
-import { gql } from "apollo-server-express";
+import { gql } from "apollo-server";
 import {
   dumpers,
   EnumsOrder,
   LanguageSuffix,
   parsers,
   StringStyle,
-  ValuesOrder
+  ValuesOrder,
 } from "enum-converter";
 import { capitalize, entries, map, values } from "lodash";
 
