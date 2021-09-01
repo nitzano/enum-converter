@@ -8,7 +8,6 @@
     "build"
   ],
   "scripts": {
-    "build:dev": "tsc",
     "build": "tsc",
     "clean": "rimraf build/*",
     "debug:nodemon": "nodemon -L --watch ./dist --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
