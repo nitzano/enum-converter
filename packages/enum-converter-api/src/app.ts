@@ -23,7 +23,7 @@ app.use(express.static("static"));
 
 app.use(
   (
-    err: express.ErrorHandler,
+    err: any,
     req: express.Request,
     res: express.Response,
     next: express.NextFunction
