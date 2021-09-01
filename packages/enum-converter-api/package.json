@@ -8,12 +8,12 @@
     "build"
   ],
   "scripts": {
-    "build:dev": "yarn build --source-maps",
-    "build": "babel src -d build",
-    "clean": "rm -rf build/*",
+    "build:dev": "tsc",
+    "build": "tsc",
+    "clean": "rimraf build/*",
     "debug:nodemon": "nodemon -L --watch ./dist --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
     "debug": "yarn build && node --inspect=0.0.0.0:9229 --nolazy ./build/server.js",
-    "dev": "nodemon -L --exec babel-node ./src/server.js",
+    "dev": "tsc --watch",
     "prebuild": "yarn clean",
     "start": "node ./build/server.js --stream",
     "test": "echo test ok"
