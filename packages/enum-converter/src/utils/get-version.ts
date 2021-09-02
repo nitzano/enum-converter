@@ -1,3 +1,6 @@
-export function version(): string {
-    return '1.3.7-test'
+const { version } = require('../../package.json');
+
+
+export function getVersion(): string {
+    return version;
 }
