@@ -18,4 +18,4 @@ export const resolvers = [
   optionsResolvers,
 ];
 
-export const server = new ApolloServer({ typeDefs, resolvers });
+export const apolloServer = new ApolloServer({ typeDefs, resolvers });
