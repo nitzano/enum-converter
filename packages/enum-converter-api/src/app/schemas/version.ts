@@ -1,8 +1,8 @@
 import { gql } from "apollo-server";
-import { getVersion } from "enum-converter";
+import { version } from "enum-converter";
 
 function getEnumcVersion(): string {
-  return getVersion();
+  return version;
 }
 
 export const versionTypeDefs = gql`
