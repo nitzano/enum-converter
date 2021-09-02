@@ -1,8 +1,8 @@
 import { gql } from "apollo-server";
+import { version } from "enum-converter";
 
-function getVersion() {
-  // TODO: use something else than require.resolve
-  return "1.3.7-alpha";
+function getEnumcVersion(): string {
+  return version;
 }
 
 export const versionTypeDefs = gql`
@@ -13,6 +13,6 @@ export const versionTypeDefs = gql`
 
 export const versionResolvers = {
   Query: {
-    version: () => getVersion(),
+    version: () => getEnumcVersion(),
   },
 };
