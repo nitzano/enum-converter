@@ -1,7 +1,8 @@
-import { app } from "./app";
+import { apolloServer } from "./app/schemas/schema";
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Enum Server started on port ${PORT}`);
+apolloServer.listen(PORT).then(({ url }: { url: string }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
+1;

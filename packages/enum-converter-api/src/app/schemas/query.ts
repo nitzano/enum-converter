@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from "apollo-server";
 
 export const queryTypeDef = gql`
   type Query {
@@ -8,6 +8,6 @@ export const queryTypeDef = gql`
 
 export const queryResolvers = {
   Query: {
-    _empty: () => null
-  }
+    _empty: () => null,
+  },
 };
