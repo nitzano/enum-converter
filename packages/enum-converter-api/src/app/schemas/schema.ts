@@ -4,14 +4,14 @@ import { optionsResolvers, optionsTypeDefs } from "./options";
 import { queryResolvers, queryTypeDef } from "./query";
 import { versionResolvers, versionTypeDefs } from "./version";
 
-const typeDefs = [
+export const typeDefs = [
   queryTypeDef,
   versionTypeDefs,
   convertTypeDefs,
   optionsTypeDefs,
 ];
 
-const resolvers = [
+export const resolvers = [
   queryResolvers,
   versionResolvers,
   convertResolvers,
