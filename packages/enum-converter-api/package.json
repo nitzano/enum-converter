@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.3.0",
+    "apollo-server-micro": "^3.3.0",
     "enum-converter": "^1.3.7-alpha",
     "express": "^4.17.1",
     "graphql": "^15.5.2",
