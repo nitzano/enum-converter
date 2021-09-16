@@ -1,12 +1,14 @@
-name: Run tests
+name: Test
 
 on:
   push:
     branches:
       - master
+      - next
   pull_request:
     branches:
       - master
+      - next
 
 jobs:
   test_enumc:
