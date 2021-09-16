@@ -58,14 +58,14 @@
     "lower-case": "^2.0.2",
     "swap-case": "^2.0.2",
     "title-case": "^3.0.3",
-    "tmp": "0.0.33",
+    "tmp": "0.2.1",
     "typescript": "^4.3.5",
     "upper-case": "^2.0.2",
     "yargs": "11.0.0"
   },
   "devDependencies": {
     "@types/estree": "0.0.42",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.1",
     "@types/lodash": "^4.14.171",
     "@types/node": "^16.4.0",
     "@types/tmp": "^0.2.1",
