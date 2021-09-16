@@ -5,17 +5,16 @@
 
 </center>
 
-
 <center>
 
-Convert Enums from one language to another.    
+Convert Enums from one language to another.   
 
 Live demo :  https://enum-converter.vercel.app
+ ([source](https://github.com/nitzano/enum-converter-demo))
 
 </center>
 
-
-<center>
+<div align="center">
 
 [![npm](https://img.shields.io/npm/v/enum-converter)](https://www.npmjs.com/package/enum-converter)
 [![npm-next](https://img.shields.io/npm/v/enum-converter/next)](https://www.npmjs.com/package/enum-converter)
@@ -30,7 +29,7 @@ Live demo :  https://enum-converter.vercel.app
 ![test workflow](https://github.com/nitzano/enum-converter/actions/workflows/test.yml/badge.svg)
 ![release workflow](https://github.com/nitzano/enum-converter/actions/workflows/release.yml/badge.svg)
 
-</center>
+</div>
 
 
 
