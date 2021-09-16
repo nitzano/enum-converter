@@ -1,33 +1,27 @@
 
-<center>
+<h1 align="center">Enum Converter (enumc)</h1>
 
-# Enum Converter (enumc)
 
-</center>
-
-<center>
+<div align="center">
 
 Convert Enums from one language to another.   
 
 Live demo :  https://enum-converter.vercel.app
  ([source](https://github.com/nitzano/enum-converter-demo))
 
-</center>
+</div>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/enum-converter)](https://www.npmjs.com/package/enum-converter)
 [![npm-next](https://img.shields.io/npm/v/enum-converter/next)](https://www.npmjs.com/package/enum-converter)
 [![npm-downloads-week](https://img.shields.io/npm/dw/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
-
+![test workflow](https://github.com/nitzano/enum-converter/actions/workflows/test.yml/badge.svg)
+![release workflow](https://github.com/nitzano/enum-converter/actions/workflows/release.yml/badge.svg)
 
 [![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)](https://github.com/nitzano/enum-converter/blob/master/LICENSE)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-
-![test workflow](https://github.com/nitzano/enum-converter/actions/workflows/test.yml/badge.svg)
-![release workflow](https://github.com/nitzano/enum-converter/actions/workflows/release.yml/badge.svg)
 
 </div>
 
@@ -35,15 +29,14 @@ Live demo :  https://enum-converter.vercel.app
 
 ---
 
-- [Enum Converter (enumc)](#enum-converter-enumc)
-  - [Supported languages](#supported-languages)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [CLI](#cli)
-    - [API](#api)
-  - [Options](#options)
-    - [Conversion](#conversion)
-    - [Styling](#styling)
+- [Supported languages](#supported-languages)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [CLI](#cli)
+  - [API](#api)
+- [Options](#options)
+  - [Conversion](#conversion)
+  - [Styling](#styling)
 
 
 ## Supported languages
