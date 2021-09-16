@@ -4,12 +4,12 @@
 
 <div align="center">
 
-Convert Enums from one language to another.    
+Convert Enums from one language to another.   
 
 Live demo :  https://enum-converter.vercel.app
+ ([source](https://github.com/nitzano/enum-converter-demo))
 
 </div>
-
 
 <div align="center">
 
@@ -29,15 +29,14 @@ Live demo :  https://enum-converter.vercel.app
 
 ---
 
-- [Enum Converter (enumc)](#enum-converter-enumc)
-  - [Supported languages](#supported-languages)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [CLI](#cli)
-    - [API](#api)
-  - [Options](#options)
-    - [Conversion](#conversion)
-    - [Styling](#styling)
+- [Supported languages](#supported-languages)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [CLI](#cli)
+  - [API](#api)
+- [Options](#options)
+  - [Conversion](#conversion)
+  - [Styling](#styling)
 
 
 ## Supported languages
