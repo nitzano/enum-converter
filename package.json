@@ -43,7 +43,6 @@
     "lint": "tslint -p tsconfig.json",
     "prebuild": "yarn run clean:soft",
     "predebug": "yarn run build",
-    "prepare": "yarn build",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/jest -i",
     "test:watch": "jest --watch",
     "test": "jest"
