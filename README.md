@@ -2,10 +2,15 @@
 
 # Enum Converter (enumc)
 
-[![npm](https://img.shields.io/npm/v/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
+[![npm](https://img.shields.io/npm/v/enum-converter)](https://www.npmjs.com/package/enum-converter)
+[![npm](https://img.shields.io/npm/v/enum-converter/next)](https://www.npmjs.com/package/enum-converter)
+
 [![npm](https://img.shields.io/npm/dw/enum-converter.svg)](https://www.npmjs.com/package/enum-converter)
 [![Build Status](https://travis-ci.org/nitzano/enum-converter.svg?branch=master)](https://travis-ci.org/nitzano/enum-converter)
 [![license](https://img.shields.io/github/license/nitzano/enum-converter.svg)](https://github.com/nitzano/enum-converter/blob/master/LICENSE)
+
+
+
 
 Convert Enums from one language to another
 
