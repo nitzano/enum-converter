@@ -53,7 +53,7 @@
     "change-case": "4.1.2",
     "estree-walker": "2.0.2",
     "filbert": "0.1.20",
-    "java-ast": "^0.1.0",
+    "java-ast": "^0.3.0",
     "lodash": "^4.17.11",
     "lower-case": "^2.0.2",
     "swap-case": "^2.0.2",
