@@ -8,10 +8,10 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
     labels:
       - deps
-    target-branch: next
+    target-branch: beta
     commit-message:
       prefix: "fix"
       prefix-development: "chore"
