@@ -11,7 +11,7 @@ updates:
       interval: "weekly"
     labels:
       - deps
-    target-branch: next
+    target-branch: beta
     commit-message:
       prefix: "fix"
       prefix-development: "chore"
