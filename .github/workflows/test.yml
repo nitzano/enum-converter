@@ -5,13 +5,15 @@ on:
     branches:
       - master
       - next
+      - beta
   pull_request:
     branches:
       - master
       - next
+      - beta
 
 jobs:
-  test_enumc:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
