@@ -71,7 +71,7 @@
     "@types/tmp": "^0.2.1",
     "@types/yargs": "^17.0.2",
     "jest": "^27.0.6",
-    "prettier": "2.4.1",
+    "prettier": "2.5.1",
     "rimraf": "3.0.2",
     "semantic-release": "^18.0.0",
     "ts-jest": "^27.0.4",
