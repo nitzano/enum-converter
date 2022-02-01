@@ -3,15 +3,17 @@ name: Test
 on:
   push:
     branches:
-      - master
       - next
+      - master
+      - beta
   pull_request:
     branches:
-      - master
       - next
+      - master
+      - beta
 
 jobs:
-  test_enumc:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
